@@ -38,17 +38,15 @@ const Card: FC<CardProps> = ({
   bodyPadding = true,
   children,
   ...restProps
-}) => {
-  return (
-    <Box borderRadius="3px" backgroundColor="white" padding={0} {...restProps}>
-      {icon && (
-        <Box as="img" src={icon} w="22px" h="22px" marginLeft="20px" display="inline-block" />
-      )}
-      {title && <CardHead>{title}</CardHead>}
-      {title && !noHeadBorder && <Divider borderColor={Colors.DividerDark} />}
-      {body || <CardBody bodyPadding={bodyPadding}>{children}</CardBody>}
-    </Box>
-  );
-};
+}) => (
+  <Box borderRadius="3px" backgroundColor="white" padding={0} {...restProps}>
+    {icon && (
+    <Box as="img" src={icon} w="22px" h="22px" marginLeft="20px" display="inline-block" />
+    )}
+    {title && <CardHead>{title}</CardHead>}
+    {title && !noHeadBorder && <Divider borderColor={Colors.DividerDark} />}
+    {body || <CardBody bodyPadding={bodyPadding}>{children}</CardBody>}
+  </Box>
+);
 
 export default Card;

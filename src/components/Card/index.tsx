@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { Box, Heading, Divider } from "@chakra-ui/react";
-import { Colors } from "../../constants";
+import React, { FC } from 'react';
+import { Box, Heading, Divider } from '@chakra-ui/react';
+import { Colors } from '../../constants';
 
 export const CardHead: FC = ({ children }) => (
   <Box paddingX={4} display="inline-block">
@@ -14,7 +14,7 @@ export const CardHead: FC = ({ children }) => (
 
 type CardBodyProps = {
   bodyPadding: boolean;
-};
+}
 
 export const CardBody: FC<CardBodyProps> = ({ children, bodyPadding }) => (
   <Box paddingX={bodyPadding ? 4 : 0}>
@@ -42,14 +42,7 @@ const Card: FC<CardProps> = ({
   return (
     <Box borderRadius="3px" backgroundColor="white" padding={0} {...restProps}>
       {icon && (
-        <Box
-          as="img"
-          src={icon}
-          w="22px"
-          h="22px"
-          marginLeft="20px"
-          display="inline-block"
-        />
+        <Box as="img" src={icon} w="22px" h="22px" marginLeft="20px" display="inline-block" />
       )}
       {title && <CardHead>{title}</CardHead>}
       {title && !noHeadBorder && <Divider borderColor={Colors.DividerDark} />}

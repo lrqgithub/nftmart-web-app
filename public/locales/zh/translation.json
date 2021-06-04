@@ -1,3 +1,14 @@
 {
-  "title": "NFTmart 网站"
-}
+  "title": "NFTmart",
+ 
+  "lang.en": "English",
+  "lang.zh": "中文",
+ 
+  "nav.home": "Home",
+   "nav.explore": "Explore",
+   "nav.explore.all": "All",
+   "nav.list-sale": "Listing",
+   "nav.latest-create": "Not for sale",
+   "nav.latest-strike": "Sold Recently"
+ }
+ 

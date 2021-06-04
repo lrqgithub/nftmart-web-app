@@ -15,6 +15,7 @@ export const App = () => {
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
+          {t('title')}
         </Grid>
       </Box>
     </ChakraProvider>

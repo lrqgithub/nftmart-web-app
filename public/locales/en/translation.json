@@ -5,7 +5,9 @@
  "lang.zh": "中文",
 
  "nav.home": "Home",
-  "nav.explore": "Explore",
+  "nav.browing": "Browing",
+  "nav.auction": "Auction",
+  "nav.active": "Active",
   "nav.explore.all": "All",
   "nav.list-sale": "Listing",
   "nav.latest-create": "Not for sale",

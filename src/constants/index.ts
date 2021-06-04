@@ -2,10 +2,10 @@ export * from './Colors';
 
 export const NAV_MAP: Record<string, string> = {
   'nav.home': '/',
-  'nav.explore': '/explore',
+  'nav.browing': '/explore',
   'nav.list-sale': '/explore?status=listing',
-  // 'nav.latest-create': '/explore?status=new',
-  // 'nav.latest-strike': '/explore?status=recent',
+  'nav.auction': '/auction',
+  'nav.active': '/active',
 };
 
 export const USER_LINKS: Record<string, string> = {

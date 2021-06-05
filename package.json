@@ -32,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix ./src"
+    "lint": "eslint --fix ./src",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -57,11 +58,5 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && npm lint",
-      "pre-push": "npm test && npm lint"
-    }
   }
 }

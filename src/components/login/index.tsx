@@ -20,7 +20,7 @@ import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 // import { globalStore } from 'rekv';
 // import { t } from '../../i18n';
 // import store from '../../stores/whiteList';
-import NLink from '../link';
+import NLink from '../Link';
 import { USER_LINKS } from '../../constants';
 
 export interface LoginProps {

@@ -5,9 +5,9 @@ import {
 
 import { useTranslation } from 'react-i18next';
 
-import NavLink from '../navlink';
-import ChangeLanguage from '../changeLanguage';
-import LogoSrc from '../../assets/logo.png';
+import NavLink from '../Navlink';
+import ChangeLanguage from '../ChangeLanguage';
+import { LogoSrc } from '../../assets/images';
 import { Z_INDEXES } from '../../constants';
 
 export interface HeaderProps {

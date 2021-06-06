@@ -1,19 +1,21 @@
 import React from 'react';
 import { Box, Container } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import LogoImg from '../../assets/footer_logo.png';
-import GithubLogo from '../../assets/footer_icon_github.png';
-import GithubLogoHover from '../../assets/footer_icon_github_s.png';
-import TwitterLogo from '../../assets/footer_icon_twitter.png';
-import TwitterLogoHover from '../../assets/footer_icon_twitter_s.png';
-import FaceboookLogo from '../../assets/footer_icon_facebook.png';
-import FaceboookLogoHover from '../../assets/footer_icon_facebook_s.png';
-import WeboLogo from '../../assets/footer_icon_webo.png';
-import WeboLogoHover from '../../assets/footer_icon_webo_s.png';
-import WechatLogo from '../../assets/footer_icon_wechat.png';
-import WechatLogoHover from '../../assets/footer_icon_wechat_s.png';
-import InsLogo from '../../assets/footer_icon_ins.png';
-import InsLogoHover from '../../assets/footer_icon_ins_s.png';
+import {
+  LogoImg,
+  GithubLogo,
+  GithubLogoHover,
+  TwitterLogo,
+  TwitterLogoHover,
+  FaceboookLogo,
+  FaceboookLogoHover,
+  WeboLogo,
+  WeboLogoHover,
+  WechatLogo,
+  WechatLogoHover,
+  InsLogo,
+  InsLogoHover,
+} from '../../assets/images';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function Uploader() {

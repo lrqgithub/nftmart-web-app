@@ -1,7 +1,7 @@
 import React from 'react';
 // import { useLocation } from 'react-router-dom';
 
-import NLink from '../link';
+import NLink from '../Link';
 import { NAV_MAP } from '../../constants';
 
 const NavLink = () => {

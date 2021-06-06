@@ -2,16 +2,18 @@ import {
   Box, Flex, Text,
 } from '@chakra-ui/react';
 import React from 'react';
-import GithubLogo from '../../assets/footer_icon_github.png';
-import GithubLogoHover from '../../assets/footer_icon_github_s.png';
-import MediumLogo from '../../assets/footer_icon_medium.png';
-import MediumLogoHover from '../../assets/footer_icon_medium_s.png';
-import TelegramLogo from '../../assets/footer_icon_telegram.png';
-import TelegramLogoHover from '../../assets/footer_icon_telegram_s.png';
-import TwitterLogo from '../../assets/footer_icon_twitter.png';
-import TwitterLogoHover from '../../assets/footer_icon_twitter_s.png';
-import Url from '../../assets/footer_icon_url.png';
-import UrlHover from '../../assets/footer_icon_url_s.png';
+import {
+  GithubLogo,
+  GithubLogoHover,
+  TwitterLogo,
+  MediumLogo,
+  TwitterLogoHover,
+  MediumLogoHover,
+  TelegramLogo,
+  TelegramLogoHover,
+  Url,
+  UrlHover,
+} from '../../assets/images';
 
 const ICONS = [
   { icon: Url, hover: UrlHover },

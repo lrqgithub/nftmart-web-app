@@ -60,7 +60,11 @@ const Balance: FC<BalanceProps> = ({ balance }) => {
 
     return (
       <Stack direction="row" alignItems="center" justifyContent="space-between" key={key}>
-        <Text fontSize="sm">{t(`balance.${key}`)}:</Text>{' '}
+        <Text fontSize="sm">
+          {t(`balance.${key}`)}
+          :
+        </Text>
+        {' '}
         <Flex>{renderBalanceText(balanceText)}</Flex>
       </Stack>
     );

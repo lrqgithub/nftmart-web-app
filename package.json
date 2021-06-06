@@ -6,6 +6,9 @@
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
+    "@polkadot/api": "^4.12.1",
+    "@polkadot/extension-dapp": "^0.38.3",
+    "@polkadot/util": "^6.6.1",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.2.1",
@@ -14,17 +17,22 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "bignumber.js": "^9.0.1",
+    "bn.js": "^5.2.0",
     "framer-motion": "^4.0.0",
     "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.1",
     "i18next-http-backend": "^1.2.6",
+    "ramda": "^0.27.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.10.0",
     "react-icons": "^3.0.0",
+    "react-query": "^3.16.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "rpc-websockets": "^7.4.12",
     "typescript": "^3.9.5",
     "web-vitals": "^0.2.2"
   },
@@ -33,7 +41,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix ./src"
+    "lint": "eslint --fix ./src",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -48,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/ramda": "^0.27.40",
     "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
@@ -59,11 +69,5 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && npm lint",
-      "pre-push": "npm test && npm lint"
-    }
   }
 }

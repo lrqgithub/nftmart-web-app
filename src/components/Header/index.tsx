@@ -1,13 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
-  Container, Flex, IconButton, Button, Image,
+  Container, Flex, Button, Image,
 } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
 
 import NavLink from '../Navlink';
+import Login from '../Login';
 import ChangeLanguage from '../ChangeLanguage';
-import { LogoSrc } from '../../assets/images';
+import {
+  LogoSrc,
+} from '../../assets/images';
 import { Z_INDEXES } from '../../constants';
 
 export interface HeaderProps {
@@ -111,7 +114,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
         </Flex>
         <ChangeLanguage />
         <Flex>
-          {0 / 1 ? (
+          {1 ? (
             <Flex
               flex="1 1 auto"
               justifyContent="flex-end"
@@ -119,17 +122,9 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
               height="55px"
               mr={4}
             >
-              {/* <Login username={formatAddress(account.address)} avatar={account.meta.avatar} /> */}
-              <IconButton
-                size="xs"
-                variant="outline"
-                m={2}
-                aria-label="Add to friends"
-                // icon={<CopyIcon />}
-                // onClick={() => handleCopy()}
-              />
-              {/* <Balance balance={balance} /> */}
-              {/* {getFaucet()} */}
+
+              <Login username="lrq" avatar="111111" />
+
             </Flex>
           ) : (
             <Flex>

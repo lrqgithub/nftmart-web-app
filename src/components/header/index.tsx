@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import {
-  Container, Flex, useClipboard, useToast, IconButton, Button, Image,
+  Container, Flex, IconButton, Button, Image,
 } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
@@ -102,8 +102,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
             display="block"
             width="158px"
             height="auto"
-            src={LogoSrc}
-
+            src={LogoSrc.default}
           />
         </Flex>
 

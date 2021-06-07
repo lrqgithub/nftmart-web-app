@@ -41,17 +41,6 @@ const ChangeLanguage = (): JSX.Element => {
     );
   };
 
-  // Menus
-  const menus = <Stack paddingY={2}>{Object.keys(TRANSLATIONS).map(renderButton)}</Stack>;
-  console.log(lang);
-  // Trigger
-  const triggerContent = (
-    <Stack direction="row" cursor="pointer" alignItems="center" spacing={0}>
-      <Text>{t(TRANSLATIONS[lang])}</Text>
-      {opening ? <Icon as={IoMdArrowDropup} /> : <Icon as={IoMdArrowDropdown} />}
-    </Stack>
-  );
-
   return (
     <Popover
       placement="bottom"
@@ -61,13 +50,18 @@ const ChangeLanguage = (): JSX.Element => {
       onOpen={() => setOpening(true)}
       onClose={() => setOpening(false)}
     >
-      <PopoverTrigger>{triggerContent}</PopoverTrigger>
+      <PopoverTrigger>
+        <Stack direction="row" cursor="pointer" alignItems="center" spacing={0}>
+          <Text>{t(TRANSLATIONS[lang])}</Text>
+          {opening ? <Icon as={IoMdArrowDropup} /> : <Icon as={IoMdArrowDropdown} />}
+        </Stack>
+      </PopoverTrigger>
       <Portal>
         {/* TODO: Move focus property else where to have common use */}
         <PopoverContent maxWidth="200px" _focus={{ boxShadow: 'none' }}>
           <PopoverArrow />
           <PopoverBody display="flex" justifyContent="center">
-            {menus}
+            <Stack paddingY={2}>{Object.keys(TRANSLATIONS).map(renderButton)}</Stack>
           </PopoverBody>
         </PopoverContent>
       </Portal>

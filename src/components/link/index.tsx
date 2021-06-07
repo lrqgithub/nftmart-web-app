@@ -5,7 +5,7 @@ import {
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import colors from '../../constants/Colors';
+import { Colors } from '../../constants';
 
 export interface NLinkProps extends HTMLChakraProps<'p'> {
   path: string;
@@ -27,7 +27,7 @@ const NLink: FC<NLinkProps> = (props) => {
     width: '80%',
     borderRadius: 3,
     position: 'absolute',
-    backgroundColor: colors.primary,
+    backgroundColor: Colors.Primary,
     left: '50%',
     bottom: -2,
     transform: 'translate(-50%, -50%)',
@@ -37,7 +37,7 @@ const NLink: FC<NLinkProps> = (props) => {
     <Text
       fontSize={16}
       _hover={{
-        color: colors.primary,
+        color: Colors.Primary,
       }}
       position="relative"
       {...restStyles}
@@ -46,7 +46,7 @@ const NLink: FC<NLinkProps> = (props) => {
         // as={RouterLink}
         key={title}
         to={path}
-        color={active ? colors.primary : ''}
+        color={active ? Colors.Primary : ''}
         _after={active && bordered ? borderBottom : {}}
         {...linkProps}
       >

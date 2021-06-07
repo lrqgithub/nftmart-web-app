@@ -21,3 +21,12 @@ export const parseMoneyText = (text: string) => {
   const normalizedMoney = toBigNumber(moneyText).times(10 ** baseOption.power);
   return { value: normalizedMoney, unit };
 };
+
+export const extractBalanceText = (balanceText: string) => {
+  const { value, unit } = parseMoneyText(balanceText);
+  return {
+    integer: value.toString().split('.')[0],
+    decimal: value.toString().split('.')[1],
+    unit,
+  };
+};

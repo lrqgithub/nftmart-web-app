@@ -13,8 +13,9 @@ import {
 } from '@chakra-ui/react';
 import { map } from 'ramda';
 import { useTranslation } from 'react-i18next';
-import colors from '../../themes/colors';
-import { parseMoneyText } from '../../utils/fomart';
+
+import { Colors } from '../../constants';
+import { extractBalanceText } from '../../utils/format';
 
 interface BalanceType {
   feeFrozen: string;
@@ -35,20 +36,18 @@ const Balance: FC<BalanceProps> = ({ balance }) => {
 
   const renderBalanceText = (balanceText: string) => {
     if (!balanceText || typeof balanceText !== 'string') return null;
-
-    const { value, unit } = parseMoneyText(balanceText);
-    const [integer, decimal] = value.toString().split('.');
+    const { integer, decimal, unit } = extractBalanceText(balanceText);
 
     return (
       <>
-        <Text fontSize="sm" fontWeight="bold" color={colors.primary}>
+        <Text fontSize="sm" fontWeight="bold" color={Colors.Primary}>
           {integer}
           {decimal ? '.' : ''}
         </Text>
-        <Text fontSize="sm" color={colors.text.gray} marginRight={1}>
+        <Text fontSize="sm" color={Colors.TextGray} marginRight={1}>
           {decimal}
         </Text>
-        <Text fontSize="sm" color={colors.primary}>
+        <Text fontSize="sm" color={Colors.Primary}>
           {unit}
         </Text>
       </>
@@ -74,7 +73,7 @@ const Balance: FC<BalanceProps> = ({ balance }) => {
     <Flex cursor="pointer">
       <Divider
         orientation="vertical"
-        borderColor={colors.text.black}
+        borderColor={Colors.TextBlack}
         marginRight={2}
         height="18px"
       />

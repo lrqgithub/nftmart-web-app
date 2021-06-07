@@ -38,7 +38,6 @@ const ICON_LIST = ICONS.map((title, index) => ({
   link: links[index],
 }));
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function Footer() {
   const iconList = ICON_LIST;
 
@@ -78,13 +77,13 @@ export default function Footer() {
               <Box
                 ml={id !== 0 ? '30px' : 0}
                 role="group"
-                key={src}
+                key={src.default}
                 onClick={() => window.open(link, '_blank')}
               >
                 <Box
                   as="img"
                   alt=""
-                  src={src}
+                  src={src.default}
                   width="32px"
                   cursor="pointer"
                   _groupHover={{ display: 'none' }}
@@ -93,7 +92,7 @@ export default function Footer() {
                   as="img"
                   alt=""
                   display="none"
-                  src={hoverSrc}
+                  src={hoverSrc.default}
                   width="32px"
                   cursor="pointer"
                   _groupHover={{ display: 'block' }}

@@ -1,5 +1,5 @@
-import React, { FC, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { FC, useState } from 'react';
+// import { useLocation } from 'react-router-dom';
 import {
   Popover,
   PopoverTrigger,
@@ -8,10 +8,8 @@ import {
   PopoverArrow,
   Stack,
   Portal,
-  Avatar,
   Text,
   Flex,
-  Box,
   useToast,
   Icon,
   Image,

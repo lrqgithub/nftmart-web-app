@@ -5,12 +5,12 @@ import {
   Grid,
   theme,
 } from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
 import { QueryClientProvider } from 'react-query';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { queryClient } from './queryClient';
 import polkaSDK from './polkaSDK';
 import { SS58_FORMAT } from './constants';
+import Router from './router';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -21,7 +21,6 @@ export const App = (): JSX.Element => {
       ss58Format: SS58_FORMAT,
     });
   }, []);
-  const { t } = useTranslation();
   return (
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
@@ -29,7 +28,7 @@ export const App = (): JSX.Element => {
         <Box textAlign="center" fontSize="xl">
           <Grid minH="100vh" p={3}>
             <ColorModeSwitcher justifySelf="flex-end" />
-            {t('title')}
+            <Router />
           </Grid>
         </Box>
         <Footer />

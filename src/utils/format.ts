@@ -1,4 +1,4 @@
-import { toBigNumber } from './number';
+import { toBigNumber } from './bigNumber';
 
 const baseOptions = [
   { power: 0, text: 'TEST', value: '-' },

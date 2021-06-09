@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
-import { Box, Heading, Divider } from '@chakra-ui/react';
+import {
+  Box, Heading, Divider, HTMLChakraProps,
+} from '@chakra-ui/react';
 import { Colors } from '../../constants';
 
 export const CardHead: FC = ({ children }) => (
@@ -22,13 +24,13 @@ export const CardBody: FC<CardBodyProps> = ({ children, bodyPadding }) => (
   </Box>
 );
 
-export interface CardProps {
+export type CardProps = {
   title?: React.ReactNode;
   icon?: string;
   body?: React.ReactNode;
   bodyPadding?: boolean;
   noHeadBorder?: boolean;
-}
+} & HTMLChakraProps<'div'>
 
 const Card: FC<CardProps> = ({
   title,

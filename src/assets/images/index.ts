@@ -19,3 +19,4 @@ export * as UrlHover from './footer_icon_url_s.png';
 export * as MediumLogo from './footer_icon_medium.png';
 export * as LogoSrc from './logo.png';
 export * as HeadPortrait from './img_photo_default@2x.png';
+export * as Polkadot from './polkadot.png';

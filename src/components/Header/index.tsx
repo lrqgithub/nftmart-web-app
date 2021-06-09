@@ -6,7 +6,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import NavLink from '../Navlink';
-import Login from '../Login';
+import Login from '../Login/index';
 import ChangeLanguage from '../ChangeLanguage';
 import {
   LogoSrc,

@@ -1,4 +1,4 @@
-// import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Text, Link, HTMLChakraProps, LinkProps,
 } from '@chakra-ui/react';
@@ -43,7 +43,7 @@ const NLink: FC<NLinkProps> = (props) => {
       {...restStyles}
     >
       <Link
-        // as={RouterLink}
+        as={RouterLink}
         key={title}
         to={path}
         color={active ? Colors.Primary : ''}

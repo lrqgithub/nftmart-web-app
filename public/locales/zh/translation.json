@@ -1,22 +1,22 @@
 {
   "title": "NFTmart",
  
-  "lang.en": "English",
-  "lang.zh": "中文",
+  "langEn": "English",
+  "langZn": "中文",
 
-  "quick-area.wallet": "Wallet",
-  "quick-area.collections": "My Collections",
-  "quick-area.nft.create": "Create NFT",
-  "quick-area.switch": "Switch Account",
-  "quick-area.profile.edit": "Edit Profile",
+  "quickAreaWallet": "Wallet",
+  "quickAreaCollections": "My Collections",
+  "quickAreaNftCreate": "Create NFT",
+  "quickAreaSwitch": "Switch Account",
+  "quickAreaProfileEdit": "Edit Profile",
  
-  "nav.home": "Home",
-  "nav.browing": "Browing",
-  "nav.auction": "Auction",
-  "nav.active": "Active",
-  "nav.explore.all": "All",
-  "nav.list-sale": "Listing",
-  "nav.latest-create": "Not for sale",
-  "nav.latest-strike": "Sold Recently"
+  "navHome": "Home",
+  "navBrowing": "Browing",
+  "navAuction": "Auction",
+  "navActive": "Active",
+  "navExploreAll": "All",
+  "navListSale": "Listing",
+  "navLatestCreate": "Not for sale",
+  "navLatestStrike": "Sold Recently"
  }
  

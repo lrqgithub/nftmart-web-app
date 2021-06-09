@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   Popover,
   PopoverTrigger,
@@ -31,14 +31,14 @@ export interface LoginProps {
 }
 
 const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
-  // const location = useLocation();
-  // const { account } = globalStore.useState('account');
+  const location = useLocation();
+  const account = username;
   // const { whiteList } = store.useState('whiteList');
 
   const { t } = useTranslation();
   const [opening, setOpening] = useState(false);
   const [copyshow, oncopyshow] = useState(false);
-  const { hasCopied, onCopy } = useClipboard(1 ? '3tJGMnjp24UMF2XxfMoGfHHACrHwr2BAPhFAdWvJGEA71HpnMF2Xxf' : '');
+  const { hasCopied, onCopy } = useClipboard(account || '');
   // const [hideMenu, setHideMenu] = useState(false);
   const toast = useToast();
   const handleCopy = () => {
@@ -51,18 +51,6 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
     });
     onCopy();
   };
-
-  // useEffect(() => {
-  //   if (!account || whiteList.length === 0) {
-  //     return;
-  //   }
-  //   const flag = whiteList.indexOf(account.address);
-  //   if (flag < 0) {
-  //     setHideMenu(true);
-  //   } else {
-  //     setHideMenu(false);
-  //   }
-  // }, [whiteList, account]);
 
   // Link render helper
   const renderLink = (title: string) => (
@@ -132,7 +120,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
             fontWeight="500"
             color="#191A24"
           >
-            name
+            {avatar}
           </Text>
           {opening ? <Icon as={IoMdArrowDropup} /> : <Icon as={IoMdArrowDropdown} />}
         </Stack>
@@ -236,7 +224,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                   fontWeight="400"
                   color="#858999"
                 >
-                  3tJGMnjp24UMF2XxfMoGfHHACrHwr2BAPhFAdWvJGEA71HpnMF2Xxf
+                  {account}
                 </Text>
                 <Text
                   mt="4px"

@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 import NavLink from '../Navlink';
-import Login from '../Login/index';
+import Account from '../Account/index';
 import ChangeLanguage from '../ChangeLanguage';
 import {
   LogoSrc,
@@ -78,7 +78,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
               height="55px"
               mr={4}
             >
-              <Login username={account.address} avatar={account.meta.name} />
+              <Account username={account.address} avatar={account.meta.name} />
             </Flex>
           ) : (
             <Flex>
@@ -98,7 +98,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
                   history.push('/connect');
                 }}
               >
-                {t('login')}
+                {t('Account')}
               </Button>
             </Flex>
           )}

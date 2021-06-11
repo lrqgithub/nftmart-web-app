@@ -3,7 +3,7 @@ import {
   HashRouter, Switch, Route,
 } from 'react-router-dom';
 import Connect from '../pages/Connect';
-import Home from '../pages/Home';
+import Home from '../pages/Home/index';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';

@@ -11,7 +11,7 @@ import Card from '../../components/Card';
 import Layout from '../../layout';
 import { Polkadot } from '../../assets/images';
 import { useParams } from '../../hooks/url/useParams';
-import { CONFIG_URL } from '../../constants';
+import { URL } from '../../constants';
 import { useAppDispatch } from '../../hooks/redux';
 import { setAccount, setAccounts, setInjector } from '../../redux/chainSlice';
 import { PolkadotIcon } from '../../assets/icons';
@@ -76,7 +76,7 @@ const Connect: FC = () => {
                 <Button
                   width="160px"
                   variant="primary"
-                  onClick={() => window.open(CONFIG_URL.POLKADOT_EXTENSION, '_blank')}
+                  onClick={() => window.open(URL.POLKADOT_EXTENSION, '_blank')}
                   isFullWidth
                 >
                   {t('download')}

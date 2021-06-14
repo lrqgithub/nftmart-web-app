@@ -1,9 +1,3 @@
-export enum CONFIG_URL {
-  NODE_URL = 'wss://dot.bcdata.top/',
-  PINATA_POST_SERVER = 'https://api.pinata.cloud/pinning/pinFileToIPFS',
-  POLKADOT_EXTENSION= 'https://polkadot.js.org/extension/'
-}
-
 export const TYPES = {
   Properties: 'u8',
   NFTMetadata: 'Vec<u8>',

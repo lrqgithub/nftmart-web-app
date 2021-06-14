@@ -1,18 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   ChakraProvider,
-  Box,
-  Grid,
   theme,
 } from '@chakra-ui/react';
 import { QueryClientProvider } from 'react-query';
-import { queryClient } from './queryClient';
+import {
+  ApolloProvider,
+} from '@apollo/client';
+
+import { queryClient } from './apiClient/reactQueryClient';
 import Router from './router';
+import PolkaProvider from './polkaSDK/PolkaProvider';
+import { client } from './apiClient/apolloClient';
 
 export const App = (): JSX.Element => (
   <ChakraProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
-      <Router />
+      <ApolloProvider client={client}>
+        <PolkaProvider>
+          <Router />
+        </PolkaProvider>
+      </ApolloProvider>
     </QueryClientProvider>
   </ChakraProvider>
 );

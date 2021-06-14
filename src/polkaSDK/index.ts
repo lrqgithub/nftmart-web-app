@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import { WsProvider, ApiPromise, Keyring } from '@polkadot/api';
 import { Client } from 'rpc-websockets';
-import { CONFIG_URL, TYPES } from '../constants';
+import { URL, TYPES } from '../constants';
 
 interface PolkaSDKInitOptions {
   ss58Format: number
@@ -12,6 +12,8 @@ class PolkaSDK {
   private static __instance: PolkaSDK
 
   static __onInit: () => void
+
+  isInitialized!: boolean
 
   wsProvider!: WsProvider
 
@@ -26,10 +28,6 @@ class PolkaSDK {
       PolkaSDK.__instance = new PolkaSDK();
     }
     return PolkaSDK.__instance;
-  }
-
-  public isInitialized() {
-    return !!PolkaSDK.__instance;
   }
 
   public async init(options: PolkaSDKInitOptions) {
@@ -48,10 +46,11 @@ class PolkaSDK {
   }
 
   async initWithOptions(options: PolkaSDKInitOptions) {
-    this.wsProvider = new WsProvider(CONFIG_URL.NODE_URL);
-    this.ws = new Client(CONFIG_URL.NODE_URL);
+    this.wsProvider = new WsProvider(URL.NODE_URL);
+    this.ws = new Client(URL.NODE_URL);
     this.api = await ApiPromise.create({ provider: this.wsProvider, types: TYPES });
     this.keyring = new Keyring({ type: 'sr25519', ss58Format: options.ss58Format });
+    this.isInitialized = true;
   }
 }
 

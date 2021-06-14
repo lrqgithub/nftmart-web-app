@@ -6,23 +6,17 @@ import { App } from './App';
 import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import polkaSDK from './polkaSDK';
-import { SS58_FORMAT } from './constants';
 import './i18n';
 
-polkaSDK.init({
-  ss58Format: SS58_FORMAT,
-}).then(() => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <ColorModeScript />
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </React.StrictMode>,
-    document.getElementById('root'),
-  );
-});
+ReactDOM.render(
+  <React.StrictMode>
+    <ColorModeScript />
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root'),
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -7,6 +7,7 @@ import Home from '../pages/Home';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import EditProfile from '../pages/ProfileEdit';
 
 const Router = () => (
   <HashRouter>
@@ -17,6 +18,9 @@ const Router = () => (
       </Route>
       <Route exact strict path="/connect">
         <Connect />
+      </Route>
+      <Route exact strict path="/profile">
+        <EditProfile />
       </Route>
     </Switch>
     <Footer />

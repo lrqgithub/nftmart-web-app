@@ -1,15 +1,12 @@
 {
   "title": "NFTmart",
- 
   "langEn": "English",
   "langZn": "中文",
-
   "quickAreaWallet": "Wallet",
   "quickAreaCollections": "My Collections",
   "quickAreaNftCreate": "Create NFT",
   "quickAreaSwitch": "Switch Account",
   "quickAreaProfileEdit": "Edit Profile",
- 
   "navHome": "Home",
   "navBrowing": "Browing",
   "navAuction": "Auction",
@@ -17,6 +14,16 @@
   "navExploreAll": "All",
   "navListSale": "Listing",
   "navLatestCreate": "Not for sale",
-  "navLatestStrike": "Sold Recently"
- }
- 
+  "navLatestStrike": "Sold Recently",
+  "common": {
+    "save": "保存"
+  },
+  "ProfileEdit": {
+    "title": "资料修改",
+    "nickname": "昵称：",
+    "placeholder": "请输入",
+    "avator": "头像：",
+    "email": "邮箱：",
+    "twitter": "Twitter："
+  }
+}

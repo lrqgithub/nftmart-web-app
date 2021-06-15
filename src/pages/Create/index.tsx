@@ -27,9 +27,9 @@ import Layout from '../../layouts/common';
 import Upload from '../../components/Upload';
 import { getBalance } from '../../polkaSDK/api/getBalance';
 import { mintNft } from '../../polkaSDK/api/mintNft';
-import { useAssetsQuery } from '../../hooks/query/useAssetsQuery';
-import { useMyAssetsQuery } from '../../hooks/query/useMyAssetsQuery';
-import { useMyCollectionsQuery } from '../../hooks/query/useMyCollectionsQuery';
+import { useAssetsQuery } from '../../hooks/reactQuery/useAssetsQuery';
+import { useMyAssetsQuery } from '../../hooks/reactQuery/useMyAssetsQuery';
+import { useMyCollectionsQuery } from '../../hooks/reactQuery/useMyCollectionsQuery';
 
 import { useParams } from '../../hooks/url/useParams';
 
@@ -40,7 +40,7 @@ const formLableLayout = {
   flex: '0 0 240px',
   htmlFor: 'name',
   fontSize: '14px',
-  color: Colors.gray,
+  color: Colors.Gray,
   borderBottom: '1px solid #F3F4F8',
   mb: '0',
   mr: '0',
@@ -92,16 +92,16 @@ const CreateCollection = () => {
     mintNft(normalizedFormData);
   }, []);
   const schema = Yup.object().shape({
-    classId: Yup.number().required(t('create.verification.Required')),
+    classId: Yup.number().required(t('createVerificationRequired')),
     name: Yup.string()
-      .max(50, t('create.verification.name'))
-      .required(t('create.verification.Required')),
-    url: Yup.string().max(200).required(t('create.verification.Required')),
+      .max(50, t('createVerificationName'))
+      .required(t('createVerificationRequired')),
+    url: Yup.string().max(200).required(t('createVerificationRequired')),
     externalUrl: Yup.string()
-      // .required(t('create.verification.Required'))
-      .matches(/(http|https):\/\/([\w.]+\/?)\S*/, t('create.verification.externalUrl')),
-    description: Yup.string().max(200, t('create.verification.description')),
-    // .required(t('create.verification.Required')),
+      // .required(t('createVerificationRequired'))
+      .matches(/(http|https):\/\/([\w.]+\/?)\S*/, t('createVerificationExternalUrl')),
+    description: Yup.string().max(200, t('createVerificationDescription')),
+    // .required(t('createVerificationRequired')),
   });
 
   const history = useHistory();
@@ -139,7 +139,7 @@ const CreateCollection = () => {
             lineHeight="47px"
             color={Colors.black}
           >
-            {t('create.title')}
+            {t('createTitle')}
           </Box>
           <Container p="0 20px 20px">
             <Formik
@@ -156,7 +156,7 @@ const CreateCollection = () => {
                 mint(formValue, {
                   success: () => {
                     toast({
-                      title: t('create.detailtoast.success'),
+                      title: t('createDetailtoastSuccess'),
                       status: 'success',
                       position: 'top',
                       duration: 3000,
@@ -208,16 +208,16 @@ const CreateCollection = () => {
                         <FormControl isInvalid={!!(form.errors.classId && form.touched.classId)}>
                           <Flex>
                             <FormLabel {...formLableLayout} htmlFor="classId">
-                              {t('create.collection.name')}
+                              {t('createCollectionName')}
                             </FormLabel>
 
                             <SelectControl {...field} selectProps={formInputLayout} name="classId">
-                              <option value="">{t('create.verification.select')}</option>
+                              <option value="">{t('createVerificationSelect')}</option>
                               {classes?.length
                                 && classes.map((clazz) => (
                                   <option
                                     value={clazz.classId}
-                                    color={Colors.text.black}
+                                    color={Colors.Black}
                                     key={clazz.classId}
                                   >
                                     {clazz.name}
@@ -239,11 +239,11 @@ const CreateCollection = () => {
                       }) => (
                         <FormControl isInvalid={!!(form.errors.name && form.touched.name)}>
                           <Flex>
-                            <FormLabel {...formLableLayout}>{t('create.name')}</FormLabel>
+                            <FormLabel {...formLableLayout}>{t('createName')}</FormLabel>
                             <Input
                               id="name"
-                              placeholder={t('create.name.placeholder')}
-                              _placeholder={{ color: Colors.lightGray }}
+                              placeholder={t('createNamePlaceholder')}
+                              _placeholder={{ color: Colors.LightGray }}
                               {...formInputLayout}
                               {...field}
                             />
@@ -268,7 +268,7 @@ const CreateCollection = () => {
                               lineHeight="auto"
                               height="auto"
                             >
-                              {t('create.img')}
+                              {t('createImg')}
                             </FormLabel>
                             <FormLabel
                               mb="0"
@@ -303,7 +303,7 @@ const CreateCollection = () => {
                         >
                           <Flex width="100%">
                             <FormLabel {...formLableLayout} htmlFor="externalUrl">
-                              {t('create.link')}
+                              {t('createLink')}
                             </FormLabel>
                             <Input id="externalUrl" {...formInputLayout} {...field} />
                           </Flex>
@@ -324,12 +324,12 @@ const CreateCollection = () => {
                         >
                           <Flex>
                             <FormLabel {...formLableLayout} height="96px" htmlFor="description">
-                              {t('create.intro')}
+                              {t('createIntro')}
                             </FormLabel>
                             <Textarea
-                              _placeholder={{ color: Colors.lightGray }}
+                              _placeholder={{ color: Colors.LightGray }}
                               id="description"
-                              placeholder={t('create.intro.placeholder')}
+                              placeholder={t('createIntroPlaceholder')}
                               {...formInputLayout}
                               {...field}
                               resize="none"
@@ -343,14 +343,14 @@ const CreateCollection = () => {
                   <Box textAlign="center" mt="21px">
                     <Button
                       type="submit"
-                      backgroundColor={Colors.primary}
+                      backgroundColor={Colors.Primary}
                       fontSize="14px"
                       color="#fff"
                       isLoading={props.isSubmitting}
-                      _hover={{ backgroundColor: Colors.primary }}
-                      _focus={{ backgroundColor: Colors.primary }}
+                      _hover={{ backgroundColor: Colors.Primary }}
+                      _focus={{ backgroundColor: Colors.Primary }}
                     >
-                      {t('create.save')}
+                      {t('createSave')}
                     </Button>
                   </Box>
                 </Form>

@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { ASSETS_QUERY } from '../../constants/QueryKeys';
-import polkaSDK from '../../polkaSDK';
+import PolkaSDK from '../../polkaSDK';
 import { getAllNfts } from '../../polkaSDK/api/getAllNfts';
 import { getAllOrders } from '../../polkaSDK/api/getAllOrders';
 import { Order, Work } from '../../polkaSDK/types';
@@ -34,7 +34,7 @@ export const useAssetsQuery = () => {
   const queryAssetsAndMap = async () => {
     let assets = await getAllNfts();
     const orders = (await getAllOrders()) as Order[];
-    const blockNumber = Number(await polkaSDK.api.query.system.number());
+    const blockNumber = Number(await PolkaSDK.api.query.system.number());
 
     if (Array.isArray(orders) && Array.isArray(assets)) {
       assets = assets.map((asset) => updateAssetByOrder(asset, orders, blockNumber));

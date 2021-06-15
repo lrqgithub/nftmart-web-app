@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import {
   Container, Flex, Button, Image,
 } from '@chakra-ui/react';
@@ -6,7 +6,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
 import NavLink from '../Navlink';
 import Account from '../Account/index';
 import ChangeLanguage from '../ChangeLanguage';
@@ -14,7 +13,7 @@ import {
   LogoSrc,
 } from '../../assets/images';
 import { Z_INDEXES } from '../../constants';
-import { store } from '../../redux/store';
+import { useAppSelector } from '../../hooks/redux';
 
 export interface HeaderProps {
   sticky?: boolean;
@@ -22,13 +21,13 @@ export interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ sticky }) => {
   const history = useHistory();
-  const stateAll = useSelector((state) => state.chain);
+  const stateAll = useAppSelector((state) => state.chain);
 
   const { t } = useTranslation();
   const { account } = stateAll;
 
   const formatAddress = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
-  console.log(account);
+
   return (
     <Flex
       as="header"

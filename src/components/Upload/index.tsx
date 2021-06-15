@@ -16,6 +16,7 @@ import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import axios from 'axios';
 
+import { create } from 'ipfs-http-client';
 import {
   IPFS_POST_SERVER,
   PINATA_SERVER,
@@ -36,6 +37,7 @@ interface INavProps {
 const CropperCop: React.FC<INavProps> = (props) => {
   const cropperRef = useRef<HTMLImageElement>(null);
   const [cropper, setCropper] = useState<any>();
+  const { imgUrl } = props;
 
   // 将base64转换为blob
   const dataURLtoBlob = (dataurl: any) => {
@@ -63,7 +65,7 @@ const CropperCop: React.FC<INavProps> = (props) => {
   return (
     <Box>
       <Cropper
-        // src={props.imgUrl}
+        src={imgUrl}
         style={{ height: 500, width: '100%' }}
         // Cropper.js options
         guides={false}
@@ -79,10 +81,10 @@ const CropperCop: React.FC<INavProps> = (props) => {
         fontSize="14px"
         lineHeight="47px"
         cursor="pointer"
-        color={Colors.success}
+        color={Colors.Success}
         onClick={getCropData}
       >
-        {t('create.crop.confirm')}
+        {t('createCropConfirm')}
       </Text>
     </Box>
   );
@@ -93,8 +95,6 @@ const {
   REACT_APP_PINATA_API_SECRET_KEY,
   REACT_APP_PINATA_ENABLE,
 } = process.env;
-// const ipfsClient = require('ipfs-http-client');
-const ipfsClient = 111;
 
 export interface UploadProps {
   boxProps?: Record<string, unknown>;
@@ -162,7 +162,7 @@ const Upload: FC<UploadProps> = ({
       return;
     }
 
-    const ipfs = ipfsClient(IPFS_POST_SERVER);
+    const ipfs = create(IPFS_POST_SERVER);
     if (files.length === 0) {
       return;
     }
@@ -191,7 +191,7 @@ const Upload: FC<UploadProps> = ({
 
       if (fileType !== 'png' && fileType !== 'jpg' && fileType !== 'gif' && fileType !== 'jpeg') {
         toast({
-          title: t('create.upload.filetype'),
+          title: t('createUploadFiletype'),
           status: 'warning',
           position: 'top',
           duration: 3000,
@@ -202,7 +202,7 @@ const Upload: FC<UploadProps> = ({
       }
       if (currentFile.size >= MAX_FILE_SIZE) {
         toast({
-          title: t('create.upload.overflow'),
+          title: t('createUploadOverflow'),
           status: 'warning',
           position: 'top',
           duration: 3000,
@@ -257,7 +257,7 @@ const Upload: FC<UploadProps> = ({
 
   const txtUpload = (
     <Text fontSize="14px" lineHeight="47px" cursor="pointer" color={Colors.success}>
-      {t('create.upload')}
+      {t('createUpload')}
     </Text>
   );
 
@@ -298,7 +298,7 @@ const Upload: FC<UploadProps> = ({
   //         color={Colors.success}
   //         onClick={cropImage}
   //       >
-  //         {t('create.crop')}
+  //         {t('createCrop')}
   //       </Text>
   //     ) : (
   //       ''

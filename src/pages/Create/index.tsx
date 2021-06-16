@@ -30,6 +30,7 @@ import { mintNft } from '../../polkaSDK/api/mintNft';
 import { useAssetsQuery } from '../../hooks/reactQuery/useAssetsQuery';
 import { useMyAssetsQuery } from '../../hooks/reactQuery/useMyAssetsQuery';
 import { useMyCollectionsQuery } from '../../hooks/reactQuery/useMyCollectionsQuery';
+import { useAppSelector } from '../../hooks/redux';
 
 import { useParams } from '../../hooks/url/useParams';
 
@@ -61,7 +62,7 @@ const CreateCollection = () => {
 
   const { t } = useTranslation();
   const toast = useToast();
-  const stateAll = useSelector((state:any) => state.chain);
+  const stateAll = useAppSelector((state) => state.chain);
   const { account, whiteList } = stateAll;
   const { refetch: refetchAssets } = useAssetsQuery();
 

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/redux';
 
 import { redirectConnect } from '../../utils';
 
 const LoginDetector = () => {
   const location = useLocation();
   const history = useHistory();
-  const stateAll = useSelector((state:any) => state.chain);
+  const stateAll = useAppSelector((state) => state.chain);
   const { accounts, account, injector } = stateAll;
 
   useEffect(() => {

@@ -97,7 +97,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
                   history.push('/connect');
                 }}
               >
-                {t('Account')}
+                {t('Login')}
               </Button>
             </Flex>
           )}

@@ -1,25 +1,16 @@
 {
-<<<<<<< HEAD
   "title": "NFTmart",
-  "langEn": "English",
-  "langZn": "中文",
-  "quickAreaWallet": "Wallet",
-=======
- "title": "NFTmart",
-
+  
  "langEn": "English",
  "langZn": "中文",
  "Login": "Login",
 
  "quickAreaWallet": "Wallet",
->>>>>>> 4b2bc76410630e85a080ba8d68ae30296d3a75ec
   "quickAreaCollections": "My Collections",
   "quickAreaNftCreate": "Create NFT",
   "quickAreaSwitch": "Switch Account",
   "quickAreaProfileEdit": "Edit Profile",
-<<<<<<< HEAD
-  "navHome": "Home",
-=======
+
 
   "createTitle": "Create Asset",
   "createCollectionTitle": "Create Collection",
@@ -54,7 +45,6 @@
 
 
  "navHome": "Home",
->>>>>>> 4b2bc76410630e85a080ba8d68ae30296d3a75ec
   "navBrowing": "Browing",
   "navAuction": "Auction",
   "navActive": "Active",

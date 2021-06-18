@@ -52,9 +52,9 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
         <Flex
           justify="center"
           mr={8}
-          // onClick={() => {
-          //   history.push('/');
-          // }}
+          onClick={() => {
+            history.push('/');
+          }}
         >
           <Image
             display="block"
@@ -87,12 +87,12 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
                 ml="20px"
                 width="107px"
                 height="40px"
-                background="#5C74FF"
-                border-radius="4px"
                 fontFamily="PingFangSC-Semibold, PingFang SC"
                 fontWeight="600"
-                color="#FFFFFF"
+                borderRadius="20px"
+                color="#999999"
                 fontSize="16px"
+                border="1px solid #999999"
                 onClick={() => {
                   history.push('/connect');
                 }}

@@ -1,6 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom';
 import {
-  Text, Link, HTMLChakraProps, LinkProps,
+  Text, Link, HTMLChakraProps, LinkProps, Box,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,25 +34,36 @@ const NLink: FC<NLinkProps> = (props) => {
   };
 
   return (
-    <Text
-      fontSize={16}
-      _hover={{
-        color: Colors.Primary,
-      }}
-      position="relative"
-      {...restStyles}
-    >
-      <Link
-        as={RouterLink}
-        key={title}
-        to={path}
-        color={active ? Colors.Primary : ''}
-        _after={active && bordered ? borderBottom : {}}
-        {...linkProps}
+    <>
+      <Text
+        fontSize={16}
+        _hover={{
+          color: Colors.Primary,
+        }}
+        position="relative"
+        {...restStyles}
       >
-        {t(title)}
-      </Link>
-    </Text>
+        <Link
+          outline="none"
+          as={RouterLink}
+          key={title}
+          to={path}
+          color={active ? Colors.Primary : ''}
+          _after={active && bordered ? borderBottom : {}}
+          _hover={{
+            textDecoration: 'none',
+          }}
+          _focus={{
+            border: 'none',
+            textDecoration: 'none',
+          }}
+          {...linkProps}
+        >
+          {t(title)}
+        </Link>
+      </Text>
+
+    </>
   );
 };
 

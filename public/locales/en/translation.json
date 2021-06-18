@@ -43,7 +43,11 @@
   "createVerificationRequired": "Required",
   "createVerificationSelect": "select",
 
-
+  "ClickToCopy": "Click to copy",
+  "ViewInScan": "View in Scan",
+  "Address": "Address",
+  "Balance": "Balance",
+  
  "navHome": "Home",
   "navBrowing": "Browing",
   "navAuction": "Auction",

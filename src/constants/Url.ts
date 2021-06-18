@@ -1,3 +1,5 @@
+import { url } from 'inspector';
+
 export enum URL {
   NODE_URL = 'wss://dot.bcdata.top/',
   PINATA_POST_SERVER = 'https://api.pinata.cloud/pinning/pinFileToIPFS',
@@ -12,10 +14,19 @@ export const NAV_MAP: Record<string, string> = {
   navActive: '/active',
 };
 
-export const USER_LINKS: Record<string, string> = {
-  quickAreaWallet: '/wallet',
-  quickAreaCollections: '/collections',
-  quickAreaNftCreate: '/create',
+export const USER_LINKS = {
+  quickAreaWallet: {
+    url: '/wallet',
+    name: 'Buy',
+  },
+  quickAreaCollections: {
+    url: '/create',
+    name: 'Add',
+  },
+  quickAreaNftCreate: {
+    url: '/collections',
+    name: 'Add',
+  },
   // 'quickAreaProfileEdit': '/profile',
 };
 

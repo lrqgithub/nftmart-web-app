@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Stack,
-  Icon,
   Popover,
   PopoverTrigger,
   Portal,
@@ -10,9 +9,13 @@ import {
   PopoverBody,
   Button,
   Text,
+  Image,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io';
+import {
+  IoMdArrowDropdown,
+  IoMdArrowDropup,
+} from '../../assets/images';
 
 const TRANSLATIONS: Record<string, string> = {
   en: 'langEn',
@@ -52,13 +55,25 @@ const ChangeLanguage = (): JSX.Element => {
     >
       <PopoverTrigger>
         <Stack direction="row" cursor="pointer" alignItems="center" spacing={0}>
-          <Text>{t(TRANSLATIONS[lang])}</Text>
-          {opening ? <Icon as={IoMdArrowDropup} /> : <Icon as={IoMdArrowDropdown} />}
+          <Text pr="3px">{t(TRANSLATIONS[lang])}</Text>
+          {opening ? (
+            <Image
+              width="12px"
+              height="12px"
+              src={IoMdArrowDropup.default}
+            />
+          ) : (
+            <Image
+              width="12px"
+              height="12px"
+              src={IoMdArrowDropdown.default}
+            />
+          )}
         </Stack>
       </PopoverTrigger>
       <Portal>
         {/* TODO: Move focus property else where to have common use */}
-        <PopoverContent maxWidth="200px" _focus={{ boxShadow: 'none' }}>
+        <PopoverContent maxWidth="100px" _focus={{ boxShadow: 'none' }}>
           <PopoverArrow />
           <PopoverBody display="flex" justifyContent="center">
             <Stack paddingY={2}>{Object.keys(TRANSLATIONS).map(renderButton)}</Stack>

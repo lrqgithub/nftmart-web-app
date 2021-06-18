@@ -15,7 +15,6 @@ import {
   Image,
   useClipboard,
 } from '@chakra-ui/react';
-import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 import { useTranslation } from 'react-i18next';
 import { USER_LINKS } from '../../constants';
@@ -23,13 +22,24 @@ import { USER_LINKS } from '../../constants';
 
 import {
   HeadPortrait,
+  Address,
+  Collections,
+  Owned,
+  Created,
+  Balance,
+  IoMdArrowDropdown,
+  IoMdArrowDropup,
 } from '../../assets/images';
 
 export interface LoginProps {
   avatar?: string;
   username?: string;
 }
-
+const ICONS = {
+  quickAreaWallet: Owned,
+  quickAreaCollections: Collections,
+  quickAreaNftCreate: Created,
+};
 const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
   const location = useLocation();
   const account = username;
@@ -37,7 +47,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
 
   const { t } = useTranslation();
   const [opening, setOpening] = useState(false);
-  const [copyshow, oncopyshow] = useState(false);
+  const [copyshow, oncopyshow] = useState(true);
   const { hasCopied, onCopy } = useClipboard(account || '');
   // const [hideMenu, setHideMenu] = useState(false);
   const toast = useToast();
@@ -51,46 +61,51 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
     });
     onCopy();
   };
-
   // Link render helper
-  const renderLink = (title: string) => (
-    <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
-      <Flex width="100%" justifyContent="space-between" mr="31px">
-        <Flex width="100%" justifyContent="flex-start" alignItems="center">
-          <Image
-            width="14px"
-            height="14px"
-            mr="9px"
-            src={HeadPortrait.default}
-          />
+  const renderLink = (title: string) => {
+    const path = USER_LINKS[title].url;
+    const active = location.pathname === path;
+    return (
+      <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+        <Flex width="100%" justifyContent="space-between" mr="31px">
+          <Flex width="100%" justifyContent="flex-start" alignItems="center">
+            <Image
+              width="14px"
+              height="14px"
+              mr="9px"
+              src={ICONS[title].default}
+            />
+            <Text
+              fontSize="14px"
+              fontFamily="PingFangSC-Regular, PingFang SC"
+              fontWeight="blod"
+              color="#191A24"
+            >
+              {t(title)}
+            </Text>
+          </Flex>
           <Text
             fontSize="14px"
             fontFamily="PingFangSC-Regular, PingFang SC"
-            fontWeight="blod"
-            color="#191A24"
+            fontWeight="400"
+            color="#858999"
           >
-            {t(title)}
+            283746.32
           </Text>
         </Flex>
         <Text
-          fontSize="14px"
-          fontFamily="PingFangSC-Regular, PingFang SC"
-          fontWeight="400"
-          color="#858999"
+          width="41px"
+          ml="40px"
+          fontSize="16px"
+          fontFamily="PingFangSC-Medium, PingFang SC"
+          fontWeight="500"
+          color="#5C74FF"
         >
-          283746.32
+          {USER_LINKS[title].name}
         </Text>
       </Flex>
-      <Text
-        fontSize="16px"
-        fontFamily="PingFangSC-Medium, PingFang SC"
-        fontWeight="500"
-        color="#5C74FF"
-      >
-        NMT
-      </Text>
-    </Flex>
-  );
+    );
+  };
 
   // Menus
   const menus = (<Stack width="100%">{Object.keys(USER_LINKS).map(renderLink)}</Stack>);
@@ -100,6 +115,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
       placement="bottom"
       size="sm"
       variant="menu"
+      trigger="hover"
       isOpen={opening}
       onOpen={() => setOpening(true)}
       onClose={() => setOpening(false)}
@@ -119,10 +135,23 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
             fontFamily="PingFangSC-Medium, PingFang SC"
             fontWeight="500"
             color="#191A24"
+            pr="3px"
           >
             {avatar}
           </Text>
-          {opening ? <Icon as={IoMdArrowDropup} /> : <Icon as={IoMdArrowDropdown} />}
+          {opening ? (
+            <Image
+              width="12px"
+              height="12px"
+              src={IoMdArrowDropup.default}
+            />
+          ) : (
+            <Image
+              width="12px"
+              height="12px"
+              src={IoMdArrowDropdown.default}
+            />
+          )}
         </Stack>
       </PopoverTrigger>
       <Portal>
@@ -138,43 +167,47 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
         >
           <PopoverArrow left="121px !important" />
           <PopoverBody display="flex" flexFlow="wrap" p="20px">
-            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
-              <Flex width="100%" justifyContent="space-between" mr="31px">
-                <Flex width="100%" justifyContent="flex-start" alignItems="center">
-                  <Image
-                    width="14px"
-                    height="14px"
-                    mr="9px"
-                    src={HeadPortrait.default}
-                  />
+            <Stack width="100%">
+              <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+                <Flex width="100%" justifyContent="space-between" mr="31px">
+                  <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                    <Image
+                      width="14px"
+                      height="14px"
+                      mr="9px"
+                      src={Balance.default}
+                    />
+                    <Text
+                      fontSize="14px"
+                      fontFamily="PingFangSC-Regular, PingFang SC"
+                      fontWeight="blod"
+                      color="#191A24"
+                    >
+                      {t('Balance')}
+                    </Text>
+
+                  </Flex>
                   <Text
                     fontSize="14px"
                     fontFamily="PingFangSC-Regular, PingFang SC"
-                    fontWeight="blod"
-                    color="#191A24"
+                    fontWeight="400"
+                    color="#858999"
                   >
-                    Balance
+                    283746.32
                   </Text>
-
                 </Flex>
                 <Text
-                  fontSize="14px"
-                  fontFamily="PingFangSC-Regular, PingFang SC"
-                  fontWeight="400"
+                  width="41px"
+                  ml="32px"
+                  fontSize="16px"
+                  fontFamily="PingFangSC-Medium, PingFang SC"
+                  fontWeight="500"
                   color="#858999"
                 >
-                  283746.32
+                  NMT
                 </Text>
               </Flex>
-              <Text
-                fontSize="16px"
-                fontFamily="PingFangSC-Medium, PingFang SC"
-                fontWeight="500"
-                color="#858999"
-              >
-                NMT
-              </Text>
-            </Flex>
+            </Stack>
             {menus}
             <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
               <Flex width="100%" justifyContent="space-between">
@@ -183,7 +216,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                     width="14px"
                     height="14px"
                     mr="9px"
-                    src={HeadPortrait.default}
+                    src={Address.default}
                   />
                   <Text
                     fontSize="14px"
@@ -192,7 +225,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                     color="#191A24"
 
                   >
-                    Address
+                    {t('Address')}
                   </Text>
 
                 </Flex>
@@ -203,7 +236,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                   color="#5C74FF"
                   onClick={() => oncopyshow(!copyshow)}
                 >
-                  View in Scan
+                  {t('ViewInScan')}
                 </Text>
               </Flex>
             </Flex>
@@ -234,7 +267,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                   color="#5C74FF"
                   onClick={() => handleCopy()}
                 >
-                  Click to copy
+                  {t('ClickToCopy')}
                 </Text>
               </Flex>
             ) : ''}

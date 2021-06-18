@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 import NavLink from '../Navlink';
 import Account from '../Account/index';
 import ChangeLanguage from '../ChangeLanguage';
+import Test from '../Test';
 import {
   LogoSrc,
 } from '../../assets/images';
@@ -56,7 +57,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
       >
         <Flex
           justify="center"
-          mr={8}
+          mr="10px"
           onClick={() => {
             history.push('/');
           }}
@@ -68,7 +69,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
             src={LogoSrc.default}
           />
         </Flex>
-
+        <Test />
         <Flex flex="1 1 auto">
           <NavLink />
         </Flex>

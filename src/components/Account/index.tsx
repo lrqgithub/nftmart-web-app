@@ -11,13 +11,13 @@ import {
   Text,
   Flex,
   useToast,
-  Icon,
+  Link,
   Image,
   useClipboard,
 } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
-import { USER_LINKS } from '../../constants';
+// import { USER_LINKS } from '../../constants';
 // import NLink from '../Link';
 
 import {
@@ -34,13 +34,19 @@ import {
 export interface LoginProps {
   avatar?: string;
   username?: string;
+  date:{
+    Balance: number,
+    Owned: number,
+    Created: number,
+    Colection: number,
+  };
 }
 const ICONS = {
   quickAreaWallet: Owned,
   quickAreaCollections: Collections,
   quickAreaNftCreate: Created,
 };
-const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
+const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
   const location = useLocation();
   const account = username;
   // const { whiteList } = store.useState('whiteList');
@@ -61,54 +67,18 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
     });
     onCopy();
   };
-  // Link render helper
-  const renderLink = (title: string) => {
-    const path = USER_LINKS[title].url;
-    const active = location.pathname === path;
-    return (
-      <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
-        <Flex width="100%" justifyContent="space-between" mr="31px">
-          <Flex width="100%" justifyContent="flex-start" alignItems="center">
-            <Image
-              width="14px"
-              height="14px"
-              mr="9px"
-              src={ICONS[title].default}
-            />
-            <Text
-              fontSize="14px"
-              fontFamily="PingFangSC-Regular, PingFang SC"
-              fontWeight="blod"
-              color="#191A24"
-            >
-              {t(title)}
-            </Text>
-          </Flex>
-          <Text
-            fontSize="14px"
-            fontFamily="PingFangSC-Regular, PingFang SC"
-            fontWeight="400"
-            color="#858999"
-          >
-            283746.32
-          </Text>
-        </Flex>
-        <Text
-          width="41px"
-          ml="40px"
-          fontSize="16px"
-          fontFamily="PingFangSC-Medium, PingFang SC"
-          fontWeight="500"
-          color="#5C74FF"
-        >
-          {USER_LINKS[title].name}
-        </Text>
-      </Flex>
-    );
-  };
+  // // Link render helper
+  // const renderLink = (title: string, index) => {
+  //   const path = USER_LINKS[title].url;
+  //   const active = location.pathname === path;
+  //   console.log(index, title);
+  //   return (
 
-  // Menus
-  const menus = (<Stack width="100%">{Object.keys(USER_LINKS).map(renderLink)}</Stack>);
+  //   );
+  // };
+
+  // // Menus
+  // const menus = (<Stack width="100%">{Object.keys(USER_LINKS).map(renderLink)}</Stack>);
 
   return (
     <Popover
@@ -167,48 +137,188 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
         >
           <PopoverArrow left="121px !important" />
           <PopoverBody display="flex" flexFlow="wrap" p="20px">
-            <Stack width="100%">
-              <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
-                <Flex width="100%" justifyContent="space-between" mr="31px">
-                  <Flex width="100%" justifyContent="flex-start" alignItems="center">
-                    <Image
-                      width="14px"
-                      height="14px"
-                      mr="9px"
-                      src={Balance.default}
-                    />
-                    <Text
-                      fontSize="14px"
-                      fontFamily="PingFangSC-Regular, PingFang SC"
-                      fontWeight="blod"
-                      color="#191A24"
-                    >
-                      {t('Balance')}
-                    </Text>
 
-                  </Flex>
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={Balance.default}
+                  />
                   <Text
                     fontSize="14px"
                     fontFamily="PingFangSC-Regular, PingFang SC"
-                    fontWeight="400"
-                    color="#858999"
+                    fontWeight="blod"
+                    color="#191A24"
                   >
-                    283746.32
+                    {t('Balance')}
+                  </Text>
+
+                </Flex>
+                <Text
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
+                  color="#858999"
+                >
+                  {date.Balance}
+                </Text>
+              </Flex>
+              <Text
+                width="41px"
+                ml="32px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#858999"
+              >
+                NMT
+              </Text>
+            </Flex>
+
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={ICONS.quickAreaWallet.default}
+                  />
+                  <Text
+                    fontSize="14px"
+                    fontFamily="PingFangSC-Regular, PingFang SC"
+                    fontWeight="blod"
+                    color="#191A24"
+                  >
+                    {t('quickAreaWallet')}
                   </Text>
                 </Flex>
                 <Text
-                  width="41px"
-                  ml="32px"
-                  fontSize="16px"
-                  fontFamily="PingFangSC-Medium, PingFang SC"
-                  fontWeight="500"
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
                   color="#858999"
                 >
-                  NMT
+                  {date.Owned}
                 </Text>
               </Flex>
-            </Stack>
-            {menus}
+              <Link
+                href="/wallet"
+                width="41px"
+                ml="40px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#5C74FF"
+                _hover={{
+                  textDecoration: 'none',
+                }}
+                _focus={{
+                  border: 'none',
+                  textDecoration: 'none',
+                }}
+              >
+                add
+              </Link>
+            </Flex>
+
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={ICONS.quickAreaCollections.default}
+                  />
+                  <Text
+                    fontSize="14px"
+                    fontFamily="PingFangSC-Regular, PingFang SC"
+                    fontWeight="blod"
+                    color="#191A24"
+                  >
+                    {t('quickAreaCollections')}
+                  </Text>
+                </Flex>
+                <Text
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
+                  color="#858999"
+                >
+                  {date.Created}
+                </Text>
+              </Flex>
+              <Link
+                href="/create"
+                width="41px"
+                ml="40px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#5C74FF"
+                _hover={{
+                  textDecoration: 'none',
+                }}
+                _focus={{
+                  border: 'none',
+                  textDecoration: 'none',
+                }}
+              >
+                Add
+              </Link>
+            </Flex>
+
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={ICONS.quickAreaNftCreate.default}
+                  />
+                  <Text
+                    fontSize="14px"
+                    fontFamily="PingFangSC-Regular, PingFang SC"
+                    fontWeight="blod"
+                    color="#191A24"
+                  >
+                    {t('quickAreaNftCreate')}
+                  </Text>
+                </Flex>
+                <Text
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
+                  color="#858999"
+                >
+                  {date.Colection}
+                </Text>
+              </Flex>
+              <Link
+                href="/collections"
+                width="41px"
+                ml="40px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#5C74FF"
+                _hover={{
+                  textDecoration: 'none',
+                }}
+                _focus={{
+                  border: 'none',
+                  textDecoration: 'none',
+                }}
+              >
+                Add
+              </Link>
+            </Flex>
+
             <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
               <Flex width="100%" justifyContent="space-between">
                 <Flex justifyContent="flex-start" alignItems="center">

@@ -18,7 +18,12 @@ import { useAppSelector } from '../../hooks/redux';
 export interface HeaderProps {
   sticky?: boolean;
 }
-
+const date = {
+  Balance: 123,
+  Owned: 123,
+  Created: 123,
+  Colection: 123,
+};
 const Header: FC<HeaderProps> = ({ sticky }) => {
   const history = useHistory();
   const stateAll = useAppSelector((state) => state.chain);
@@ -77,7 +82,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
               height="55px"
               mr={4}
             >
-              <Account username={account.address} avatar={account.meta.name} />
+              <Account username={account.address} avatar={account.meta.name} date={date} />
             </Flex>
           ) : (
             <Flex>

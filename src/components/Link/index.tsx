@@ -23,11 +23,10 @@ const NLink: FC<NLinkProps> = (props) => {
 
   const borderBottom = {
     content: '" "',
-    height: 1,
+    height: '2px',
     width: '80%',
-    borderRadius: 3,
     position: 'absolute',
-    backgroundColor: Colors.Primary,
+    backgroundColor: '#999999',
     left: '50%',
     bottom: -2,
     transform: 'translate(-50%, -50%)',
@@ -37,9 +36,6 @@ const NLink: FC<NLinkProps> = (props) => {
     <>
       <Text
         fontSize={16}
-        _hover={{
-          color: Colors.Primary,
-        }}
         position="relative"
         {...restStyles}
       >
@@ -48,10 +44,11 @@ const NLink: FC<NLinkProps> = (props) => {
           as={RouterLink}
           key={title}
           to={path}
-          color={active ? Colors.Primary : ''}
+          color={active ? '#000000' : '#999999'}
           _after={active && bordered ? borderBottom : {}}
           _hover={{
             textDecoration: 'none',
+            color: '#000000',
           }}
           _focus={{
             border: 'none',

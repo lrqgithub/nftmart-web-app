@@ -14,22 +14,6 @@ export const NAV_MAP: Record<string, string> = {
   navActive: '/active',
 };
 
-export const USER_LINKS = {
-  quickAreaWallet: {
-    url: '/wallet',
-    name: 'Buy',
-  },
-  quickAreaCollections: {
-    url: '/create',
-    name: 'Add',
-  },
-  quickAreaNftCreate: {
-    url: '/collections',
-    name: 'Add',
-  },
-  // 'quickAreaProfileEdit': '/profile',
-};
-
 // online
 export const DBURL = 'http://localhost:8888/graphql';
 export const IPFS_POST_SERVER = 'https://ipfs-api.bcdata.top'; // ipfs node

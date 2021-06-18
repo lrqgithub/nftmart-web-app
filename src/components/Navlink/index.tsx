@@ -27,8 +27,8 @@ const NavLink = () => {
           active={isExplore || active}
           bgSize="cover"
           fontWeight="bold"
-          marginRight="3px"
-          marginLeft="16px"
+          marginRight="12px"
+          marginLeft="28px"
           bordered
           key={title}
         />

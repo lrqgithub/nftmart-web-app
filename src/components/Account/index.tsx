@@ -11,33 +11,49 @@ import {
   Text,
   Flex,
   useToast,
-  Icon,
+  Link,
   Image,
   useClipboard,
 } from '@chakra-ui/react';
-import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 import { useTranslation } from 'react-i18next';
-import { USER_LINKS } from '../../constants';
+// import { USER_LINKS } from '../../constants';
 // import NLink from '../Link';
 
 import {
   HeadPortrait,
+  Address,
+  Collections,
+  Owned,
+  Created,
+  Balance,
+  IoMdArrowDropdown,
+  IoMdArrowDropup,
 } from '../../assets/images';
 
 export interface LoginProps {
   avatar?: string;
   username?: string;
+  date:{
+    Balance: number,
+    Owned: number,
+    Created: number,
+    Colection: number,
+  };
 }
-
-const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
+const ICONS = {
+  quickAreaWallet: Owned,
+  quickAreaCollections: Collections,
+  quickAreaNftCreate: Created,
+};
+const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
   const location = useLocation();
   const account = username;
   // const { whiteList } = store.useState('whiteList');
 
   const { t } = useTranslation();
   const [opening, setOpening] = useState(false);
-  const [copyshow, oncopyshow] = useState(false);
+  const [copyshow, oncopyshow] = useState(true);
   const { hasCopied, onCopy } = useClipboard(account || '');
   // const [hideMenu, setHideMenu] = useState(false);
   const toast = useToast();
@@ -51,55 +67,25 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
     });
     onCopy();
   };
+  // // Link render helper
+  // const renderLink = (title: string, index) => {
+  //   const path = USER_LINKS[title].url;
+  //   const active = location.pathname === path;
+  //   console.log(index, title);
+  //   return (
 
-  // Link render helper
-  const renderLink = (title: string) => (
-    <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
-      <Flex width="100%" justifyContent="space-between" mr="31px">
-        <Flex width="100%" justifyContent="flex-start" alignItems="center">
-          <Image
-            width="14px"
-            height="14px"
-            mr="9px"
-            src={HeadPortrait.default}
-          />
-          <Text
-            fontSize="14px"
-            fontFamily="PingFangSC-Regular, PingFang SC"
-            fontWeight="blod"
-            color="#191A24"
-          >
-            {t(title)}
-          </Text>
-        </Flex>
-        <Text
-          fontSize="14px"
-          fontFamily="PingFangSC-Regular, PingFang SC"
-          fontWeight="400"
-          color="#858999"
-        >
-          283746.32
-        </Text>
-      </Flex>
-      <Text
-        fontSize="16px"
-        fontFamily="PingFangSC-Medium, PingFang SC"
-        fontWeight="500"
-        color="#5C74FF"
-      >
-        NMT
-      </Text>
-    </Flex>
-  );
+  //   );
+  // };
 
-  // Menus
-  const menus = (<Stack width="100%">{Object.keys(USER_LINKS).map(renderLink)}</Stack>);
+  // // Menus
+  // const menus = (<Stack width="100%">{Object.keys(USER_LINKS).map(renderLink)}</Stack>);
 
   return (
     <Popover
       placement="bottom"
       size="sm"
       variant="menu"
+      trigger="hover"
       isOpen={opening}
       onOpen={() => setOpening(true)}
       onClose={() => setOpening(false)}
@@ -119,10 +105,23 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
             fontFamily="PingFangSC-Medium, PingFang SC"
             fontWeight="500"
             color="#191A24"
+            pr="3px"
           >
             {avatar}
           </Text>
-          {opening ? <Icon as={IoMdArrowDropup} /> : <Icon as={IoMdArrowDropdown} />}
+          {opening ? (
+            <Image
+              width="12px"
+              height="12px"
+              src={IoMdArrowDropup.default}
+            />
+          ) : (
+            <Image
+              width="12px"
+              height="12px"
+              src={IoMdArrowDropdown.default}
+            />
+          )}
         </Stack>
       </PopoverTrigger>
       <Portal>
@@ -138,6 +137,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
         >
           <PopoverArrow left="121px !important" />
           <PopoverBody display="flex" flexFlow="wrap" p="20px">
+
             <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
               <Flex width="100%" justifyContent="space-between" mr="31px">
                 <Flex width="100%" justifyContent="flex-start" alignItems="center">
@@ -145,7 +145,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                     width="14px"
                     height="14px"
                     mr="9px"
-                    src={HeadPortrait.default}
+                    src={Balance.default}
                   />
                   <Text
                     fontSize="14px"
@@ -153,7 +153,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                     fontWeight="blod"
                     color="#191A24"
                   >
-                    Balance
+                    {t('Balance')}
                   </Text>
 
                 </Flex>
@@ -163,10 +163,12 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                   fontWeight="400"
                   color="#858999"
                 >
-                  283746.32
+                  {date.Balance}
                 </Text>
               </Flex>
               <Text
+                width="41px"
+                ml="32px"
                 fontSize="16px"
                 fontFamily="PingFangSC-Medium, PingFang SC"
                 fontWeight="500"
@@ -175,7 +177,148 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                 NMT
               </Text>
             </Flex>
-            {menus}
+
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={ICONS.quickAreaWallet.default}
+                  />
+                  <Text
+                    fontSize="14px"
+                    fontFamily="PingFangSC-Regular, PingFang SC"
+                    fontWeight="blod"
+                    color="#191A24"
+                  >
+                    {t('quickAreaWallet')}
+                  </Text>
+                </Flex>
+                <Text
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
+                  color="#858999"
+                >
+                  {date.Owned}
+                </Text>
+              </Flex>
+              <Link
+                href="/wallet"
+                width="41px"
+                ml="40px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#5C74FF"
+                _hover={{
+                  textDecoration: 'none',
+                }}
+                _focus={{
+                  border: 'none',
+                  textDecoration: 'none',
+                }}
+              >
+                add
+              </Link>
+            </Flex>
+
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={ICONS.quickAreaCollections.default}
+                  />
+                  <Text
+                    fontSize="14px"
+                    fontFamily="PingFangSC-Regular, PingFang SC"
+                    fontWeight="blod"
+                    color="#191A24"
+                  >
+                    {t('quickAreaCollections')}
+                  </Text>
+                </Flex>
+                <Text
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
+                  color="#858999"
+                >
+                  {date.Created}
+                </Text>
+              </Flex>
+              <Link
+                href="/create"
+                width="41px"
+                ml="40px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#5C74FF"
+                _hover={{
+                  textDecoration: 'none',
+                }}
+                _focus={{
+                  border: 'none',
+                  textDecoration: 'none',
+                }}
+              >
+                Add
+              </Link>
+            </Flex>
+
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={ICONS.quickAreaNftCreate.default}
+                  />
+                  <Text
+                    fontSize="14px"
+                    fontFamily="PingFangSC-Regular, PingFang SC"
+                    fontWeight="blod"
+                    color="#191A24"
+                  >
+                    {t('quickAreaNftCreate')}
+                  </Text>
+                </Flex>
+                <Text
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
+                  color="#858999"
+                >
+                  {date.Colection}
+                </Text>
+              </Flex>
+              <Link
+                href="/collections"
+                width="41px"
+                ml="40px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#5C74FF"
+                _hover={{
+                  textDecoration: 'none',
+                }}
+                _focus={{
+                  border: 'none',
+                  textDecoration: 'none',
+                }}
+              >
+                Add
+              </Link>
+            </Flex>
+
             <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
               <Flex width="100%" justifyContent="space-between">
                 <Flex justifyContent="flex-start" alignItems="center">
@@ -183,7 +326,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                     width="14px"
                     height="14px"
                     mr="9px"
-                    src={HeadPortrait.default}
+                    src={Address.default}
                   />
                   <Text
                     fontSize="14px"
@@ -192,7 +335,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                     color="#191A24"
 
                   >
-                    Address
+                    {t('Address')}
                   </Text>
 
                 </Flex>
@@ -203,7 +346,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                   color="#5C74FF"
                   onClick={() => oncopyshow(!copyshow)}
                 >
-                  View in Scan
+                  {t('ViewInScan')}
                 </Text>
               </Flex>
             </Flex>
@@ -234,7 +377,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name' }) => {
                   color="#5C74FF"
                   onClick={() => handleCopy()}
                 >
-                  Click to copy
+                  {t('ClickToCopy')}
                 </Text>
               </Flex>
             ) : ''}

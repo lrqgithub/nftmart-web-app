@@ -42,6 +42,11 @@
   "createVerificationDescription": "说明不能超过200个字符",
   "createVerificationRequired": "必填",
   "createVerificationSelect": "请选择作品集",
+  
+  "ClickToCopy": "Click to copy",
+  "ViewInScan": "View in Scan",
+  "Address": "Address",
+  "Balance": "Balance",
  
   "navHome": "Home",
   "navBrowing": "Browing",

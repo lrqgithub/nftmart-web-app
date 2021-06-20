@@ -1,6 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
+import {
+  Box,
+} from '@chakra-ui/react';
 import NLink from '../Link';
 import { NAV_MAP } from '../../constants';
 
@@ -15,16 +18,28 @@ const NavLink = () => {
     const active = routePath === path;
 
     return (
-      <NLink
-        title={title}
-        path={path}
-        active={isExplore || active}
-        bgSize="cover"
-        fontWeight="bold"
-        marginRight={8}
-        bordered
-        key={title}
-      />
+      <>
+        <NLink
+          border="0"
+          outline="none"
+          title={title}
+          path={path}
+          active={isExplore || active}
+          bgSize="cover"
+          fontWeight="bold"
+          marginRight="12px"
+          marginLeft="28px"
+          bordered
+          key={title}
+        />
+        <Box
+          w="16px"
+          h="17px"
+          borderTop="1px solid #999"
+          transform="rotate(114deg)"
+          display={title === 'navActive' ? 'none' : ''}
+        />
+      </>
     );
   };
 

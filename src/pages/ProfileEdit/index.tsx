@@ -5,7 +5,7 @@ import {
 import { Formik, Form, Field } from 'formik';
 import { useTranslation } from 'react-i18next';
 
-import Layout from '../../layout';
+import MainContainer from '../../layout/MainContainer';
 import { Colors } from '../../constants';
 
 const ProfileEdit = () => {
@@ -31,7 +31,7 @@ const ProfileEdit = () => {
   };
 
   return (
-    <Layout title="title.profile">
+    <MainContainer title="title.profile">
       <Box padding={2}>
         <Container
           width="880px"
@@ -180,7 +180,7 @@ const ProfileEdit = () => {
           </Container>
         </Container>
       </Box>
-    </Layout>
+    </MainContainer>
   );
 };
 

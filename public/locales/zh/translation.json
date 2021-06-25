@@ -18,6 +18,9 @@
   "common": {
     "save": "保存"
   },
+  "Home": {
+    "title": "NFTmart"
+  },
   "ProfileEdit": {
     "title": "资料修改",
     "nickname": "昵称：",

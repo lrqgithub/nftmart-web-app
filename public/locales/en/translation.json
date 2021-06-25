@@ -18,6 +18,9 @@
   "common": {
     "save": "Save"
   },
+  "Home": {
+    "title": "NFTmart"
+  },
   "ProfileEdit": {
     "title": "Edit Profile",
     "nickname": "Name:",

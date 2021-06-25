@@ -1,17 +1,23 @@
-import { useQuery } from '@apollo/client';
+import { Spinner, Box } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import FETCH_NFTS_AND_CLASS from '../../graphql/fetchNftsAndClass';
+import NftCard from '../../components/NftCard';
+import useNfts from '../../hooks/reactQuery/useNfts';
+import MainContainer from '../../layout/MainContainer';
 
 const Home = () => {
   const { t } = useTranslation();
-  const { loading, error, data } = useQuery(FETCH_NFTS_AND_CLASS);
-  console.log(data);
+  const { data, isLoading } = useNfts();
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
-    <>
-      {t('title')}
-    </>
+    <MainContainer title={t('Home.title')}>
+      <Box display="flex" flexDirection="row">
+        {data?.list.map((nft) => <NftCard nft={nft} />)}
+      </Box>
+    </MainContainer>
   );
 };
 

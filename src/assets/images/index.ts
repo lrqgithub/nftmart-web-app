@@ -27,3 +27,9 @@ export * as Created from './icon_heder_Dollar@2x(1).png';
 export * as Balance from './icon_heder_Dollar@2x(5).png';
 export * as IoMdArrowDropdown from './icon_triangle_down(1).png';
 export * as IoMdArrowDropup from './icon_triangle_down(2).png';
+// home
+export * as IconSj from './icon_sj.png';
+export * as IconCj from './icon_cj.png';
+export * as IconClinch from './icon_clinch.png';
+export * as IconRight from './icon_right.png';
+export * as Emptyimg from './empty.png';

@@ -30,3 +30,5 @@ export const extractBalanceText = (balanceText: string) => {
     unit,
   };
 };
+
+export const toFixedDecimals = (n: NumberValue, place = 8) => toBigNumber(n).toFormat(place);

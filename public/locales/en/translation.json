@@ -48,7 +48,14 @@
   "Address": "Address",
   "Balance": "Balance",
   
- "navHome": "Home",
+  "componentCollectionTitle": "Title",
+  "componentCollectionTitleTooltip": "The name of this NFT",
+  "componentCollectionPrice": "Price",
+  "componentCollectionPriceTooltip": "The offer price of this NFT",
+  "componentCollectionPledge": "Pledge",
+  "componentCollectionPledge.tooltip": "The pledge of this asset",
+  
+  "navHome": "Home",
   "navBrowing": "Browing",
   "navAuction": "Auction",
   "navActive": "Active",
@@ -58,6 +65,10 @@
   "navLatestStrike": "Sold Recently",
   "common": {
     "save": "Save"
+  },
+  "Home": {
+    "title": "NFTmart",
+    "more": "more"
   },
   "ProfileEdit": {
     "title": "Edit Profile",

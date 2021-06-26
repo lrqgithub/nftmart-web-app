@@ -1,41 +1,40 @@
-import { useQuery } from '@apollo/client';
-import React, { useState } from 'react';
+import {
+  Spinner, Box, SimpleGrid, Container, Button, Center, Stack, StackDivider,
+} from '@chakra-ui/react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { groupBy } from 'ramda';
-import { date } from 'yup/lib/locale';
-import FETCH_NFTS_AND_CLASS from '../../graphql/fetchNftsAndClass';
-import { useAssetsQuery } from '../../hooks/reactQuery/useAssetsQuery';
-import { Work } from '../../polkaSDK/types';
-import { filterAssets } from '../../utils/asset';
-import { useAppSelector } from '../../hooks/redux';
-
+import useNfts from '../../hooks/reactQuery/useNfts';
+import MainContainer from '../../layout/MainContainer';
 import Works from './Works';
 
 const Home = () => {
   const { t } = useTranslation();
-  const { loading, error, data } = useQuery(FETCH_NFTS_AND_CLASS);
+  const {
+    error, data, isLoading, refetch,
+  } = useNfts();
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-  const STATUS_MAP: Record<number, string> = {
-    1: 'listing',
-    2: 'new',
-    // 3: 'recent',
-  };
-  console.log(data);
-
-  // const assets = useAppSelector((state) => state.chain.assets);
-  // const assets = data;
-  // const filteredAssets = filterAssets(assets || [], { status: -1, categoryId: -1, collectionId: -1 });
-  // const groupByStatus = groupBy<Work>(({ status }) => STATUS_MAP[status]);
-  // type ListMap = Record<string, Work[]>;
-  // const [workListMap, setWorkListMap] = useState<ListMap>(groupByStatus(filteredAssets));
-
-  // console.log(workListMap);
-
+  // Component
+  const errorBox = (
+    <Container height={300}>
+      <Center flexDirection="column" height="100%">
+        <Stack>
+          Error on fetching data
+          <StackDivider />
+          <Button variant="primary" onClick={() => refetch()}>
+            {t('network.retry')}
+          </Button>
+        </Stack>
+        {/* <Text color={colors.text.gray}>{error?.message}</Text> */}
+      </Center>
+    </Container>
+  );
   return (
-    <>
-      {t('title')}
-      {/* <Works loading={loading} data={workListMap} /> */}
-    </>
+    <MainContainer title={t('Home.title')}>
+      {error ? errorBox : <Works loading={isLoading} data={data.list} />}
+    </MainContainer>
   );
 };
 

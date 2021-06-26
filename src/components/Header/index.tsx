@@ -37,11 +37,9 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
   return (
     <Flex
       as="header"
-      flex={1}
       justify="space-between"
       backgroundColor="white"
       boxShadow="md"
-      height="80px"
       position={sticky ? 'fixed' : 'initial'}
       top={0}
       left={0}
@@ -51,6 +49,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
       <Container
         py={2}
         maxW={1280}
+        height="80px"
         display="flex"
         justifyContent="space-between"
         alignItems="center"

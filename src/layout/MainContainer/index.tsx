@@ -8,7 +8,7 @@ interface Props {
   title: string;
 }
 
-const Layout = ({ children, title }: Props) => {
+const MainContainer = ({ children, title }: Props) => {
   const { t } = useTranslation();
   return (
     <>
@@ -20,4 +20,4 @@ const Layout = ({ children, title }: Props) => {
   );
 };
 
-export default Layout;
+export default MainContainer;

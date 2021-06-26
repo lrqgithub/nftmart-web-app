@@ -33,3 +33,4 @@ export * as IconCj from './icon_cj.png';
 export * as IconClinch from './icon_clinch.png';
 export * as IconRight from './icon_right.png';
 export * as Emptyimg from './empty.png';
+export * as PriceIcon from './img_logo_umt.png';

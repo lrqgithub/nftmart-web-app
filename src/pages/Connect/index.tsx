@@ -8,7 +8,7 @@ import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 import { useTranslation } from 'react-i18next';
 
 import Card from '../../components/Card';
-import Layout from '../../layout';
+import MainContainer from '../../layout/MainContainer';
 import { Polkadot } from '../../assets/images';
 import { useParams } from '../../hooks/url/useParams';
 import { URL } from '../../constants';
@@ -63,7 +63,7 @@ const Connect: FC = () => {
   };
 
   return (
-    <Layout title={TITLE}>
+    <MainContainer title={TITLE}>
       <Box display="flex">
         <Container width="1180px">
           {!injected ? (
@@ -109,7 +109,7 @@ const Connect: FC = () => {
           )}
         </Container>
       </Box>
-    </Layout>
+    </MainContainer>
   );
 };
 

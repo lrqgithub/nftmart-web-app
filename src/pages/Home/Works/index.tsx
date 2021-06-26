@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import {
-  Box, Center, Container, SimpleGrid, Skeleton, Spinner,
+  Box, Center, Container, SimpleGrid, Skeleton, Spinner, HTMLChakraProps,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import Collection from '../../../components/Collection';
 import Empty from '../../../components/Empty';
 import { Colors } from '../../../constants';
 import { Work } from '../../../polkaSDK/types';
+import NftCard from '../../../components/NftCard';
 
 import {
   IconSj,
@@ -21,7 +21,7 @@ type PartWorksProps = {
   title: string;
   icon: React.ReactNode;
   link: string;
-  typicalList: Work[];
+  typicalList: any;
 };
 
 type PartHeaderProps = {
@@ -29,36 +29,36 @@ type PartHeaderProps = {
   icon: any;
   link: string;
 };
-export interface WorksProps {
+
+type WorksProps = {
   loading: boolean;
-  data: Record<string, Work[]>;
-}
+  data: NFT
+} & HTMLChakraProps<'div'>
 
 const Works: FC<WorksProps> = ({ loading, data }) => {
-  console.log(data);
   const { t } = useTranslation();
 
   const partList = [
     {
       key: 'listing',
-      title: t('nav.list-sale'),
-      icon: IconSj,
+      title: t('navListSale'),
+      icon: IconSj.default,
       link: '/explore?status=listing',
     },
     {
       key: 'new',
-      title: t('nav.latest-create'),
-      icon: IconCj,
+      title: t('navLatestCreate'),
+      icon: IconCj.default,
       link: '/explore?status=new',
     },
     {
       key: 'recent',
-      title: t('nav.latest-strike'),
-      icon: IconClinch,
+      title: t('navLatestStrike'),
+      icon: IconClinch.default,
       link: '/explore?status=recent',
     },
   ].map((item) => {
-    const assets = data[item.key] || [];
+    const assets = data || [];
     return {
       ...item,
       list: assets,
@@ -93,7 +93,7 @@ const Works: FC<WorksProps> = ({ loading, data }) => {
               color={Colors.Black}
               fontSize="14px"
             >
-              {t('home.more')}
+              {t('Home.more')}
             </Box>
           </Link>
           <Box
@@ -118,8 +118,8 @@ const Works: FC<WorksProps> = ({ loading, data }) => {
       <Box marginBottom={10}>
         <PartHeader title={title} icon={icon} link={link} />
         <SimpleGrid columns={4} spacing={4}>
-          {typicalList.slice(0, 16).map((work) => (
-            <Collection {...work} isSet key={`${work.classId}-${work.tokenId}`} />
+          {typicalList.map((item) => (
+            <NftCard nft={item} />
           ))}
         </SimpleGrid>
       </Box>
@@ -134,7 +134,7 @@ const Works: FC<WorksProps> = ({ loading, data }) => {
 
   return (
     <Box p="40px 0">
-      <Container>
+      <Container axWidth="1280px">
         {!Object.keys(data).length && loading && loadingNode}
 
         {!Object.keys(data).length && !loading && <Empty description={t('home.empty')} />}
@@ -142,14 +142,11 @@ const Works: FC<WorksProps> = ({ loading, data }) => {
         {!!Object.keys(data).length
           && partList.map(({
             title, link, icon, list,
-          }) => (list.length ? (
-            <Skeleton isLoaded={!loading} key={title}>
+          }) => (1 ? (
+            <Skeleton isLoaded={!loading} key={title} m>
               <PartWorks title={title} typicalList={list} icon={icon} link={link} />
             </Skeleton>
           ) : null))}
-        {data.map((work) => (
-          <Collection {...work} isSet key={`${work.classId}-${work.tokenId}`} />
-        ))}
       </Container>
     </Box>
   );

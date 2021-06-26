@@ -1,4 +1,5 @@
-export const ASSETS_QUERY = 'getAssets';
-export const COLLECTIONS_QUERY = 'getCollections';
-export const MY_COLLECTIONS_QUERY = 'getMyCollections';
-export const MY_ASSETS_QUERY = 'getMyAssets';
+export const ASSETS_QUERY = 'GET_ASSETS';
+export const COLLECTIONS_QUERY = 'GET_COLLECTIONS';
+export const MY_COLLECTIONS_QUERY = 'GET_MY_COLLECTIONS';
+export const MY_ASSETS_QUERY = 'GET_MY_ASSETS';
+export const NFTS = 'NFTS';

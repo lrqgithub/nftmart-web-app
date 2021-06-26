@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 import NavLink from '../Navlink';
 import Account from '../Account/index';
 import ChangeLanguage from '../ChangeLanguage';
+import Test from '../Test';
 import {
   LogoSrc,
 } from '../../assets/images';
@@ -18,7 +19,12 @@ import { useAppSelector } from '../../hooks/redux';
 export interface HeaderProps {
   sticky?: boolean;
 }
-
+const date = {
+  Balance: 123,
+  Owned: 123,
+  Created: 123,
+  Colection: 123,
+};
 const Header: FC<HeaderProps> = ({ sticky }) => {
   const history = useHistory();
   const stateAll = useAppSelector((state) => state.chain);
@@ -51,10 +57,10 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
       >
         <Flex
           justify="center"
-          mr={8}
-          // onClick={() => {
-          //   history.push('/');
-          // }}
+          mr="10px"
+          onClick={() => {
+            history.push('/');
+          }}
         >
           <Image
             display="block"
@@ -63,7 +69,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
             src={LogoSrc.default}
           />
         </Flex>
-
+        <Test />
         <Flex flex="1 1 auto">
           <NavLink />
         </Flex>
@@ -77,7 +83,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
               height="55px"
               mr={4}
             >
-              <Account username={account.address} avatar={account.meta.name} />
+              <Account username={account.address} avatar={account.meta.name} date={date} />
             </Flex>
           ) : (
             <Flex>
@@ -87,17 +93,17 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
                 ml="20px"
                 width="107px"
                 height="40px"
-                background="#5C74FF"
-                border-radius="4px"
                 fontFamily="PingFangSC-Semibold, PingFang SC"
                 fontWeight="600"
-                color="#FFFFFF"
+                borderRadius="20px"
+                color="#999999"
                 fontSize="16px"
+                border="1px solid #999999"
                 onClick={() => {
                   history.push('/connect');
                 }}
               >
-                {t('Account')}
+                {t('Login')}
               </Button>
             </Flex>
           )}

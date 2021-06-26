@@ -17,28 +17,28 @@ import {
   IoMdArrowDropup,
 } from '../../assets/images';
 
-const TRANSLATIONS: Record<string, string> = {
-  en: 'langEn',
-  zh: 'langZn',
+const TestLATIONS: Record<string, string> = {
+  textone: 'Text',
+  texttwo: 'Texttwo',
 };
 
-const ChangeLanguage = (): JSX.Element => {
-  const { i18n, t } = useTranslation();
+const Test = (): JSX.Element => {
+  const { t } = useTranslation();
 
-  const [lang, setLang] = useState(i18n.language || 'en');
+  const [text, settext] = useState('textone');
   const [opening, setOpening] = useState(false);
 
-  const handleSelectLang = (l: string) => {
-    setLang(l);
-    i18n.changeLanguage(l);
+  const handleSelecttext = (l: string) => {
+    settext(l);
+    setOpening(false);
   };
 
   // Link render helper
   const renderButton = (title: string, idx: string | number | null | undefined) => {
-    const path = TRANSLATIONS[title];
+    const path = TestLATIONS[title];
 
     return (
-      <Button key={idx} variant="ghost" onClick={() => handleSelectLang(title)}>
+      <Button key={idx} variant="ghost" onClick={() => handleSelecttext(title)}>
         {t(path)}
       </Button>
     );
@@ -55,7 +55,7 @@ const ChangeLanguage = (): JSX.Element => {
     >
       <PopoverTrigger>
         <Stack direction="row" cursor="pointer" alignItems="center" spacing={0}>
-          <Text pr="3px">{t(TRANSLATIONS[lang])}</Text>
+          <Text fontSize="12px" pr="3px">{t(TestLATIONS[text])}</Text>
           {opening ? (
             <Image
               width="12px"
@@ -76,7 +76,7 @@ const ChangeLanguage = (): JSX.Element => {
         <PopoverContent maxWidth="100px" _focus={{ boxShadow: 'none' }}>
           <PopoverArrow />
           <PopoverBody display="flex" justifyContent="center">
-            <Stack paddingY={2}>{Object.keys(TRANSLATIONS).map(renderButton)}</Stack>
+            <Stack paddingY={2}>{Object.keys(TestLATIONS).map(renderButton)}</Stack>
           </PopoverBody>
         </PopoverContent>
       </Portal>
@@ -84,4 +84,4 @@ const ChangeLanguage = (): JSX.Element => {
   );
 };
 
-export default ChangeLanguage;
+export default Test;

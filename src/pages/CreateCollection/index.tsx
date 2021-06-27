@@ -160,7 +160,6 @@ const CreateCollection: FC = () => {
                       formActions.resetForm();
                       refetchAssets();
                       refetchMyCollections();
-                      getBalance(account.address);
                     },
                     error: (err: any) => {
                       toast({
@@ -171,9 +170,6 @@ const CreateCollection: FC = () => {
                         description: err,
                       });
                       formActions.setSubmitting(false);
-                      refetchAssets();
-                      refetchMyCollections();
-                      getBalance(account.address);
                     },
                   });
                 }}
@@ -186,23 +182,23 @@ const CreateCollection: FC = () => {
                         field,
                         form,
                       }: {
-                          field: Record<any, unknown>;
-                          form: { errors: { name: string }; touched: { name: string } };
-                        }) => (
-                          <FormControl isInvalid={!!(form.errors.name && form.touched.name)}>
-                            <Flex>
-                              <FormLabel {...formLabelLayout} htmlFor="name">
-                                {t('createName')}
-                              </FormLabel>
-                              <Input
-                                id="name"
-                                placeholder={t('createNameCollectionPlaceholder')}
-                                {...formInputLayout}
-                                {...field}
-                              />
-                            </Flex>
-                            <FormErrorMessage pl="240px">{form.errors.name}</FormErrorMessage>
-                          </FormControl>
+                        field: Record<any, unknown>;
+                        form: { errors: { name: string }; touched: { name: string } };
+                      }) => (
+                        <FormControl isInvalid={!!(form.errors.name && form.touched.name)}>
+                          <Flex>
+                            <FormLabel {...formLabelLayout} htmlFor="name">
+                              {t('createName')}
+                            </FormLabel>
+                            <Input
+                              id="name"
+                              placeholder={t('createNameCollectionPlaceholder')}
+                              {...formInputLayout}
+                              {...field}
+                            />
+                          </Flex>
+                          <FormErrorMessage pl="240px">{form.errors.name}</FormErrorMessage>
+                        </FormControl>
                       )}
                     </Field>
                     <Field>
@@ -210,37 +206,37 @@ const CreateCollection: FC = () => {
                         field,
                         form,
                       }: {
-                          field: Record<any, unknown>;
-                          form: { errors: { url: string }; touched: { url: string } };
-                        }) => (
-                          <FormControl isInvalid={!!(form.errors.url && form.touched.url)}>
-                            <Flex>
-                              <FormLabel
-                                {...formLabelLayout}
-                                p="10px 0"
-                                lineHeight="auto"
-                                height="auto"
-                              >
-                                {t('createImg')}
-                              </FormLabel>
-                              <FormLabel
-                                mb="0"
-                                flexGrow={1}
-                                  // htmlFor="url"
-                                borderBottom="1px solid #F3F4F8"
-                              >
-                                <Upload
-                                  id="url"
-                                  mediatype="cutting"
-                                  {...field}
-                                  onChange={(v: any) => {
-                                    props.setFieldValue('url', v);
-                                  }}
-                                />
-                              </FormLabel>
-                            </Flex>
-                            <FormErrorMessage pl="240px">{form.errors.url}</FormErrorMessage>
-                          </FormControl>
+                        field: Record<any, unknown>;
+                        form: { errors: { url: string }; touched: { url: string } };
+                      }) => (
+                        <FormControl isInvalid={!!(form.errors.url && form.touched.url)}>
+                          <Flex>
+                            <FormLabel
+                              {...formLabelLayout}
+                              p="10px 0"
+                              lineHeight="auto"
+                              height="auto"
+                            >
+                              {t('createImg')}
+                            </FormLabel>
+                            <FormLabel
+                              mb="0"
+                              flexGrow={1}
+                              // htmlFor="url"
+                              borderBottom="1px solid #F3F4F8"
+                            >
+                              <Upload
+                                id="url"
+                                mediatype="cutting"
+                                {...field}
+                                onChange={(v: any) => {
+                                  props.setFieldValue('url', v);
+                                }}
+                              />
+                            </FormLabel>
+                          </Flex>
+                          <FormErrorMessage pl="240px">{form.errors.url}</FormErrorMessage>
+                        </FormControl>
                       )}
                     </Field>
                     {/* <Field name="url">
@@ -274,30 +270,30 @@ const CreateCollection: FC = () => {
                         field,
                         form,
                       }: {
-                          field: Record<string, unknown>;
-                          form: {
-                            errors: { externalUrl: string };
-                            touched: { externalUrl: string };
-                          };
-                        }) => (
-                          <FormControl
-                            isInvalid={!!(form.errors.externalUrl && form.touched.externalUrl)}
-                          >
-                            <Flex>
-                              <FormLabel {...formLabelLayout} htmlFor="externalUrl">
-                                {t('createLink')}
-                              </FormLabel>
-                              <Input
-                                id="externalUrl"
-                                placeholder={t('createLinkPlaceholder')}
-                                {...formInputLayout}
-                                {...field}
-                              />
-                            </Flex>
-                            <FormErrorMessage pl="240px">
-                              {form.errors.externalUrl}
-                            </FormErrorMessage>
-                          </FormControl>
+                        field: Record<string, unknown>;
+                        form: {
+                          errors: { externalUrl: string };
+                          touched: { externalUrl: string };
+                        };
+                      }) => (
+                        <FormControl
+                          isInvalid={!!(form.errors.externalUrl && form.touched.externalUrl)}
+                        >
+                          <Flex>
+                            <FormLabel {...formLabelLayout} htmlFor="externalUrl">
+                              {t('createLink')}
+                            </FormLabel>
+                            <Input
+                              id="externalUrl"
+                              placeholder={t('createLinkPlaceholder')}
+                              {...formInputLayout}
+                              {...field}
+                            />
+                          </Flex>
+                          <FormErrorMessage pl="240px">
+                            {form.errors.externalUrl}
+                          </FormErrorMessage>
+                        </FormControl>
                       )}
                     </Field>
                     <Field name="description">
@@ -305,33 +301,33 @@ const CreateCollection: FC = () => {
                         field,
                         form,
                       }: {
-                          field: Record<string, unknown>;
-                          form: {
-                            errors: { description: string };
-                            touched: { description: string };
-                          };
-                        }) => (
-                          <FormControl
-                            isInvalid={!!(form.errors.description && form.touched.description)}
-                          >
-                            <Flex>
-                              <FormLabel {...formLabelLayout} height="96px" htmlFor="description">
-                                {t('createIntro')}
-                              </FormLabel>
-                              <Textarea
-                                _placeholder={{ color: Colors.LightGray }}
-                                id="description"
-                                placeholder={t('createIntroPlaceholder')}
-                                height="96px"
-                                resize="none"
-                                {...formInputLayout}
-                                {...field}
-                              />
-                            </Flex>
-                            <FormErrorMessage pl="240px">
-                              {form.errors.description}
-                            </FormErrorMessage>
-                          </FormControl>
+                        field: Record<string, unknown>;
+                        form: {
+                          errors: { description: string };
+                          touched: { description: string };
+                        };
+                      }) => (
+                        <FormControl
+                          isInvalid={!!(form.errors.description && form.touched.description)}
+                        >
+                          <Flex>
+                            <FormLabel {...formLabelLayout} height="96px" htmlFor="description">
+                              {t('createIntro')}
+                            </FormLabel>
+                            <Textarea
+                              _placeholder={{ color: Colors.LightGray }}
+                              id="description"
+                              placeholder={t('createIntroPlaceholder')}
+                              height="96px"
+                              resize="none"
+                              {...formInputLayout}
+                              {...field}
+                            />
+                          </Flex>
+                          <FormErrorMessage pl="240px">
+                            {form.errors.description}
+                          </FormErrorMessage>
+                        </FormControl>
                       )}
                     </Field>
                     <Center mt="20px">

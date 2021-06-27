@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { ASSETS_QUERY } from '../../constants/QueryKeys';
+import { QUERY_KEYS } from '../../constants/QueryKeys';
 import PolkaSDK from '../../polkaSDK';
 import { getAllNfts } from '../../polkaSDK/api/getAllNfts';
 import { getAllOrders } from '../../polkaSDK/api/getAllOrders';
@@ -57,5 +57,5 @@ export const useAssetsQuery = () => {
     return sortedAssets;
   };
 
-  return useQuery<Work[]>(ASSETS_QUERY, queryAssetsAndMap);
+  return useQuery<Work[]>(QUERY_KEYS.ASSETS_QUERY, queryAssetsAndMap);
 };

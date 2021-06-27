@@ -93,7 +93,7 @@ const Connect: FC = () => {
                     bodyPadding={false}
                     w="790px"
                   >
-                    <AccountList list={injectedAccounts} handleClick={handleClick} />
+                    <AccountList InjectedAccountList={injectedAccounts} handleClick={handleClick} />
                   </Card>
                 </Container>
               ) : (

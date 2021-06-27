@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "listing",
+        "auction"
+      ]
+    },
+    "price": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2000
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date-time",
+      "mock": {
+        "mock": "@datetime('2021-07-dd HH:mm:ss')"
+      }
+    },
+    "lastPrice": {
+      "type": "number",
+      "minimum": 2000,
+      "maximum": 30000
+    }
+  },
+  "enum": [
+    {
+      "type": "listing",
+      "price": null,
+      "deadline": null,
+      "lastPrice": null
+    },
+    {
+      "deadline": "2021-07-04T11:38:52.0Z",
+      "lastPrice": 9400.38141983769,
+      "price": 241.9174991411608,
+      "type": "auction"
+    },
+    {
+      "deadline": "2021-07-05T20:46:23.0Z",
+      "lastPrice": 3134.0948666792074,
+      "price": 755.8163741860318,
+      "type": "auction"
+    },
+    {
+      "deadline": "2021-07-28T05: 33: 24.0Z",
+      "lastPrice": 13666.357747738331,
+      "price": 740.8229986337731,
+      "type": "auction"
+    },
+    {
+      "deadline": "2021-07-10T09: 43: 14.0Z",
+      "lastPrice": 25902.344717267893,
+      "price": 286.1013707828786,
+      "type": "auction"
+    },
+    {
+      "deadline": "2021-07-06T16: 51: 41.0Z",
+      "lastPrice": 16402.266976205967,
+      "price": 795.574453006441,
+      "type": "auction"
+    },
+    {
+      "deadline": "2021-07-08T13: 41: 29.0Z",
+      "lastPrice": 29739.201728475928,
+      "price": 1369.5931400167942,
+      "type": "auction"
+    }
+  ]
+}

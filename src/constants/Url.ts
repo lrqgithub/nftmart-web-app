@@ -10,7 +10,7 @@ export enum URL {
 }
 export const NAV_MAP: Record<string, string> = {
   navHome: '/',
-  navBrowing: '/explore',
+  navBrowing: '/browsing',
   navListSale: '/explore?status=listing',
   navAuction: '/auction',
   navActive: '/active',

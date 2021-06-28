@@ -14,7 +14,6 @@ import { Shimmer } from 'react-shimmer';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useTranslation } from 'react-i18next';
 import { URL } from '../../constants';
-import { Work } from '../../polkaSDK/types';
 import { parseMoneyText } from '../../utils/format';
 
 import {

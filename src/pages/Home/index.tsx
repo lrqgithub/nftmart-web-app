@@ -3,7 +3,6 @@ import {
   Spinner, Box, Image, Stack, Flex, Text,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Test } from 'yup/lib/util/createValidation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
   Scrollbar,

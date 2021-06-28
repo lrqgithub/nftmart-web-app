@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
@@ -13,9 +13,9 @@ const MainContainer = ({ children, title }: Props) => {
   return (
     <>
       <Helmet>{title && <title>{t(title)}</title>}</Helmet>
-      <Box marginTop="77px" as="main" flex="1 0 auto" maxWidth="100%">
+      <Center as="main" maxWidth="1360px" flexDirection="column">
         {children}
-      </Box>
+      </Center>
     </>
   );
 };

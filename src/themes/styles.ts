@@ -1,5 +1,3 @@
-import colors from './colors';
-
 const obj = {
   global: () => ({
     // font
@@ -9,7 +7,6 @@ const obj = {
       height: '100%',
     },
     body: {
-      backgroundColor: colors.bg.light1,
     },
     a: {
       _hover: {
@@ -22,6 +19,7 @@ const obj = {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
+      alignItems: 'center',
     },
 
     'footer.page-footer': {
@@ -34,6 +32,18 @@ const obj = {
     ':focus': {
       outline: 'none',
       boxShadow: 'none',
+    },
+
+    '.swiper-container-horizontal>.swiper-scrollbar': {
+      height: '16px',
+      background: '#F8F8F9',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
+    '.swiper-scrollbar-drag': {
+      height: '8px',
+      background: '#E5E5E5',
     },
   }),
 };

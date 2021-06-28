@@ -1,5 +1,5 @@
 type Status = {
-  type: string,
+  type: 'listing' | 'auction',
   price: string,
   deadline: string,
   lastPrice: string

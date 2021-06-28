@@ -18,9 +18,9 @@ export const App = (): JSX.Element => (
   <ChakraProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={client}>
-        <PolkaProvider>
-          <Router />
-        </PolkaProvider>
+        {/* <PolkaProvider> */}
+        <Router />
+        {/* </PolkaProvider> */}
       </ApolloProvider>
     </QueryClientProvider>
   </ChakraProvider>

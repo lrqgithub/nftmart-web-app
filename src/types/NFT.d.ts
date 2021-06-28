@@ -1,7 +1,8 @@
 type NFT = {
   id: string,
+  name: string,
   metadata: Metadata,
   status: Status,
   category: Category,
-  class: Class
+  collection: Collection
 }

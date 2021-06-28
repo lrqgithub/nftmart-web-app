@@ -10,6 +10,7 @@ import CreateCollection from '../pages/CreateCollection';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import EditProfile from '../pages/ProfileEdit';
+import Browsing from '../pages/Browsing';
 
 const Router = () => (
   <HashRouter>
@@ -18,16 +19,19 @@ const Router = () => (
       <Route exact strict path="/">
         <Home />
       </Route>
+      <Route exact strict path="/browsing">
+        <Browsing />
+      </Route>
       <Route exact strict path="/connect">
         <Connect />
       </Route>
       <Route exact strict path="/profile">
         <EditProfile />
       </Route>
-      <Route exact strict path="/create">
+      <Route exact strict path="/profile/nft/create">
         <Create />
       </Route>
-      <Route exact strict path="/createcollection">
+      <Route exact strict path="/profile/collection/create">
         <CreateCollection />
       </Route>
     </Switch>

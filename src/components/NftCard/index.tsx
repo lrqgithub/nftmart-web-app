@@ -42,6 +42,7 @@ export const MotionBox = motion(
 
 const NftCard: FC<NftCardProps> = ({
   nft: {
+    name,
     metadata,
     status,
   },

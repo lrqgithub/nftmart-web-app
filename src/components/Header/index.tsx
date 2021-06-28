@@ -40,7 +40,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
       justify="space-between"
       backgroundColor="white"
       boxShadow="md"
-      position={sticky ? 'fixed' : 'initial'}
+      position="fixed"
       top={0}
       left={0}
       right={0}

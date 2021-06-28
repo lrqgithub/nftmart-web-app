@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   ChakraProvider,
-  theme,
 } from '@chakra-ui/react';
 import { QueryClientProvider } from 'react-query';
 import {
   ApolloProvider,
 } from '@apollo/client';
+
+import theme from './themes';
 
 import { queryClient } from './apiClient/reactQueryClient';
 import Router from './router';

@@ -47,6 +47,13 @@
   "ViewInScan": "View in Scan",
   "Address": "Address",
   "Balance": "Balance",
+
+  "componentCollectionTitle": "作品名称",
+  "componentCollectionTitleTooltip": "NFT 作品名称",
+  "componentCollectionPrice": "价格",
+  "componentCollectionPriceTooltip": "NFT 的价格",
+  "componentCollectionPledge": "质押金",
+  "componentCollectionPledge.tooltip": "NFT 的质押金额",
  
   "navHome": "Home",
   "navBrowing": "Browing",
@@ -60,7 +67,8 @@
     "save": "保存"
   },
   "Home": {
-    "title": "NFTmart"
+    "title": "NFTmart",
+    "more": "查看更多"
   },
   "ProfileEdit": {
     "title": "资料修改",

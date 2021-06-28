@@ -1,5 +1,11 @@
 import React, { useState, MouseEventHandler } from 'react';
-import { Spinner, Stack } from '@chakra-ui/react';
+import {
+  Spinner,
+  Flex,
+  Container,
+  Box,
+  Text,
+} from '@chakra-ui/react';
 import { union, without } from 'lodash';
 
 import { useTranslation } from 'react-i18next';
@@ -12,7 +18,11 @@ import useCollections from '../../hooks/reactQuery/useCollections';
 import useNfts from '../../hooks/reactQuery/useNfts';
 import NftCard from '../../components/NftCard';
 
-const statusArr = ['buyNow', 'onAuction', 'newListing', 'hasOffers'];
+import {
+  IconHome,
+} from '../../assets/images';
+
+const statusArr = ['buyNow', 'onAuction', 'onAuction', 'hasOffers'];
 
 const Browsing = () => {
   const { t } = useTranslation();
@@ -53,17 +63,43 @@ const Browsing = () => {
   }
   return (
     <MainContainer title={t('Browsing.title')}>
-      <CategorySelector list={categoriesData!.list} selectId={selectedCategoryId} handleSelect={handleSelectCategory} />
-      <StatusSelector statusArr={statusArr} selectedArr={selectedStatusArr} handleSelect={handleSelectStatus} />
-      <CollectionSelector
-        collectionArr={collectionsData!.list}
-        selectedArr={selectedCollectionArr}
-        handleSelect={handleSelectCollection}
-      />
-      <Stack direction="row">
-        {nftsData?.list.map((nft) => <NftCard nft={nft} />)}
-      </Stack>
+      <Container mt="120px" display="flex">
+        <Flex
+          w="260px"
+          flexFlow="wrap"
+          justifyContent="space-between"
+          background="#F9F9F9"
+          borderRadius="4px"
+          p="20px"
+          border="1px solid #F9F9F9"
+          mr="16px"
+        >
+          <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="2px">
+            <Box as="img" src={IconHome.default} alt="" w="22px" h="22px" mr="8px" />
+            <Text>Status</Text>
+          </Flex>
+          <Flex width="100%" flexFlow="wrap" justifyContent="space-between">
+            <StatusSelector statusArr={statusArr} selectedArr={selectedStatusArr} handleSelect={handleSelectStatus} />
+          </Flex>
+          <Flex h="21px" width="100%" flexDirection="row" alignItems="center" m="22px 0 12px 0">
+            <Box as="img" src={IconHome.default} alt="" w="22px" h="22px" mr="8px" />
+            <Text>Collections</Text>
+          </Flex>
+          <CollectionSelector
+            collectionArr={collectionsData!.list}
+            selectedArr={selectedCollectionArr}
+            handleSelect={handleSelectCollection}
+          />
+        </Flex>
+        <Flex width="1088px" flexFlow="wrap" justifyContent="space-between">
+          <CategorySelector list={categoriesData!.list} selectId={selectedCategoryId} handleSelect={handleSelectCategory} />
+          <Flex width="1088px" flexFlow="row wrap" justifyContent="space-between">
+            {nftsData?.list.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
+          </Flex>
+        </Flex>
+      </Container>
     </MainContainer>
+
   );
 };
 

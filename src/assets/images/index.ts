@@ -37,3 +37,7 @@ export * as PriceIcon from './img_logo_umt.png';
 export * as IconHome from './icon_home.png';
 
 export * as IconUpload from './icon_upload.png';
+export * as IconSearch from './icon_search@2x.png';
+export * as IconXuanzhong from './icon_xuanzhong@2x.png';
+export * as IconAllState from './icon_all_state@2x.png';
+export * as IconAllStateone from './icon_all_state@2x(1).png';

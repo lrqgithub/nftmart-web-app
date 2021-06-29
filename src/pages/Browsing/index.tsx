@@ -5,6 +5,9 @@ import {
   Container,
   Box,
   Text,
+  InputGroup,
+  Input,
+  Image,
 } from '@chakra-ui/react';
 import { union, without } from 'lodash';
 
@@ -17,9 +20,12 @@ import CollectionSelector from '../../components/CollectionSelector';
 import useCollections from '../../hooks/reactQuery/useCollections';
 import useNfts from '../../hooks/reactQuery/useNfts';
 import NftCard from '../../components/NftCard';
+import SortBy from '../../components/SortBy';
 
 import {
-  IconHome,
+  IconSearch,
+  IconAllState,
+  IconAllStateone,
 } from '../../assets/images';
 
 const statusArr = ['buyNow', 'onAuction', 'onAuction', 'hasOffers'];
@@ -66,8 +72,10 @@ const Browsing = () => {
       <Container mt="120px" display="flex">
         <Flex
           w="260px"
-          flexFlow="wrap"
-          justifyContent="space-between"
+          h="492px"
+          flexDirection="column"
+          justifyContent="flex-start"
+          alignItems="center"
           background="#F9F9F9"
           borderRadius="4px"
           p="20px"
@@ -75,24 +83,74 @@ const Browsing = () => {
           mr="16px"
         >
           <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="2px">
-            <Box as="img" src={IconHome.default} alt="" w="22px" h="22px" mr="8px" />
-            <Text>Status</Text>
+            <Box as="img" src={IconAllState.default} alt="" w="22px" h="22px" mr="8px" />
+            <Text>{t('Browing.Status')}</Text>
           </Flex>
+
           <Flex width="100%" flexFlow="wrap" justifyContent="space-between">
             <StatusSelector statusArr={statusArr} selectedArr={selectedStatusArr} handleSelect={handleSelectStatus} />
           </Flex>
           <Flex h="21px" width="100%" flexDirection="row" alignItems="center" m="22px 0 12px 0">
-            <Box as="img" src={IconHome.default} alt="" w="22px" h="22px" mr="8px" />
-            <Text>Collections</Text>
+            <Box as="img" src={IconAllStateone.default} alt="" w="22px" h="22px" mr="8px" />
+            <Text>{t('Browing.Collections')}</Text>
           </Flex>
+          <InputGroup
+            variant="unstyled"
+            width="220px"
+            height="40px"
+            background="#FFFFFF"
+            borderRadius="4px"
+            border="1px solid #E5E5E5"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            p="0px 0 0px 12px"
+            m="12px 0 20px 0px"
+          >
+            <Image w="16px" h="16px" mr="6px" src={IconSearch.default} alt="" />
+            <Input
+              fontSize="14px"
+              fontFamily="TTHoves-Regular, TTHoves"
+              fontWeight="400"
+              color="#999999"
+              placeholder={t('Browing.collectionPlaceholder')}
+            />
+          </InputGroup>
+
           <CollectionSelector
             collectionArr={collectionsData!.list}
             selectedArr={selectedCollectionArr}
             handleSelect={handleSelectCollection}
           />
         </Flex>
-        <Flex width="1088px" flexFlow="wrap" justifyContent="space-between">
-          <CategorySelector list={categoriesData!.list} selectId={selectedCategoryId} handleSelect={handleSelectCategory} />
+
+        <Flex width="1088px" flexDirection="column" justifyContent="flex-start">
+
+          <Flex h="36px">
+            <CategorySelector
+              list={categoriesData!.list}
+              selectId={selectedCategoryId}
+              handleSelect={handleSelectCategory}
+            />
+          </Flex>
+          <Flex
+            m="29px 0 20px 0"
+            width="1088px"
+            h="36px"
+            flexFlow="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Text
+              fontSize="14px"
+              fontFamily="TTHoves-Regular, TTHoves"
+              fontWeight="400"
+              color="#999999"
+            >
+              1,291 results
+            </Text>
+            <SortBy />
+          </Flex>
           <Flex width="1088px" flexFlow="row wrap" justifyContent="space-between">
             {nftsData?.list.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
           </Flex>

@@ -70,6 +70,11 @@
     "title": "NFTmart",
     "more": "more"
   },
+  "Browing": {
+    "collectionPlaceholder": "Filter Collections",
+    "Collections": "Collections",
+    "Status": "Status"
+  },
   "ProfileEdit": {
     "title": "Edit Profile",
     "nickname": "Name:",

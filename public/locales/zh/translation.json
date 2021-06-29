@@ -70,6 +70,11 @@
     "title": "NFTmart",
     "more": "查看更多"
   },
+  "Browing": {
+    "collectionPlaceholder": "过滤集合",
+    "Collections": "集合",
+    "Status": "状态"
+  },
   "ProfileEdit": {
     "title": "资料修改",
     "nickname": "昵称：",

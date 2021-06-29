@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { URL } from '../constants';
+import { MOCK_URL } from '../constants';
 
 const instance = axios.create({
-  baseURL: URL.MOCK_URL,
+  baseURL: MOCK_URL,
 });
 
 export default instance;

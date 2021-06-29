@@ -15,16 +15,13 @@ import {
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import axios from 'axios';
-
 import { create } from 'ipfs-http-client';
+
 import {
-  IPFS_POST_SERVER,
-  PINATA_SERVER,
-  PINATA_POST_SERVER,
   MAX_FILE_SIZE,
-  UPLOAD_PINATA_SERVER,
-  UPLOAD_OWN_SERVER,
   Colors,
+  PINATA_POST_SERVER,
+  UPLOAD_OWN_SERVER,
 } from '../../constants';
 import { t } from '../../i18n';
 
@@ -162,7 +159,7 @@ const Upload: FC<UploadProps> = ({
       return;
     }
 
-    const ipfs = create(IPFS_POST_SERVER);
+    const ipfs = create(URL.IPFS_POST_SERVER);
     if (files.length === 0) {
       return;
     }
@@ -233,6 +230,7 @@ const Upload: FC<UploadProps> = ({
   };
 
   useEffect(() => {
+    console.log(valueFromProp, 'valueFromProp');
     if (valueFromProp.url !== !!valueFromProp.url) {
       setValue(valueFromProp.url as string);
     }
@@ -256,7 +254,7 @@ const Upload: FC<UploadProps> = ({
   }, [file]);
 
   const txtUpload = (
-    <Text fontSize="14px" lineHeight="47px" cursor="pointer" color={Colors.success}>
+    <Text fontSize="14px" lineHeight="47px" cursor="pointer" color={Colors.Success}>
       {t('createUpload')}
     </Text>
   );
@@ -273,7 +271,7 @@ const Upload: FC<UploadProps> = ({
       ) : (
         <Box>
           {value ? (
-            <Image w="350px" h="auto" m="16px 0" src={`${PINATA_SERVER}${value}`} />
+            <Image w="350px" h="auto" m="16px 0" src={`${URL.PINATA_SERVER}${value}`} />
           ) : (
             <Box>
               {file ? (

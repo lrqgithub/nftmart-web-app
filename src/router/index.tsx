@@ -4,13 +4,13 @@ import {
 } from 'react-router-dom';
 import Connect from '../pages/Connect';
 import Home from '../pages/Home';
-import Create from '../pages/Create';
 import CreateCollection from '../pages/CreateCollection';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import EditProfile from '../pages/ProfileEdit';
 import Browsing from '../pages/Browsing';
+import CreateNft from '../pages/CreateNft';
 
 const Router = () => (
   <HashRouter>
@@ -28,11 +28,11 @@ const Router = () => (
       <Route exact strict path="/profile">
         <EditProfile />
       </Route>
-      <Route exact strict path="/profile/nft/create">
-        <Create />
-      </Route>
       <Route exact strict path="/profile/collection/create">
         <CreateCollection />
+      </Route>
+      <Route exact strict path="/profile/nft/create">
+        <CreateNft />
       </Route>
     </Switch>
     <Footer />

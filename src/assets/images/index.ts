@@ -35,3 +35,5 @@ export * as IconRight from './icon_right.png';
 export * as Emptyimg from './empty.png';
 export * as PriceIcon from './img_logo_umt.png';
 export * as IconHome from './icon_home.png';
+
+export * as IconUpload from './icon_upload.png';

@@ -13,7 +13,7 @@ import { motion, MotionProps, isValidMotionProp } from 'framer-motion';
 import { Shimmer } from 'react-shimmer';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useTranslation } from 'react-i18next';
-import { URL } from '../../constants';
+import { IPFS_URL } from '../../constants';
 import { parseMoneyText } from '../../utils/format';
 
 import {
@@ -34,7 +34,7 @@ export const MotionBox = motion(
       // do not pass framer props to DOM element
       Object.entries(props).filter(([key]) => !isValidMotionProp(key)),
     );
-      // FIXME: ref type imcompatible
+    // FIXME: ref type imcompatible
     return <chakra.div ref={ref as any} {...chakraProps} />;
   }),
 ) as ComponentWithAs<'div', MotionBoxProps>;
@@ -83,7 +83,7 @@ const NftCard: FC<NftCardProps> = ({
           maxHeight: '100%',
           borderRadius: '5px',
         }}
-        src={URL.IPFS_URL + metadata.url}
+        src={IPFS_URL + metadata.url}
         effect="none"
         fallback={<Shimmer height={195} width={260} />}
         fadeIn
@@ -101,9 +101,9 @@ const NftCard: FC<NftCardProps> = ({
         >
           <Box userSelect="none">{t('componentCollectionTitle')}</Box>
           {status.price && (
-          <Box userSelect="none" flex="1" textAlign="right">
-            {t('componentCollectionPrice')}
-          </Box>
+            <Box userSelect="none" flex="1" textAlign="right">
+              {t('componentCollectionPrice')}
+            </Box>
           )}
         </Box>
         <Box
@@ -130,12 +130,12 @@ const NftCard: FC<NftCardProps> = ({
             </Text>
           </Box>
           {status.price && (
-          <Box textAlign="right" display="flex" justifyContent="center">
-            <Flex align="flex-start" alignItems="center">
-              <Box w="14px" h="14px" src={PriceIcon.default} as="img" alt="" mr="4px" />
-              <Box color="#FFFFFF">{disPrice}</Box>
-            </Flex>
-          </Box>
+            <Box textAlign="right" display="flex" justifyContent="center">
+              <Flex align="flex-start" alignItems="center">
+                <Box w="14px" h="14px" src={PriceIcon.default} as="img" alt="" mr="4px" />
+                <Box color="#FFFFFF">{disPrice}</Box>
+              </Flex>
+            </Box>
           )}
         </Box>
       </Box>

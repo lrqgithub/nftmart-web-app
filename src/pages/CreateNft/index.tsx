@@ -12,7 +12,7 @@ import {
 import useParams from '../../hooks/url/useParams';
 import Upload from '../../components/Upload';
 
-const CreateCollection: FC = () => {
+const CreateNft: FC = () => {
   const { t } = useTranslation();
   const toast = useToast();
   const history = useHistory();
@@ -125,4 +125,4 @@ const CreateCollection: FC = () => {
   );
 };
 
-export default CreateCollection;
+export default CreateNft;

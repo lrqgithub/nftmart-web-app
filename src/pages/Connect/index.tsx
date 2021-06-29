@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import Card from '../../components/Card';
 import MainContainer from '../../layout/MainContainer';
 import { Polkadot } from '../../assets/images';
-import { useParams } from '../../hooks/url/useParams';
-import { URL } from '../../constants';
+import useParams from '../../hooks/url/useParams';
+import { POLKADOT_EXTENSION } from '../../constants';
 import { useAppDispatch } from '../../hooks/redux';
 import { setAccount, setAccounts, setInjector } from '../../redux/chainSlice';
 import { PolkadotIcon } from '../../assets/icons';
@@ -76,7 +76,7 @@ const Connect: FC = () => {
                 <Button
                   width="160px"
                   variant="primary"
-                  onClick={() => window.open(URL.POLKADOT_EXTENSION, '_blank')}
+                  onClick={() => window.open(POLKADOT_EXTENSION, '_blank')}
                   isFullWidth
                 >
                   {t('download')}

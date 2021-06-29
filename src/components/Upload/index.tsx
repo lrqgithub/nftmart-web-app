@@ -11,6 +11,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
   useToast,
+  Flex,
 } from '@chakra-ui/react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
@@ -24,6 +25,9 @@ import {
   UPLOAD_OWN_SERVER,
 } from '../../constants';
 import { t } from '../../i18n';
+import {
+  IconUpload,
+} from '../../assets/images';
 
 interface INavProps {
   imgUrl: string;
@@ -99,6 +103,7 @@ export interface UploadProps {
   value?: any;
   onChange?: (cid: string) => any;
   mediatype: string;
+  rectangle: string;
 }
 
 const Upload: FC<UploadProps> = ({
@@ -107,6 +112,7 @@ const Upload: FC<UploadProps> = ({
   onChange,
   boxProps,
   mediatype,
+  rectangle,
   ...rest
 }) => {
   const [value, setValue] = useState(valueFromProp?.url || '');
@@ -254,9 +260,43 @@ const Upload: FC<UploadProps> = ({
   }, [file]);
 
   const txtUpload = (
-    <Text fontSize="14px" lineHeight="47px" cursor="pointer" color={Colors.Success}>
-      {t('createUpload')}
-    </Text>
+    <>
+      {rectangle === ''
+        ? (
+          <Flex
+            width="120px"
+            height="120px"
+            background="#FFFFFF"
+            borderRadius="4px"
+            border="1px solid #999999"
+            cursor="pointer"
+            borderStyle="dashed"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Image w="54px" h="54px" src={IconUpload.default} />
+          </Flex>
+        )
+        : (
+          <Flex
+            width="200px"
+            height="133px"
+            background="#FFFFFF"
+            borderRadius="4px"
+            border="1px solid #999999"
+            cursor="pointer"
+            borderStyle="dashed"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Image w="54px" h="54px" src={IconUpload.default} />
+          </Flex>
+        )}
+
+    </>
+    // <Text fontSize="14px" lineHeight="47px"  color={Colors.Success}>
+    //   {t('createUpload')}
+    // </Text>
   );
 
   const imgWrap = (

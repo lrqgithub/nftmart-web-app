@@ -26,7 +26,7 @@ const obj = {
       position: 'absolute',
       left: 0,
       right: 0,
-      bottom: '-233px',
+      bottom: '-130px',
     },
 
     ':focus': {

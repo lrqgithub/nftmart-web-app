@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import EditProfile from '../pages/ProfileEdit';
 import Browsing from '../pages/Browsing';
 import CreateNft from '../pages/CreateNft';
+import Detail from '../pages/Detail';
 
 const Router = () => (
   <HashRouter>

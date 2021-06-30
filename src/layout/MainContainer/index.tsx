@@ -13,7 +13,7 @@ const MainContainer = ({ children, title }: Props) => {
   return (
     <>
       <Helmet>{title && <title>{t(title)}</title>}</Helmet>
-      <Center as="main" maxWidth="1360px" flexDirection="column">
+      <Center as="main" maxWidth="1360px" width="100%" flexDirection="column">
         {children}
       </Center>
     </>

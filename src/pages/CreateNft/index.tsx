@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react/no-children-prop */
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -20,11 +18,14 @@ import SubmitButton from '../../components/SubmitButton';
 import FormInput from '../../components/FormInput';
 import FromTextarea from '../../components/FromTextarea';
 import LeftAddonInput from '../../components/LeftAddonInput';
+import { useAppSelector } from '../../hooks/redux';
+import LoginDetector from '../../components/LoginDetector';
 
 const CreateNft: FC = () => {
   const { t } = useTranslation();
   const toast = useToast();
   const history = useHistory();
+  const chainState = useAppSelector((state) => state.chain);
 
   const schema = Yup.object().shape({
     logoUrl: Yup.string().matches(
@@ -95,18 +96,6 @@ const CreateNft: FC = () => {
             formik.setFieldValue('featuredUrl', v);
           }}
         />
-        <label htmlFor="name">
-          {' '}
-          *Name
-          Only letters, numbers, and hyphens are supported,50 characters or less.
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-        />
         {formik.errors.name && formik.touched.name ? (
           <div style={{ color: 'red' }}>{formik.errors.name}</div>
         ) : null}
@@ -125,7 +114,6 @@ const CreateNft: FC = () => {
           <EditFromSubTitle text="Customize your URL on NFTMart. Must only contain lowercase letters, numbers, and hyphens, 50 characterscters or less." />
         </label>
         <LeftAddonInput />
-
         <label htmlFor="description">
           {' '}
           <EditFormTitle text="Description" />
@@ -139,6 +127,7 @@ const CreateNft: FC = () => {
           <SubmitButton text="Submit" />
         </Flex>
       </form>
+      <LoginDetector />
     </Flex>
   );
 };

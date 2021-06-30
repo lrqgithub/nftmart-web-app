@@ -19,6 +19,7 @@ import FormInput from '../../components/FormInput';
 import LeftAddonInput from '../../components/LeftAddonInput';
 import FromTextarea from '../../components/FromTextarea';
 import SubmitButton from '../../components/SubmitButton';
+import LoginDetector from '../../components/LoginDetector';
 
 const CreateCollection: FC = () => {
   const { t } = useTranslation();
@@ -94,18 +95,6 @@ const CreateCollection: FC = () => {
             formik.setFieldValue('featuredUrl', v);
           }}
         />
-        <label htmlFor="name">
-          {' '}
-          *Name
-          Only letters, numbers, and hyphens are supported,50 characters or less.
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-        />
         {formik.errors.name && formik.touched.name ? (
           <div style={{ color: 'red' }}>{formik.errors.name}</div>
         ) : null}
@@ -124,7 +113,6 @@ const CreateCollection: FC = () => {
           <EditFromSubTitle text="Customize your URL on NFTMart. Must only contain lowercase letters, numbers, and hyphens, 50 characterscters or less." />
         </label>
         <LeftAddonInput />
-
         <label htmlFor="description">
           {' '}
           <EditFormTitle text="Description" />
@@ -138,6 +126,7 @@ const CreateCollection: FC = () => {
           <SubmitButton text="Submit" />
         </Flex>
       </form>
+      <LoginDetector />
     </Flex>
   );
 };

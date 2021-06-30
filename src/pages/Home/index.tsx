@@ -1,6 +1,6 @@
 import React, { useState, MouseEventHandler } from 'react';
 import {
-  Spinner, Box, Image, Stack, Flex, Text,
+  Spinner, Box, Image, Stack, Flex, Text, Button,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -44,9 +44,76 @@ const Home = () => {
 
   return (
     <MainContainer title={t('Home.title')}>
-      <Box height="820">
-        <Image src={bannerData?.banner} alt="banner" />
-      </Box>
+      <Flex
+        w="100vw"
+        height="820px"
+        background="#000000"
+        justifyContent="center"
+        position="relative"
+        mt="80px"
+        mb="40px"
+      >
+        {/* <Image maxWidth="1360px" width="100%" src={bannerData?.banner} alt="banner" /> */}
+        <Flex
+          color="white"
+          flexDirection="column"
+          w="579px"
+          alignItems="flex-start"
+          justifyContent="flex-start"
+          position="absolute"
+          top="19.7%"
+          left="19.7%"
+          right={0}
+          bottom={0}
+          p={4}
+        >
+          <Text
+            fontSize="64px"
+            fontFamily="TTHoves-Thin, TTHoves"
+            fontWeight="100"
+            color="#FFFFFF"
+            lineHeight="75px"
+          >
+            Professional
+          </Text>
+          <Text
+            w="579px"
+            fontFamily="TTHoves-Bold, TTHoves"
+            fontWeight="bold"
+            color="#FFFFFF"
+            lineHeight="75px"
+            letterSpacing="2px"
+            fontSize="64px"
+          >
+            NFT Market Place
+          </Text>
+          <Text
+            mt="3px"
+            w="579px"
+            fontFamily="TTHoves-Bold, TTHoves"
+            fontWeight="100"
+            color="#999999"
+            lineHeight="29px"
+            letterSpacing="2px"
+            fontSize="24px"
+          >
+            The first NFT decentralized trading platform established using an independent public
+          </Text>
+          <Button
+            mt="35px"
+            width="200px"
+            height="60px"
+            background="#FFFFFF"
+            borderRadius="4px"
+            fontsize="20px"
+            fontFamily="TTHoves-Bold, TTHoves"
+            fontWeight="bold"
+            color="#000000"
+          >
+            CREATE
+          </Button>
+        </Flex>
+      </Flex>
       <CategorySelector list={categoriesData!.list} selectId={selectId} handleSelect={handleSelect} />
       <Flex width="100%" justifyContent="center">
         <Flex width="1360px" flexDirection="column">

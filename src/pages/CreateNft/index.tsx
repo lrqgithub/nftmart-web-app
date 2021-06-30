@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/no-children-prop */
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';

@@ -5,6 +5,7 @@ import {
 import Connect from '../pages/Connect';
 import Home from '../pages/Home';
 import CreateCollection from '../pages/CreateCollection';
+import PolkaProvider from '../polkaSDK/PolkaProvider';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -16,26 +17,28 @@ import Detail from '../pages/Detail';
 const Router = () => (
   <HashRouter>
     <Header />
-    <Switch>
-      <Route exact strict path="/">
-        <Home />
-      </Route>
-      <Route exact strict path="/browsing">
-        <Browsing />
-      </Route>
-      <Route exact strict path="/connect">
-        <Connect />
-      </Route>
-      <Route exact strict path="/profile">
-        <EditProfile />
-      </Route>
-      <Route exact strict path="/profile/collection/create">
-        <CreateCollection />
-      </Route>
-      <Route exact strict path="/profile/nft/create">
-        <CreateNft />
-      </Route>
-    </Switch>
+    <PolkaProvider>
+      <Switch>
+        <Route exact strict path="/">
+          <Home />
+        </Route>
+        <Route exact strict path="/browsing">
+          <Browsing />
+        </Route>
+        <Route exact strict path="/connect">
+          <Connect />
+        </Route>
+        <Route exact strict path="/profile">
+          <EditProfile />
+        </Route>
+        <Route exact strict path="/profile/collection/create">
+          <CreateCollection />
+        </Route>
+        <Route exact strict path="/profile/nft/create">
+          <CreateNft />
+        </Route>
+      </Switch>
+    </PolkaProvider>
     <Footer />
   </HashRouter>
 );

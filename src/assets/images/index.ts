@@ -49,3 +49,8 @@ export * as IconDetailshaSre from './icon_Details_share@2x.png';
 export * as IconDetailsCollection from './icon_Details_collection@2x.png';
 export * as IconDetailsDetail from './icon_Details_Detail@2x.png';
 export * as ImgWorksBg from './img_works_bg.png';
+export * as HuoDong from './huodong.png';
+export * as DISCORD from './DISCORD.png';
+export * as WEBSITE from './WEBSITE.png';
+export * as Facebook from './facebook.png';
+export * as TWITTER from './TWITTER.png';

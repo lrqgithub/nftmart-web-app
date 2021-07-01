@@ -37,6 +37,9 @@ const Router = () => (
         <Route exact strict path="/profile/nft/create">
           <CreateNft />
         </Route>
+        <Route exact strict path="/detail">
+          <Detail />
+        </Route>
       </Switch>
     </PolkaProvider>
     <Footer />

@@ -7,7 +7,6 @@ const Button: ComponentStyleConfig = {
     _hover: {
       textDecoration: 'none',
       outline: 'none',
-      border: 'none',
     },
     _focus: {
       textDecoration: 'none',

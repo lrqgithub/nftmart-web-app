@@ -18,6 +18,7 @@ import { union, without } from 'lodash';
 
 import { useTranslation } from 'react-i18next';
 import MainContainer from '../../layout/MainContainer';
+import PriceHistoryChart from './PriceHistoryChart';
 
 import {
   IconDetailsocllections,
@@ -26,9 +27,29 @@ import {
   IconDetailsCollection,
   IconDetailsDetail,
   ImgWorksBg,
+  HuoDong,
+  DISCORD,
+  WEBSITE,
+  Facebook,
+  TWITTER,
+  PriceIcon,
 } from '../../assets/images';
 
 const propertiesArr = [1, 2, 3, 4, 5, 6];
+const ICONS = [
+  { icon: HuoDong.default },
+  { icon: DISCORD.default },
+  { icon: TWITTER.default },
+  { icon: Facebook.default },
+  { icon: WEBSITE.default },
+];
+const ICON_LIST = ICONS.map((item, index) => ({
+  src: item.icon,
+  id: index,
+  link: '',
+}));
+const OfferssArr = [1, 2, 3];
+const OfferssUnitArr = [1, 2, 3, 4, 5, 6];
 
 const Detail = () => {
   const { t } = useTranslation();
@@ -36,8 +57,7 @@ const Detail = () => {
   return (
     <MainContainer title={t('Detail.title')}>
       <Container
-        minHeight="100vh"
-        mt="120px"
+        mt="40px"
         display="flex"
         flexDirection="column"
         width="100%"
@@ -45,6 +65,7 @@ const Detail = () => {
       >
         <Flex
           w="100%"
+          f
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"
@@ -368,8 +389,8 @@ const Detail = () => {
           </Flex>
         </Flex>
         <Flex width="100%" justifyContent="space-around">
-          <Flex width="560px">
-            <Accordion width="560px" defaultIndex={[0, 1]} allowMultiple>
+          <Flex className="DetailLeft" width="560px">
+            <Accordion width="560px" defaultIndex={[0, 1, 2]} allowMultiple>
               <AccordionItem width="100%" border="none">
                 <AccordionButton
                   height="62px"
@@ -381,7 +402,6 @@ const Detail = () => {
                   borderBottom="1px solid #E5E5E5"
                   outline="none"
                   _focus={{
-                    border: 'none',
                     textDecoration: 'none',
                     boxShadow: 'none',
                   }}
@@ -464,7 +484,6 @@ const Detail = () => {
                   borderBottom="1px solid #E5E5E5"
                   outline="none"
                   _focus={{
-                    border: 'none',
                     textDecoration: 'none',
                     boxShadow: 'none',
                   }}
@@ -535,32 +554,519 @@ const Detail = () => {
 
                 </AccordionPanel>
               </AccordionItem>
-            </Accordion>
-          </Flex>
-
-          <Flex width="560px">
-            <Accordion width="560px" defaultIndex={[0]} allowMultiple>
               <AccordionItem width="100%" border="none">
                 <AccordionButton
+                  height="62px"
                   width="100%"
                   display="flex"
                   justifyContent="space-between"
+                  alignItems="center"
+                  p="0 20px"
+                  borderBottom="1px solid #E5E5E5"
+                  outline="none"
                   _focus={{
                     textDecoration: 'none',
                     boxShadow: 'none',
                   }}
                 >
-                  <Box>
-                    Section 1 title
-                  </Box>
+                  <Flex height="100%" alignItems="center">
+                    <Image
+                      mr="8px"
+                      w="22px"
+                      h="22px"
+                      src={IconDetailsCollection.default}
+                    />
+                    <Text
+                      fontSize="16px"
+                      fontFamily="TTHoves-Medium, TTHoves"
+                      fontWeight="500"
+                      color="#000000"
+                      lineHeight="18px"
+                    >
+                      About BeSide
+                    </Text>
+                  </Flex>
                   <AccordionIcon />
                 </AccordionButton>
-                <AccordionPanel>
-                  111
+                <AccordionPanel p="16px 20px 16px 20px">
+                  <Text
+                    mb="16px"
+                    fontSize="14px"
+                    fontFamily="TTHoves-Light, TTHoves"
+                    fontWeight="300"
+                    color="#000000"
+                    lineHeight="22px"
+                  >
+                    Here is an introduction to the portfolio. If it is a cross-chain NFT asset, a contract is a portfolio.
+                  </Text>
+
+                  <Flex>
+                    {ICON_LIST.map((item, index) => (
+                      <Box
+                        key="index"
+                        width="40px"
+                        height="40px"
+                        borderRadius="4px 0px 0px 4px"
+                        border="1px solid #E5E5E5"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                        _hover={{
+                          boxShadow: '0px 2px 8px 0px #E1E1E1',
+                        }}
+                      >
+                        <Image
+                          w="22px"
+                          h="22px"
+                          src={item.src}
+                        />
+                      </Box>
+                    ))}
+                  </Flex>
+
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
           </Flex>
+
+          <Flex className="DetailRight" width="788px">
+            <Accordion width="100%" defaultIndex={[0, 1, 2]} allowMultiple>
+              <AccordionItem width="100%" border="none">
+                <AccordionButton
+                  height="62px"
+                  width="100%"
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  p="0 20px"
+                  borderBottom="1px solid #E5E5E5"
+                  outline="none"
+                  _focus={{
+                    textDecoration: 'none',
+                    boxShadow: 'none',
+                  }}
+                >
+                  <Flex height="100%" alignItems="center">
+                    <Image
+                      mr="8px"
+                      w="22px"
+                      h="22px"
+                      src={IconDetailsCollection.default}
+                    />
+                    <Text
+                      fontSize="16px"
+                      fontFamily="TTHoves-Medium, TTHoves"
+                      fontWeight="500"
+                      color="#000000"
+                      lineHeight="18px"
+                    >
+                      Price History
+                    </Text>
+                  </Flex>
+                  <AccordionIcon />
+                </AccordionButton>
+                <AccordionPanel p="20px">
+                  <Flex flexDirection="row" justifyContent="flex-start" mb="20px">
+                    <Flex m="0 20px" textAlign="center" flexDirection="column" justifyContent="center">
+                      <Text
+                        mb="2px"
+                        fontSize="12px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#999999"
+                        lineHeight="14px"
+                      >
+                        7天平均价格
+                      </Text>
+                      <Flex align="flex-start" alignItems="center">
+                        <Box w="14px" h="14px" src={IconDetailsDetail.default} as="img" alt="" mr="4px" />
+                        <Text
+                          fontSize="16px"
+                          fontFamily="TTHoves-Regular, TTHoves"
+                          fontWeight="400"
+                          color="#000000"
+                          lineHeight="18px"
+                        >
+                          198,234
+                        </Text>
+                      </Flex>
+                    </Flex>
+                    <Flex textAlign="center" flexDirection="column" justifyContent="center">
+                      <Text
+                        mb="2px"
+                        fontSize="12px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#999999"
+                        lineHeight="14px"
+                      >
+                        7天平均价格
+                      </Text>
+                      <Flex align="flex-start" alignItems="center">
+                        <Box w="14px" h="14px" src={IconDetailsDetail.default} as="img" alt="" mr="4px" />
+                        <Text
+                          fontSize="16px"
+                          fontFamily="TTHoves-Regular, TTHoves"
+                          fontWeight="400"
+                          color="#000000"
+                          lineHeight="18px"
+                        >
+                          198,234
+                        </Text>
+                      </Flex>
+                    </Flex>
+                  </Flex>
+                  <PriceHistoryChart />
+
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem width="100%" border="none">
+                <AccordionButton
+                  height="62px"
+                  width="100%"
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  p="0 20px"
+                  borderBottom="1px solid #E5E5E5"
+                  outline="none"
+                  _focus={{
+                    textDecoration: 'none',
+                    boxShadow: 'none',
+                  }}
+                >
+                  <Flex height="100%" alignItems="center">
+                    <Image
+                      mr="8px"
+                      w="22px"
+                      h="22px"
+                      src={IconDetailsCollection.default}
+                    />
+                    <Text
+                      fontSize="16px"
+                      fontFamily="TTHoves-Medium, TTHoves"
+                      fontWeight="500"
+                      color="#000000"
+                      lineHeight="18px"
+                    >
+                      Offers
+                    </Text>
+                  </Flex>
+                  <AccordionIcon />
+                </AccordionButton>
+                <AccordionPanel p="0 20px">
+                  <Flex w="100%" flexDirection="column" justifyContent="flex-start">
+                    <Flex h="40px" w="100%" flexDirection="row" justifyContent="space-between" align="center">
+                      <Text
+                        w="136px"
+                        textAlign="left"
+                        fontSize="12px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#999999"
+                        lineHeight="20px"
+                      >
+                        From
+                      </Text>
+                      <Text
+                        w="136px"
+                        textAlign="center"
+                        fontSize="12px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#999999"
+                        lineHeight="20px"
+                      >
+                        Price
+                      </Text>
+                      <Text
+                        w="136px"
+                        textAlign="center"
+                        fontSize="12px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#999999"
+                        lineHeight="20px"
+                      >
+                        Expiration
+                      </Text>
+                      <Text
+                        w="136px"
+                        textAlign="right"
+                        fontSize="12px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#999999"
+                        lineHeight="20px"
+                      />
+
+                    </Flex>
+                    {OfferssArr.map((item, index) => (
+                      <Flex key="index" h="54px" w="100%" flexDirection="row" justifyContent="space-between" align="center">
+                        <Text
+                          w="136px"
+                          textAlign="left"
+                          fontSize="14px"
+                          fontFamily="TTHoves-Regular, TTHoves"
+                          fontWeight="400"
+                          color="#000000"
+                          lineHeight="20px"
+                        >
+                          3gte...7gsh
+                        </Text>
+                        <Text
+                          w="136px"
+                          display="flex"
+                          flexDirection="row"
+                          justifyContent="center"
+                          fontSize="14px"
+                          fontFamily="TTHoves-Regular, TTHoves"
+                          fontWeight="400"
+                          color="#000000"
+                          lineHeight="20px"
+                        >
+                          29084
+                          <Text
+                            ml="3px"
+                            color="#999999"
+                          >
+                            NMT
+                          </Text>
+                        </Text>
+                        <Text
+                          w="136px"
+                          textAlign="center"
+                          fontSize="14px"
+                          fontFamily="TTHoves-Regular, TTHoves"
+                          fontWeight="400"
+                          color="#000000"
+                          lineHeight="20px"
+                        >
+                          in 2 hours
+                        </Text>
+                        <Text
+                          w="136px"
+                          textAlign="right"
+                          fontSize="14px"
+                          fontFamily="TTHoves-Regular, TTHoves"
+                          fontWeight="400"
+                          color="#3D00FF"
+                          lineHeight="20px"
+                        >
+                          Deal
+                        </Text>
+                      </Flex>
+                    ))}
+                    <Flex justifyContent="flex-end">
+                      <Button
+                        mt="16px"
+                        width="132px"
+                        height="40px"
+                        background="#FFFFFF"
+                        borderRadius="4px"
+                        border="1px solid #000000"
+                        fontSize="16px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="500"
+                        color="#000000"
+                      >
+                        Make Offer
+                      </Button>
+                    </Flex>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          </Flex>
+        </Flex>
+        <Flex justifyContent="flex-end">
+          <Accordion width="100%" defaultIndex={[0, 1, 2]} allowMultiple>
+            <AccordionItem width="100%" border="none">
+              <AccordionButton
+                height="62px"
+                width="100%"
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                p="0 20px"
+                borderBottom="1px solid #E5E5E5"
+                outline="none"
+                _focus={{
+                  textDecoration: 'none',
+                  boxShadow: 'none',
+                }}
+              >
+                <Flex height="100%" alignItems="center">
+                  <Image
+                    mr="8px"
+                    w="22px"
+                    h="22px"
+                    src={IconDetailsCollection.default}
+                  />
+                  <Text
+                    fontSize="16px"
+                    fontFamily="TTHoves-Medium, TTHoves"
+                    fontWeight="500"
+                    color="#000000"
+                    lineHeight="18px"
+                  >
+                    Offers
+                  </Text>
+                </Flex>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel p="0 20px">
+                <Flex w="100%" flexDirection="column" justifyContent="flex-start">
+                  <Flex h="40px" w="100%" flexDirection="row" justifyContent="space-between" align="center">
+                    <Text
+                      w="136px"
+                      textAlign="left"
+                      fontSize="12px"
+                      fontFamily="TTHoves-Regular, TTHoves"
+                      fontWeight="400"
+                      color="#999999"
+                      lineHeight="20px"
+                    >
+                      Event
+                    </Text>
+                    <Text
+                      w="136px"
+                      textAlign="center"
+                      fontSize="12px"
+                      fontFamily="TTHoves-Regular, TTHoves"
+                      fontWeight="400"
+                      color="#999999"
+                      lineHeight="20px"
+                    >
+                      Quantity
+                    </Text>
+                    <Text
+                      w="136px"
+                      textAlign="center"
+                      fontSize="12px"
+                      fontFamily="TTHoves-Regular, TTHoves"
+                      fontWeight="400"
+                      color="#999999"
+                      lineHeight="20px"
+                    >
+                      Quantity
+                    </Text>
+                    <Text
+                      w="136px"
+                      textAlign="center"
+                      fontSize="12px"
+                      fontFamily="TTHoves-Regular, TTHoves"
+                      fontWeight="400"
+                      color="#999999"
+                      lineHeight="20px"
+                    >
+                      From
+                    </Text>
+                    <Text
+                      w="136px"
+                      textAlign="center"
+                      fontSize="12px"
+                      fontFamily="TTHoves-Regular, TTHoves"
+                      fontWeight="400"
+                      color="#999999"
+                      lineHeight="20px"
+                    >
+                      To
+                    </Text>
+                    <Text
+                      w="136px"
+                      textAlign="right"
+                      fontSize="12px"
+                      fontFamily="TTHoves-Regular, TTHoves"
+                      fontWeight="400"
+                      color="#999999"
+                      lineHeight="20px"
+                    >
+                      Date
+                    </Text>
+
+                  </Flex>
+                  {OfferssUnitArr.map((item, index) => (
+                    <Flex key="index" h="54px" w="100%" flexDirection="row" justifyContent="space-between" align="center">
+                      <Text
+                        w="136px"
+                        textAlign="left"
+                        fontSize="14px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#000000"
+                        lineHeight="20px"
+                      >
+                        Listing
+                      </Text>
+                      <Text
+                        w="136px"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="center"
+                        fontSize="14px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#000000"
+                        lineHeight="20px"
+                      >
+                        29084
+                        <Text
+                          ml="3px"
+                          color="#999999"
+                        >
+                          NMT
+                        </Text>
+                      </Text>
+                      <Text
+                        w="136px"
+                        textAlign="center"
+                        fontSize="14px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#000000"
+                        lineHeight="20px"
+                      >
+                        6
+                      </Text>
+                      <Text
+                        w="136px"
+                        textAlign="center"
+                        fontSize="14px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#3D00FF"
+                        lineHeight="20px"
+                      >
+                        4tf...fp
+                      </Text>
+                      <Text
+                        w="136px"
+                        textAlign="center"
+                        fontSize="14px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#000000"
+                        lineHeight="20px"
+                      />
+                      <Text
+                        w="136px"
+                        textAlign="right"
+                        fontSize="14px"
+                        fontFamily="TTHoves-Regular, TTHoves"
+                        fontWeight="400"
+                        color="#000000"
+                        lineHeight="20px"
+                      >
+                        i minutes
+                      </Text>
+                    </Flex>
+                  ))}
+
+                </Flex>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
         </Flex>
       </Container>
     </MainContainer>

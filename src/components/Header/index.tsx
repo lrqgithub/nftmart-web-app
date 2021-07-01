@@ -50,7 +50,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
     >
       <Container
         py={2}
-        maxW={1280}
+        maxW={1360}
         height="80px"
         display="flex"
         justifyContent="space-between"

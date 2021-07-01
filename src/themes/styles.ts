@@ -18,7 +18,6 @@ const obj = {
       minHeight: '100%',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
       alignItems: 'center',
     },
 
@@ -26,7 +25,8 @@ const obj = {
       position: 'absolute',
       left: 0,
       right: 0,
-      bottom: '-233px',
+      bottom: '-151px',
+      border: 'none',
     },
 
     ':focus': {

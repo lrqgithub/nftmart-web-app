@@ -25,8 +25,8 @@ const PolkaProvider = ({ children }: Props) => {
       {isInitialized ? (
         children
       ) : (
-        <Center w="100%">
-          <Spinner />
+        <Center height="100vh">
+          <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
         </Center>
       )}
     </>

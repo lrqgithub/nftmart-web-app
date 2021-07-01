@@ -55,7 +55,7 @@ export default function Footer() {
       <Flex
         p="0"
         width="100%"
-        maxWidth="1280px"
+        maxWidth="1360px"
         display="flex"
         flexWrap="wrap"
         justifyContent="space-between"

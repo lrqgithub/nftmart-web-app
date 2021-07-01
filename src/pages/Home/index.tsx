@@ -1,6 +1,6 @@
 import React, { useState, MouseEventHandler } from 'react';
 import {
-  Spinner, Box, Image, Stack, Flex, Text, Button,
+  Spinner, Box, Image, Stack, Flex, Text, Button, Center,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -35,7 +35,11 @@ const Home = () => {
   const { data: categoriesData, isLoading: categoriesIsLoading } = useCategories();
 
   if (hotNftsIsLoading || expensiveNftsIsLoading || cheapNftsIsLoading || bannerIsLoading || categoriesIsLoading) {
-    return <Spinner />;
+    return (
+      <Center height="100vh">
+        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
+      </Center>
+    );
   }
 
   const handleSelect: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -50,7 +54,6 @@ const Home = () => {
         background="#000000"
         justifyContent="center"
         position="relative"
-        mt="80px"
         mb="40px"
       >
         {/* <Image maxWidth="1360px" width="100%" src={bannerData?.banner} alt="banner" /> */}

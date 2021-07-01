@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react/no-children-prop */
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -10,21 +8,24 @@ import {
 
 import {
   useToast,
-  Text,
   Flex,
-  Button,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Textarea,
 } from '@chakra-ui/react';
 import useParams from '../../hooks/url/useParams';
 import Upload from '../../components/Upload';
+import EditFormTitle from '../../components/EditFormTitle';
+import EditFromSubTitle from '../../components/EditFromSubTitle';
+import SubmitButton from '../../components/SubmitButton';
+import FormInput from '../../components/FormInput';
+import FromTextarea from '../../components/FromTextarea';
+import LeftAddonInput from '../../components/LeftAddonInput';
+import { useAppSelector } from '../../hooks/redux';
+import LoginDetector from '../../components/LoginDetector';
 
 const CreateNft: FC = () => {
   const { t } = useTranslation();
   const toast = useToast();
   const history = useHistory();
+  const chainState = useAppSelector((state) => state.chain);
 
   const schema = Yup.object().shape({
     logoUrl: Yup.string().matches(
@@ -69,26 +70,8 @@ const CreateNft: FC = () => {
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="logoUrl">
           {' '}
-          <Text
-            mt="30px"
-            lineHeight="23px"
-            fontSize="20px"
-            fontFamily="TTHoves-Medium, TTHoves"
-            fontWeight="500"
-            color="#000000"
-          >
-            *Logo image
-          </Text>
-          <Text
-            m="9px 0 24px 0"
-            lineHeight="16px"
-            fontSize="14px"
-            fontFamily="TTHoves-Regular, TTHoves"
-            fontWeight="400"
-            color="#999999"
-          >
-            This image will also be used for navigation. 300 x 300 recommended.
-          </Text>
+          <EditFormTitle text="*Logo image" />
+          <EditFromSubTitle text="This image will also be used for navigation. 300 x 300 recommended." />
         </label>
         <Upload
           id="logoUrl"
@@ -101,26 +84,8 @@ const CreateNft: FC = () => {
         />
         <label htmlFor="featuredUrl">
           {' '}
-          <Text
-            mt="30px"
-            lineHeight="23px"
-            fontSize="20px"
-            fontFamily="TTHoves-Medium, TTHoves"
-            fontWeight="500"
-            color="#000000"
-          >
-            Featured image
-          </Text>
-          <Text
-            m="9px 0 24px 0"
-            lineHeight="16px"
-            fontSize="14px"
-            fontFamily="TTHoves-Regular, TTHoves"
-            fontWeight="400"
-            color="#999999"
-          >
-            This image will be used for featuring your collection on the homepage, category pages, or other promotional areas of NFTMart. 600 x 400 recommended.
-          </Text>
+          <EditFormTitle text="Featured image" />
+          <EditFromSubTitle text="This image will be used for featuring your collection on the homepage, category pages, or other promotional areas of NFTMart. 600 x 400 recommended." />
         </label>
         <Upload
           id="featuredUrl"
@@ -131,175 +96,38 @@ const CreateNft: FC = () => {
             formik.setFieldValue('featuredUrl', v);
           }}
         />
-        <label htmlFor="name">
-          {' '}
-          *Name
-          Only letters, numbers, and hyphens are supported,50 characters or less.
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-        />
         {formik.errors.name && formik.touched.name ? (
           <div style={{ color: 'red' }}>{formik.errors.name}</div>
         ) : null}
         <label htmlFor="name">
           {' '}
-          <Text
-            mt="30px"
-            lineHeight="23px"
-            fontSize="20px"
-            fontFamily="TTHoves-Medium, TTHoves"
-            fontWeight="500"
-            color="#000000"
-          >
-            *Name
-          </Text>
-          <Text
-            lineHeight="16px"
-            fontSize="14px"
-            fontFamily="TTHoves-Regular, TTHoves"
-            fontWeight="400"
-            color="#999999"
-            m="9px 0 24px 0"
-          >
-            Only letters, numbers, and hyphens are supported,50 characters or less.
-          </Text>
+          <EditFormTitle text="*Name" />
+          <EditFromSubTitle text="Only letters, numbers, and hyphens are supported,50 characters or less." />
         </label>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          height="40px"
-          background="#FFFFFF"
-          borderRadius="4px"
-          border="1px solid #E5E5E5"
-          fontSize="12px"
-          fontFamily="TTHoves-Regular, TTHoves"
-          fontWeight="400"
-          color="#999999"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-          placeholder="Username"
-        />
+        <FormInput value={formik.values.name} onChange={formik.handleChange} />
         {formik.errors.name && formik.touched.name ? (
           <div style={{ color: 'red' }}>{formik.errors.name}</div>
         ) : null}
         <label htmlFor="nftMartUrl">
           {' '}
-          <Text
-            mt="30px"
-            lineHeight="23px"
-            fontSize="20px"
-            fontFamily="TTHoves-Medium, TTHoves"
-            fontWeight="500"
-            color="#000000"
-          >
-            *URL
-          </Text>
-          <Text
-            m="9px 0 24px 0"
-            lineHeight="16px"
-            fontSize="14px"
-            fontFamily="TTHoves-Regular, TTHoves"
-            fontWeight="400"
-            color="#999999"
-          >
-            Customize your URL on NFTMart. Must only contain lowercase letters, numbers, and hyphens, 50 characterscters or less.
-          </Text>
+          <EditFormTitle text="*URL" />
+          <EditFromSubTitle text="Customize your URL on NFTMart. Must only contain lowercase letters, numbers, and hyphens, 50 characterscters or less." />
         </label>
-
-        <InputGroup
-          width="600px"
-          height="40px"
-          background="#FFFFFF"
-          borderRadius="4px"
-          border="1px solid #E5E5E5"
-          fontSize="12px"
-          fontFamily="TTHoves-Regular, TTHoves"
-          fontWeight="400"
-          color="#999999"
-        >
-          <InputLeftAddon
-            width="203px"
-            height="40px"
-            background="#F4F4F4"
-            borderRadius="0px 4px 4px 0px"
-            border="1px solid #E5E5E5"
-            fontSize="12px"
-            fontFamily="TTHoves-Regular, TTHoves"
-            fontWeight="400"
-            children="https://nftmart.io/collection/"
-          />
-          <Input
-            fontSize="12px"
-            fontFamily="TTHoves-Regular, TTHoves"
-            fontWeight="400"
-            placeholder=""
-          />
-        </InputGroup>
-
+        <LeftAddonInput />
         <label htmlFor="description">
           {' '}
-          <Text
-            mt="30px"
-            lineHeight="23px"
-            fontSize="20px"
-            fontFamily="TTHoves-Medium, TTHoves"
-            fontWeight="500"
-            color="#000000"
-          >
-            Description
-          </Text>
-          <Text
-            m="9px 0 24px 0"
-            lineHeight="16px"
-            fontSize="14px"
-            fontFamily="TTHoves-Regular, TTHoves"
-            fontWeight="400"
-            color="#999999"
-          >
-            Markdown syntax is supported. 1000 characterscters or less.
-          </Text>
-
+          <EditFormTitle text="Description" />
+          <EditFromSubTitle text="Markdown syntax is supported. 1000 characterscters or less." />
         </label>
-        <Textarea
-          display="flex"
-          alignItems="flex-start"
-          width="600px"
-          height="120px"
-          background="#FFFFFF"
-          borderRadius="4px"
-          border="1px solid #E5E5E5"
-          id="description"
-          name="description"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.description}
-        />
+        <FromTextarea onChange={formik.handleChange} value={formik.values.description} />
         <Flex
           w="600px"
           justifyContent="center"
         >
-          <Button
-            mt="30px"
-            w="96px"
-            height="40px"
-            background="#000000"
-            borderRadius="4px"
-            fontSize="14px"
-            fontFamily="TTHoves-Medium, TTHoves"
-            fontWeight="500"
-            color="#FFFFFF"
-            type="submit"
-          >
-            Submit
-          </Button>
+          <SubmitButton text="Submit" />
         </Flex>
       </form>
+      <LoginDetector />
     </Flex>
   );
 };

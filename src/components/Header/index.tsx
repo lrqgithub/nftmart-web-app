@@ -27,11 +27,13 @@ const date = {
 };
 const Header: FC<HeaderProps> = ({ sticky }) => {
   const history = useHistory();
-  const stateAll = useAppSelector((state) => state.chain);
+  const chainState = useAppSelector((state) => state.chain);
 
   const { t } = useTranslation();
-  const { account } = stateAll;
-
+  const { account } = chainState;
+  if (!account) {
+    history.push('/connect');
+  }
   const formatAddress = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
 
   return (
@@ -48,7 +50,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
     >
       <Container
         py={2}
-        maxW={1280}
+        maxW={1360}
         height="80px"
         display="flex"
         justifyContent="space-between"
@@ -74,7 +76,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
         </Flex>
         <ChangeLanguage />
         <Flex>
-          {account?.meta ? (
+          {account ? (
             <Flex
               flex="1 1 auto"
               justifyContent="flex-end"
@@ -106,7 +108,6 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
               </Button>
             </Flex>
           )}
-
         </Flex>
       </Container>
     </Flex>

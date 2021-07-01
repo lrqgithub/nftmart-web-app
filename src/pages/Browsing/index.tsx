@@ -8,6 +8,7 @@ import {
   InputGroup,
   Input,
   Image,
+  Center,
 } from '@chakra-ui/react';
 import { union, without } from 'lodash';
 
@@ -65,11 +66,15 @@ const Browsing = () => {
   };
 
   if (categoriesIsLoading || collectionsIsLoading || nftsIsLoading) {
-    return <Spinner />;
+    return (
+      <Center height="100vh">
+        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
+      </Center>
+    );
   }
   return (
     <MainContainer title={t('Browsing.title')}>
-      <Container mt="120px" display="flex">
+      <Container mt="40px" display="flex">
         <Flex
           w="260px"
           h="492px"

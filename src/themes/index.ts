@@ -7,6 +7,7 @@ import styles from './styles';
 import colors from './colors';
 import Link from './components/link';
 import Container from './components/container';
+import Button from './components/button';
 
 const overrides: ThemeOverride = {
   colors,
@@ -20,6 +21,7 @@ const overrides: ThemeOverride = {
   components: {
     Link,
     Container,
+    Button,
     // Other components go here
   },
 };

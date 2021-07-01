@@ -41,3 +41,16 @@ export * as IconSearch from './icon_search@2x.png';
 export * as IconXuanzhong from './icon_xuanzhong@2x.png';
 export * as IconAllState from './icon_all_state@2x.png';
 export * as IconAllStateone from './icon_all_state@2x(1).png';
+
+// Detail
+export * as IconDetailsocllections from './icon_Details_collections@2x.png';
+export * as IconDetailsRefresh from './icon_Details_refresh@2x.png';
+export * as IconDetailshaSre from './icon_Details_share@2x.png';
+export * as IconDetailsCollection from './icon_Details_collection@2x.png';
+export * as IconDetailsDetail from './icon_Details_Detail@2x.png';
+export * as ImgWorksBg from './img_works_bg.png';
+export * as HuoDong from './huodong.png';
+export * as DISCORD from './DISCORD.png';
+export * as WEBSITE from './WEBSITE.png';
+export * as Facebook from './facebook.png';
+export * as TWITTER from './TWITTER.png';

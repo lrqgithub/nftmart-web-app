@@ -21,7 +21,7 @@ const Router = () => (
     <PolkaProvider>
       <Switch>
         <Route exact strict path="/">
-          <SellSetting />
+          <Home />
         </Route>
         <Route exact strict path="/browsing">
           <Browsing />

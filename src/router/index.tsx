@@ -13,6 +13,7 @@ import EditProfile from '../pages/ProfileEdit';
 import Browsing from '../pages/Browsing';
 import CreateNft from '../pages/CreateNft';
 import Detail from '../pages/Detail';
+import SellSetting from '../pages/SellSetting';
 
 const Router = () => (
   <HashRouter>
@@ -39,6 +40,9 @@ const Router = () => (
         </Route>
         <Route exact strict path="/detail">
           <Detail />
+        </Route>
+        <Route exact strict path="/sellsetting">
+          <SellSetting />
         </Route>
       </Switch>
     </PolkaProvider>

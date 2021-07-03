@@ -8,6 +8,7 @@ import colors from './colors';
 import Link from './components/link';
 import Container from './components/container';
 import Button from './components/button';
+import Input from './components/input';
 
 const overrides: ThemeOverride = {
   colors,
@@ -19,6 +20,7 @@ const overrides: ThemeOverride = {
   styles, // global style
   // Other foundational style overrides go here
   components: {
+    Input,
     Link,
     Container,
     Button,

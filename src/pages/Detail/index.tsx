@@ -65,7 +65,6 @@ const Detail = () => {
       >
         <Flex
           w="100%"
-          f
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"

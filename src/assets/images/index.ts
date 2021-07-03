@@ -54,3 +54,6 @@ export * as DISCORD from './DISCORD.png';
 export * as WEBSITE from './WEBSITE.png';
 export * as Facebook from './facebook.png';
 export * as TWITTER from './TWITTER.png';
+
+// Sellsetting
+export * as IconLeft from './icon_left.png';

@@ -2,6 +2,7 @@ const obj = {
   primary: '#495FE5',
   success: '#69c13b',
   failure: '#f56c6c',
+  black: '#000000',
   // costom color pattern
   text: {
     black: '#191A24',

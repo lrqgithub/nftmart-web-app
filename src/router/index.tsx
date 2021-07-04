@@ -30,8 +30,8 @@ const Router = () => (
         <Route exact strict path="/account/:collectionId/wallet" component={Account} />
         <Route exact strict path="/account/:collectionId/collections" component={Account} />
         <Route exact strict path="/profile/collection/create" component={CreateCollection} />
-        <Route exact strict path="/profile" component={EditProfile} />
         <Route exact strict path="/profile/nft/create" component={CreateNft} />
+        <Route exact strict path="/profile" component={EditProfile} />
         <Route exact strict path="/sellSetting" component={SellSetting} />
       </Switch>
     </PolkaProvider>

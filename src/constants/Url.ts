@@ -14,13 +14,14 @@ export const PINATA_SERVER = 'https://ipfs-web.bcdata.top/ipfs/'; // query with 
 export const UPLOAD_PINATA_SERVER = 'https://gateway.pinata.cloud/ipfs/';
 export const UPLOAD_OWN_SERVER = 'https://ipfs-api.bcdata.top/api/v0/add?stream-channels=true&pin=true&progress=true&wrap-with-directory=false';
 
-export const NAV_MAP: Record<string, string> = {
-  navHome: '/',
-  navBrowing: '/browsing',
-  navListSale: `/browsing?status=${statusArr[2]}`,
-  navAuction: `/browsing?status=${statusArr[1]}`,
-  navActive: '/active',
-};
+export const NAV_MAP = [
+  { title: 'navHome', path: '/', requiredLogin: false },
+  { title: 'navBrowing', path: '/browsing', requiredLogin: false },
+  { title: 'navListSale', path: `/browsing?status=${statusArr[2]}`, requiredLogin: false },
+  { title: 'navAuction', path: `/browsing?status=${statusArr[1]}`, requiredLogin: false },
+  { title: 'navActive', path: '/active', requiredLogin: false },
+  { title: 'navCreate', path: '/profile/collection/create', requiredLogin: true },
+];
 
 // online
 

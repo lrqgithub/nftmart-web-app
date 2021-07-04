@@ -42,7 +42,7 @@
   "createVerificationDescription": "说明不能超过200个字符",
   "createVerificationRequired": "必填",
   "createVerificationSelect": "请选择作品集",
-  
+
   "ClickToCopy": "Click to copy",
   "ViewInScan": "View in Scan",
   "Address": "Address",
@@ -54,7 +54,7 @@
   "componentCollectionPriceTooltip": "NFT 的价格",
   "componentCollectionPledge": "质押金",
   "componentCollectionPledge.tooltip": "NFT 的质押金额",
- 
+
   "navHome": "Home",
   "navBrowing": "Browing",
   "navAuction": "Auction",
@@ -63,6 +63,7 @@
   "navListSale": "Listing",
   "navLatestCreate": "Not for sale",
   "navLatestStrike": "Sold Recently",
+  "navCreate": "Create",
   "common": {
     "save": "保存"
   },

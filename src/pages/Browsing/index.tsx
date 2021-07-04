@@ -1,4 +1,4 @@
-import React, { useState, MouseEventHandler } from 'react';
+import React, { useState, useEffect, MouseEventHandler } from 'react';
 import {
   Spinner,
   Flex,
@@ -28,19 +28,31 @@ import {
   IconAllState,
   IconAllStateone,
 } from '../../assets/images';
-
-const statusArr = ['buyNow', 'onAuction', 'onAuction', 'hasOffers'];
+import useParams from '../../hooks/url/useParams';
+import { statusArr } from '../../constants/Status';
 
 const Browsing = () => {
   const { t } = useTranslation();
+
+  const params = useParams();
+  const status = params.get('status');
+
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
-  const [selectedStatusArr, setSelectedStatusArr] = useState([statusArr[0]]);
+  const [selectedStatusArr, setSelectedStatusArr] = useState<string[]>([]);
   const [selectedCollectionArr, setSelectedCollectionArr] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (status) {
+      setSelectedStatusArr([status]);
+    } else {
+      setSelectedStatusArr([]);
+    }
+  }, [status]);
 
   const { data: categoriesData, isLoading: categoriesIsLoading } = useCategories();
   const { data: collectionsData, isLoading: collectionsIsLoading } = useCollections();
   const { data: nftsData, isLoading: nftsIsLoading } = useNfts(
-    '', selectedCategoryId, selectedCollectionArr, selectedStatusArr,
+    { category: selectedCategoryId, collection: selectedCollectionArr, status: selectedStatusArr },
   );
 
   const handleSelectCategory: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -48,18 +60,18 @@ const Browsing = () => {
   };
 
   const handleSelectStatus: MouseEventHandler<HTMLButtonElement> = (event) => {
-    const status = event.currentTarget.id;
+    const clickedStatus = event.currentTarget.id;
     setSelectedStatusArr(
-      selectedStatusArr.indexOf(status) > -1
+      selectedStatusArr.indexOf(clickedStatus) > -1
         ? without(selectedStatusArr, event.currentTarget.id)
         : union(selectedStatusArr, [event.currentTarget.id]),
     );
   };
 
   const handleSelectCollection: MouseEventHandler<HTMLButtonElement> = (event) => {
-    const status = event.currentTarget.id;
+    const clickedCollection = event.currentTarget.id;
     setSelectedCollectionArr(
-      selectedCollectionArr.indexOf(status) > -1
+      selectedCollectionArr.indexOf(clickedCollection) > -1
         ? without(selectedCollectionArr, event.currentTarget.id)
         : union(selectedCollectionArr, [event.currentTarget.id]),
     );
@@ -157,7 +169,7 @@ const Browsing = () => {
             <SortBy />
           </Flex>
           <Flex width="1088px" flexFlow="row wrap" justifyContent="space-between">
-            {nftsData?.list.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
+            {nftsData?.orders.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
           </Flex>
         </Flex>
       </Container>

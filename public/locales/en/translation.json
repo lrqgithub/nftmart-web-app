@@ -1,17 +1,13 @@
 {
   "title": "NFTmart",
-  
- "langEn": "English",
- "langZn": "中文",
- "Login": "Login",
-
- "quickAreaWallet": "Wallet",
+  "langEn": "English",
+  "langZn": "中文",
+  "Login": "Login",
+  "quickAreaWallet": "Wallet",
   "quickAreaCollections": "My Collections",
   "quickAreaNftCreate": "Create NFT",
   "quickAreaSwitch": "Switch Account",
   "quickAreaProfileEdit": "Edit Profile",
-
-
   "createTitle": "Create Asset",
   "createCollectionTitle": "Create Collection",
   "createSave": "Save",
@@ -42,19 +38,16 @@
   "createVerificationDescription": "description must be at most 200 characters",
   "createVerificationRequired": "Required",
   "createVerificationSelect": "select",
-
   "ClickToCopy": "Click to copy",
   "ViewInScan": "View in Scan",
   "Address": "Address",
   "Balance": "Balance",
-  
   "componentCollectionTitle": "Title",
   "componentCollectionTitleTooltip": "The name of this NFT",
   "componentCollectionPrice": "Price",
   "componentCollectionPriceTooltip": "The offer price of this NFT",
   "componentCollectionPledge": "Pledge",
   "componentCollectionPledge.tooltip": "The pledge of this asset",
-  
   "navHome": "Home",
   "navBrowing": "Browing",
   "navAuction": "Auction",
@@ -70,10 +63,17 @@
     "title": "NFTmart",
     "more": "more"
   },
+  "Collection": {
+    "title": "Collection"
+  },
   "Browing": {
     "collectionPlaceholder": "Filter Collections",
     "Collections": "Collections",
-    "Status": "Status"
+    "Status": "Status",
+    "buyNow": "BuyNow",
+    "onAuction": "On Auction",
+    "newListing": "New Listing",
+    "hasOffers": "Has Offers"
   },
   "ProfileEdit": {
     "title": "Edit Profile",

@@ -59,7 +59,10 @@ const AccountList: React.FC<AccountListProps> = ({ InjectedAccountList, handleCl
     const fetchBalances = async () => {
       await Promise.all(
         InjectedAccountList.map(async (account) => {
-          const res = await fetchAccount(account.address);
+          // TODO replace mock address
+          const res = await fetchAccount('8813db97-4e93-4ef1-b473-63ed02456d56');
+          // const res = await fetchAccount(account.address);
+
           resArr.push(res as any);
         }),
       );

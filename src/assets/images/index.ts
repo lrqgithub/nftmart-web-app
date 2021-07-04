@@ -57,3 +57,6 @@ export * as TWITTER from './TWITTER.png';
 
 // Sellsetting
 export * as IconLeft from './icon_left.png';
+
+// Collection
+export * as CollectionBackground from './img_bg_Collection.png';

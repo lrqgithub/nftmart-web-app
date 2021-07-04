@@ -1,15 +1,10 @@
 import React, { FC, useMemo } from 'react';
 import {
   HTMLChakraProps,
-  forwardRef,
-  ChakraProps,
-  chakra,
-  ComponentWithAs,
   Box,
   Flex,
   Text,
 } from '@chakra-ui/react';
-import { motion, MotionProps, isValidMotionProp } from 'framer-motion';
 import { Shimmer } from 'react-shimmer';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useTranslation } from 'react-i18next';
@@ -19,25 +14,11 @@ import { parseMoneyText } from '../../utils/format';
 import {
   PriceIcon,
 } from '../../assets/images';
+import MotionBox from '../MotionBox';
 
 type NftCardProps = {
   nft: NFT
 } & HTMLChakraProps<'div'>
-
-export type MotionBoxProps = Omit<ChakraProps, keyof MotionProps> &
-  MotionProps & {
-    as?: React.ElementType;
-  };
-export const MotionBox = motion(
-  forwardRef<MotionBoxProps, 'div'>((props, ref) => {
-    const chakraProps = Object.fromEntries(
-      // do not pass framer props to DOM element
-      Object.entries(props).filter(([key]) => !isValidMotionProp(key)),
-    );
-    // FIXME: ref type imcompatible
-    return <chakra.div ref={ref as any} {...chakraProps} />;
-  }),
-) as ComponentWithAs<'div', MotionBoxProps>;
 
 const NftCard: FC<NftCardProps> = ({
   nft: {

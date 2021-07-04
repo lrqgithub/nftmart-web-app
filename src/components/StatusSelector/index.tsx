@@ -2,6 +2,7 @@ import React, { FC, MouseEventHandler } from 'react';
 import {
   Box, Button, HTMLChakraProps,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
 type StatusSelectorProps = {
   statusArr: string[],
@@ -9,35 +10,40 @@ type StatusSelectorProps = {
   handleSelect: MouseEventHandler<HTMLButtonElement>
 } & HTMLChakraProps<'div'>
 
-const StatusSelector: FC<StatusSelectorProps> = (({ selectedArr, statusArr, handleSelect }) => (
-  <Box w="220px" display="flex" flexFlow="row wrap" justifyContent="space-between">
-    {statusArr.map((status) => (
-
-      <Button
-        mt="10px"
-        width="105px"
-        height="40px"
-        background={selectedArr.indexOf(status) > -1 ? '#000000' : '#FFFFFF'}
-        borderRadius="4px"
-        key={status}
-        id={status}
-        onClick={handleSelect}
-        colorScheme="teal"
-        fontSize="14px"
-        fontFamily="PingFangTC-Regular, PingFangTC"
-        fontWeight="400"
-        color={selectedArr.indexOf(status) > -1 ? '#FFFFFF' : '#000000'}
-        variant={selectedArr.indexOf(status) > -1 ? 'solid' : 'outline'}
-        // _hover={{ background: '#000000', color: '#FFFFFF' }}
-        _focus={{
-          border: 'none',
-          textDecoration: 'none',
-        }}
-      >
-        {status}
-      </Button>
-    ))}
-  </Box>
-));
-
+const StatusSelector: FC<StatusSelectorProps> = (({ selectedArr, statusArr, handleSelect }) => {
+  const { t } = useTranslation();
+  console.log(selectedArr, 'selectedArr');
+  return (
+    <Box w="220px" display="flex" flexFlow="row wrap" justifyContent="space-between">
+      {statusArr.map((status) => {
+        const isSelected = selectedArr.indexOf(status) > -1;
+        return (
+          <Button
+            mt="10px"
+            width="105px"
+            height="40px"
+            background={isSelected ? '#000000' : '#FFFFFF'}
+            borderRadius="4px"
+            key={status}
+            id={status}
+            onClick={handleSelect}
+            colorScheme="teal"
+            fontSize="14px"
+            fontFamily="PingFangTC-Regular, PingFangTC"
+            fontWeight="400"
+            color={isSelected ? '#FFFFFF' : '#000000'}
+            variant={isSelected ? 'solid' : 'outline'}
+            // _hover={{ background: '#000000', color: '#FFFFFF' }}
+            _focus={{
+              border: 'none',
+              textDecoration: 'none',
+            }}
+          >
+            {t(`Browing.${status}`)}
+          </Button>
+        );
+      })}
+    </Box>
+  );
+});
 export default StatusSelector;

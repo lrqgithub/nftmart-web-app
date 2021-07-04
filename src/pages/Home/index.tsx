@@ -141,7 +141,7 @@ const Home = () => {
                 }}
                 className="mySwiper"
               >
-                {hotNftsData?.list.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
+                {hotNftsData?.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
               </Swiper>
             </Stack>
           </Flex>
@@ -166,7 +166,7 @@ const Home = () => {
                 }}
                 className="mySwiper"
               >
-                {expensiveNftsData?.list.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
+                {expensiveNftsData?.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
               </Swiper>
             </Stack>
           </Flex>
@@ -191,7 +191,7 @@ const Home = () => {
                 }}
                 className="mySwiper"
               >
-                {cheapNftsData?.list.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
+                {cheapNftsData?.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
               </Swiper>
             </Stack>
           </Flex>

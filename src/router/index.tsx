@@ -14,36 +14,25 @@ import Browsing from '../pages/Browsing';
 import CreateNft from '../pages/CreateNft';
 import Detail from '../pages/Detail';
 import SellSetting from '../pages/SellSetting';
+import Collection from '../pages/Collection';
+import Account from '../pages/Account';
 
 const Router = () => (
   <HashRouter>
     <Header />
     <PolkaProvider>
       <Switch>
-        <Route exact strict path="/">
-          <Home />
-        </Route>
-        <Route exact strict path="/browsing">
-          <Browsing />
-        </Route>
-        <Route exact strict path="/connect">
-          <Connect />
-        </Route>
-        <Route exact strict path="/profile">
-          <EditProfile />
-        </Route>
-        <Route exact strict path="/profile/collection/create">
-          <CreateCollection />
-        </Route>
-        <Route exact strict path="/profile/nft/create">
-          <CreateNft />
-        </Route>
-        <Route exact strict path="/detail">
-          <Detail />
-        </Route>
-        <Route exact strict path="/sellsetting">
-          <SellSetting />
-        </Route>
+        <Route exact strict path="/" component={Home} />
+        <Route exact strict path="/browsing" component={Browsing} />
+        <Route exact strict path="/connect" component={Connect} />
+        <Route exact strict path="/collection/:id" component={Collection} />
+        <Route exact strict path="/collection/:collectionId/:nftId" component={Detail} />
+        <Route exact strict path="/account/:collectionId/wallet" component={Account} />
+        <Route exact strict path="/account/:collectionId/collections" component={Account} />
+        <Route exact strict path="/profile/collection/create" component={CreateCollection} />
+        <Route exact strict path="/profile" component={EditProfile} />
+        <Route exact strict path="/profile/nft/create" component={CreateNft} />
+        <Route exact strict path="/sellSetting" component={SellSetting} />
       </Switch>
     </PolkaProvider>
     <Footer />

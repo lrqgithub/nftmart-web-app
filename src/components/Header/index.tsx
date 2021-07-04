@@ -31,9 +31,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
 
   const { t } = useTranslation();
   const { account } = chainState;
-  if (!account) {
-    history.push('/connect');
-  }
+
   const formatAddress = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
 
   return (

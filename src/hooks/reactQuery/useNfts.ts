@@ -6,8 +6,18 @@ const hot = 'hot';
 const expensive = 'expensive';
 const cheap = 'cheap';
 
-export default (type?: string, category?: string, collection?: string[], status?: string[]) => useQuery(
-  QUERY_KEYS.NFTS, () => fetchNfts(type, category, collection, status),
+type QueryParams = {
+  type?: string,
+  category?: string,
+  collection?: string[],
+  status?: string[]
+}
+
+export default ({
+  type, category, collection, status,
+}: QueryParams) => useQuery(
+  [QUERY_KEYS.NFTS, type, category, collection, status],
+  () => fetchNfts(type, category, collection, status),
 );
 
 export const useHotNfts = (category?: string) => useQuery(

@@ -37,7 +37,7 @@ const CreateNft: FC = () => {
       t('createVerificationExternalUrl'),
     ),
     name: Yup.string()
-      .max(20, t('createVerificationCollectionName'))
+      .max(50, t('createVerificationCollectionName'))
       .required(t('createVerificationRequired')),
     nftMartUrl: Yup.string().max(200).required(t('createVerificationRequired')),
     description: Yup.string()
@@ -96,15 +96,12 @@ const CreateNft: FC = () => {
             formik.setFieldValue('featuredUrl', v);
           }}
         />
-        {formik.errors.name && formik.touched.name ? (
-          <div style={{ color: 'red' }}>{formik.errors.name}</div>
-        ) : null}
         <label htmlFor="name">
           {' '}
           <EditFormTitle text="*Name" />
           <EditFromSubTitle text="Only letters, numbers, and hyphens are supported,50 characters or less." />
         </label>
-        <FormInput value={formik.values.name} onChange={formik.handleChange} />
+        <FormInput id="name" value={formik.values.name} onChange={formik.handleChange} />
         {formik.errors.name && formik.touched.name ? (
           <div style={{ color: 'red' }}>{formik.errors.name}</div>
         ) : null}
@@ -113,13 +110,13 @@ const CreateNft: FC = () => {
           <EditFormTitle text="*URL" />
           <EditFromSubTitle text="Customize your URL on NFTMart. Must only contain lowercase letters, numbers, and hyphens, 50 characterscters or less." />
         </label>
-        <LeftAddonInput />
+        <LeftAddonInput id="nftMartUrl" value={formik.values.nftMartUrl} onChange={formik.handleChange} />
         <label htmlFor="description">
           {' '}
           <EditFormTitle text="Description" />
           <EditFromSubTitle text="Markdown syntax is supported. 1000 characterscters or less." />
         </label>
-        <FromTextarea onChange={formik.handleChange} value={formik.values.description} />
+        <FromTextarea id="description" onChange={formik.handleChange} value={formik.values.description} />
         <Flex
           w="600px"
           justifyContent="center"

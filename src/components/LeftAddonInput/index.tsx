@@ -5,7 +5,13 @@ import {
   InputLeftAddon,
 } from '@chakra-ui/react';
 
-const LeftAddonInput: FC = () => (
+interface Props {
+  id: string
+  value: string
+  onChange: React.ChangeEventHandler<HTMLInputElement>
+}
+
+const LeftAddonInput: FC<Props> = ({ id, value, onChange }) => (
   <InputGroup
     width="600px"
     height="40px"
@@ -34,6 +40,10 @@ const LeftAddonInput: FC = () => (
       fontFamily="TTHoves-Regular, TTHoves"
       fontWeight="400"
       placeholder=""
+      onChange={onChange}
+      value={value}
+      id={id}
+      name={id}
     />
   </InputGroup>
 );

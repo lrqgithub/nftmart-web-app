@@ -23,6 +23,8 @@ import {
   Colors,
   PINATA_POST_SERVER,
   UPLOAD_OWN_SERVER,
+  IPFS_POST_SERVER,
+  PINATA_SERVER,
 } from '../../constants';
 import { t } from '../../i18n';
 import {
@@ -54,7 +56,6 @@ const CropperCop: React.FC<INavProps> = (props) => {
   };
 
   const getCropData = () => {
-    console.log('cropper : ', cropper);
     if (typeof cropper !== 'undefined' && cropper.getCroppedCanvas()) {
       const imgData = cropper.getCroppedCanvas().toDataURL('image/jpeg');
       const cropBlob = dataURLtoBlob(imgData);
@@ -165,7 +166,7 @@ const Upload: FC<UploadProps> = ({
       return;
     }
 
-    const ipfs = create(URL.IPFS_POST_SERVER);
+    const ipfs = create({ url: IPFS_POST_SERVER });
     if (files.length === 0) {
       return;
     }
@@ -236,7 +237,6 @@ const Upload: FC<UploadProps> = ({
   };
 
   useEffect(() => {
-    console.log(valueFromProp, 'valueFromProp');
     if (valueFromProp.url !== !!valueFromProp.url) {
       setValue(valueFromProp.url as string);
     }
@@ -311,7 +311,7 @@ const Upload: FC<UploadProps> = ({
       ) : (
         <Box>
           {value ? (
-            <Image w="350px" h="auto" m="16px 0" src={`${URL.PINATA_SERVER}${value}`} />
+            <Image w="350px" h="auto" m="16px 0" src={`${PINATA_SERVER}${value}`} />
           ) : (
             <Box>
               {file ? (
@@ -347,22 +347,22 @@ const Upload: FC<UploadProps> = ({
   return (
     <Box>
       <Box {...boxProps}>
-        <FormLabel htmlFor="url">
-          <Input
-            id={id}
-            display="none"
-            type="file"
-            onClick={(e) => {
-              if (e) {
-                e.stopPropagation();
-              }
-            }}
-            onChange={captureFile}
-            {...rest}
-          />
+        <FormLabel htmlFor={id}>
           {/* {txtUpload} */}
           {!showCrop ? imgWrap : ''}
         </FormLabel>
+        <Input
+          id={id}
+          display="none"
+          type="file"
+          // onClick={(e) => {
+          //   if (e) {
+          //     e.stopPropagation();
+          //   }
+          // }}
+          onChange={captureFile}
+          {...rest}
+        />
         {/* 切图编辑时不触发input点击事件 */}
         {showCrop ? imgWrap : ''}
       </Box>

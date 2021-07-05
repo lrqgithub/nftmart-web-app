@@ -22,7 +22,7 @@ const Router = () => (
     <Header />
     <PolkaProvider>
       <Switch>
-        <Route exact strict path="/" component={Home} />
+        <Route exact strict path="/" component={Account} />
         <Route exact strict path="/browsing" component={Browsing} />
         <Route exact strict path="/connect" component={Connect} />
         <Route exact strict path="/collection/:id" component={Collection} />

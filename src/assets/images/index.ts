@@ -1,3 +1,5 @@
+import Account from '../../pages/Account';
+
 export * as GithubLogo from './footer_icon_github.png';
 export * as GithubLogoHover from './footer_icon_github_s.png';
 export * as TwitterLogo from './footer_icon_twitter.png';
@@ -43,9 +45,7 @@ export * as IconAllState from './icon_all_state@2x.png';
 export * as IconAllStateone from './icon_all_state@2x(1).png';
 
 // Detail
-export * as IconDetailsocllections from './icon_Details_collections@2x.png';
 export * as IconDetailsRefresh from './icon_Details_refresh@2x.png';
-export * as IconDetailshaSre from './icon_Details_share@2x.png';
 export * as IconDetailsCollection from './icon_Details_collection@2x.png';
 export * as IconDetailsDetail from './icon_Details_Detail@2x.png';
 export * as ImgWorksBg from './img_works_bg.png';
@@ -60,3 +60,18 @@ export * as IconLeft from './icon_left.png';
 
 // Collection
 export * as CollectionBackground from './img_bg_Collection.png';
+
+// account
+export * as AccountBanner from './img_Profile_bg@2x.png';
+export * as Img from './img.jpg';
+
+// icon
+export * as IconPen from './icon_pen.png';
+export * as IconDetailshaSre from './icon_Details_share@2x.png';
+export * as IconOffers from './icon_offers.png';
+export * as IconWallet from './icon_wallet.png';
+export * as IconCreate from './icon_create.png';
+export * as IconDetailsocllections from './icon_Details_collections@2x.png';
+export * as IconOffersS from './icon_offers_s.png';
+export * as IconWalletS from './icon_wallet_s.png';
+export * as IconDetailsocllectionsS from './icon_Details_ collections_n@2x_s.png';

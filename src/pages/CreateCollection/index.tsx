@@ -132,7 +132,7 @@ const CreateCollection: FC = () => {
         ) : null}
         <Upload
           id="featuredUrl"
-          mediatype="nocuttiing"
+          mediatype="cutting"
           rectangle="rectangle"
           value={formik.values.featuredUrl}
           onChange={(v: any) => {

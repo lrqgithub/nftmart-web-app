@@ -4,11 +4,12 @@ import {
 } from '@chakra-ui/react';
 
 interface Props {
+  id: string
   value: string
   onChange: ChangeEventHandler<HTMLTextAreaElement>
 }
 
-const FromTextarea: FC<Props> = ({ value, onChange }) => (
+const FromTextarea: FC<Props> = ({ id, value, onChange }) => (
   <Textarea
     display="flex"
     alignItems="flex-start"
@@ -17,8 +18,8 @@ const FromTextarea: FC<Props> = ({ value, onChange }) => (
     background="#FFFFFF"
     borderRadius="4px"
     border="1px solid #E5E5E5"
-    id="description"
-    name="description"
+    id={id}
+    name={id}
     type="text"
     onChange={onChange}
     value={value}

@@ -4,14 +4,15 @@ import {
 } from '@chakra-ui/react';
 
 interface Props {
+  id: string
   value: string
   onChange: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const FormInput: FC<Props> = ({ value, onChange }) => (
+const FormInput: FC<Props> = ({ id, value, onChange }) => (
   <Input
-    id={value}
-    name={value}
+    id={id}
+    name={id}
     type="text"
     height="40px"
     background="#FFFFFF"
@@ -23,7 +24,6 @@ const FormInput: FC<Props> = ({ value, onChange }) => (
     color="#999999"
     onChange={onChange}
     value={value}
-    placeholder="Username"
   />
 );
 

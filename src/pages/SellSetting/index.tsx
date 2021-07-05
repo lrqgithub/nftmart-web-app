@@ -56,7 +56,6 @@ const Detail = () => {
   const handleSelect: MouseEventHandler<HTMLButtonElement> = (event) => {
     setSelectId(Number(event.currentTarget.id));
   };
-  console.log(selectId);
 
   return (
     <MainContainer title={t('Detail.title')}>

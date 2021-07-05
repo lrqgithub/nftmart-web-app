@@ -75,7 +75,7 @@ const CreateNft: FC = () => {
         </label>
         <Upload
           id="logoUrl"
-          mediatype="nocuttiing"
+          mediatype="nocutting"
           rectangle=""
           value={formik.values.logoUrl}
           onChange={(v: any) => {
@@ -89,7 +89,7 @@ const CreateNft: FC = () => {
         </label>
         <Upload
           id="featuredUrl"
-          mediatype="nocuttiing"
+          mediatype="cutting"
           rectangle="rectangle"
           value={formik.values.featuredUrl}
           onChange={(v: any) => {

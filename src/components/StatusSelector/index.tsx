@@ -27,13 +27,10 @@ const StatusSelector: FC<StatusSelectorProps> = (({ selectedArr, statusArr, hand
             key={status}
             id={status}
             onClick={handleSelect}
-            colorScheme="teal"
             fontSize="14px"
             fontFamily="PingFangTC-Regular, PingFangTC"
             fontWeight="400"
             color={isSelected ? '#FFFFFF' : '#000000'}
-            variant={isSelected ? 'solid' : 'outline'}
-            // _hover={{ background: '#000000', color: '#FFFFFF' }}
             _focus={{
               border: 'none',
               textDecoration: 'none',

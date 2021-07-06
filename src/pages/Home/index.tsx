@@ -1,6 +1,14 @@
 import React, { useState, MouseEventHandler } from 'react';
 import {
-  Spinner, Box, Image, Stack, Flex, Text, Button, Center,
+  Spinner,
+  Box,
+  Image,
+  Stack,
+  Flex,
+  Text,
+  Button,
+  Center,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -128,6 +136,7 @@ const Home = () => {
             <Stack direction="row" height="364px">
               <Swiper
                 scrollbar={{ draggable: true }}
+                slidesPerView={5}
                 breakpoints={{
                   640: {
                     slidesPerView: 2,
@@ -141,6 +150,7 @@ const Home = () => {
                 }}
                 className="mySwiper"
               >
+
                 {hotNftsData?.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
               </Swiper>
             </Stack>

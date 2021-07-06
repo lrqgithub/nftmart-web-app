@@ -47,6 +47,9 @@ const obj = {
       height: '8px',
       background: '#E5E5E5',
     },
+    '.swiper-container': {
+      width: '100%',
+    },
   }),
 };
 

@@ -34,6 +34,7 @@ import {
   IconOffersS,
   IconWalletS,
   IconDetailsocllectionsS,
+  ImgAdd,
 } from '../../assets/images';
 import CollectionSelector from '../../components/CollectionSelector';
 import SortBy from '../../components/SortBy';
@@ -171,7 +172,6 @@ const Account = () => {
             lineHeight="33px"
           >
             NickName
-
           </Text>
           <Text
             mt="12px"
@@ -635,25 +635,38 @@ const Account = () => {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <Image w="100%" h="195px" src={AccountBanner.default} alt="" />
+                  <Image
+                    border="1px solid #000000"
+                    borderStyle="dashed"
+                    w="100px"
+                    h="100px"
+                    src={ImgAdd.default}
+                    alt=""
+                  />
                   <Text
+                    textAlign="center"
                     w="100%"
-                    background="#000000"
-                    pl="16px"
-                    lineHeight="54px"
-                    fontSize="16px"
+                    lineHeight="px"
+                    fontSize="14px"
                     fontFamily="TTHoves-Regular, TTHoves"
                     fontWeight="400"
-                    color="#FFFFFF"
+                    color="#999999"
                   >
-                    in 2 hours
+                    Create a new collection
                   </Text>
-                  <Button>
+                  <Button
+                    mt="24px"
+                    width="109px"
+                    height="40px"
+                    background="#000000"
+                    borderRadius="4px"
+                  >
                     <Text
                       fontSize="14px"
                       fontFamily="TTHoves-Medium, TTHoves"
                       fontWeight="500"
                       lineHeight="16px"
+                      color="#FFFFFF"
                     >
                       create
                     </Text>
@@ -684,10 +697,8 @@ const Account = () => {
                       in 2 hours
                     </Text>
                   </Flex>
-
                 ))}
               </SimpleGrid>
-
             </Container>
           ) : ''}
         </TabPanels>

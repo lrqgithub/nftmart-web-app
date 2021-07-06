@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 import NavLink from '../Navlink';
-import Account from '../Account/index';
+import AccountPopover from '../AccountPopover';
 import ChangeLanguage from '../ChangeLanguage';
 import Test from '../Test';
 import {
@@ -19,12 +19,15 @@ import { useAppSelector } from '../../hooks/redux';
 export interface HeaderProps {
   sticky?: boolean;
 }
-const date = {
-  Balance: 123,
-  Owned: 123,
-  Created: 123,
-  Colection: 123,
+// TODO: replace with Real data
+const DATA = {
+  balance: 123,
+  ownedNft: 123,
+  createdNft: 123,
+  createdClass: 123,
+  address: '8813db97-4e93-4ef1-b473-63ed02456d56',
 };
+
 const Header: FC<HeaderProps> = ({ sticky }) => {
   const history = useHistory();
   const chainState = useAppSelector((state) => state.chain);
@@ -82,7 +85,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
               height="55px"
               mr={4}
             >
-              <Account username={account.address} avatar={account.meta.name} date={date} />
+              <AccountPopover username={account.address} avatar={account.meta.name} data={DATA} />
             </Flex>
           ) : (
             <Flex>

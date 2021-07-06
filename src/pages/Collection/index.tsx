@@ -24,7 +24,6 @@ import {
 } from '../../assets/images';
 import SortBy from '../../components/SortBy';
 import useNfts from '../../hooks/reactQuery/useNfts';
-import useParams from '../../hooks/url/useParams';
 import NftCard from '../../components/NftCard';
 
 const ICONS = [
@@ -40,12 +39,12 @@ const ICON_LIST = ICONS.map((item, index) => ({
   link: '',
 }));
 
-const Collection = ({ match }: RouteComponentProps<{ id: string }>) => {
+const Collection = ({ match }: RouteComponentProps<{ address: string }>) => {
   const { t } = useTranslation();
 
-  const { id } = match.params;
+  const { address } = match.params;
 
-  const { data, isLoading } = useNfts({ collection: [id] });
+  const { data, isLoading } = useNfts({ address });
 
   if (isLoading) {
     return (

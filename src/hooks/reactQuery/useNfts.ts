@@ -11,10 +11,11 @@ type QueryParams = {
   category?: string,
   collection?: string[],
   status?: string[]
+  address: string
 }
 
 export default ({
-  type, category, collection, status,
+  type, category, collection, status, address,
 }: QueryParams) => useQuery(
   [QUERY_KEYS.NFTS, type, category, collection, status],
   () => fetchNfts(type, category, collection, status),

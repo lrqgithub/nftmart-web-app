@@ -9,6 +9,7 @@ import {
   Input,
   Image,
   Center,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import { union, without } from 'lodash';
 
@@ -168,8 +169,14 @@ const Browsing = () => {
             </Text>
             <SortBy />
           </Flex>
-          <Flex width="1088px" flexFlow="row wrap" justifyContent="space-between">
-            {nftsData?.orders.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
+          <Flex width="1088px">
+            <SimpleGrid
+              w="100%"
+              columns={4}
+              spacing={4}
+            >
+              {nftsData?.orders?.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
+            </SimpleGrid>
           </Flex>
         </Flex>
       </Container>

@@ -3,13 +3,11 @@
   "langEn": "English",
   "langZn": "中文",
   "Login": "登录",
-
-  "quickAreaWallet": "Wallet",
-  "quickAreaCollections": "My Collections",
-  "quickAreaNftCreate": "Create NFT",
+  "quickAreaOwned": "Owned",
+  "quickAreaCreated": "Created",
+  "quickAreaCollections": "Collections",
   "quickAreaSwitch": "Switch Account",
   "quickAreaProfileEdit": "Edit Profile",
-
   "createTitle": "创建作品",
   "createCollectionTitle": "创建作品集",
   "createSave": "保存",
@@ -42,19 +40,16 @@
   "createVerificationDescription": "说明不能超过200个字符",
   "createVerificationRequired": "必填",
   "createVerificationSelect": "请选择作品集",
-
   "ClickToCopy": "Click to copy",
   "ViewInScan": "View in Scan",
   "Address": "Address",
   "Balance": "Balance",
-
   "componentCollectionTitle": "作品名称",
   "componentCollectionTitleTooltip": "NFT 作品名称",
   "componentCollectionPrice": "价格",
   "componentCollectionPriceTooltip": "NFT 的价格",
   "componentCollectionPledge": "质押金",
   "componentCollectionPledge.tooltip": "NFT 的质押金额",
-
   "navHome": "Home",
   "navBrowing": "Browing",
   "navAuction": "Auction",

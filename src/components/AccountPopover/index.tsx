@@ -30,24 +30,26 @@ import {
   IoMdArrowDropdown,
   IoMdArrowDropup,
 } from '../../assets/images';
+import { statusArr } from '../../constants/Status';
+import { EXPLORER_URL } from '../../constants';
 
 export interface LoginProps {
   avatar?: string;
   username?: string;
-  date:{
-    Balance: number,
-    Owned: number,
-    Created: number,
-    Colection: number,
+  data: {
+    balance: number,
+    ownedNft: number,
+    createdNft: number,
+    createdClass: number,
+    address: string
   };
 }
 const ICONS = {
-  quickAreaWallet: Owned,
-  quickAreaCollections: Collections,
-  quickAreaNftCreate: Created,
+  quickAreaOwned: Owned,
+  quickAreaCreated: Collections,
+  quickAreaCollections: Created,
 };
-const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
-  const location = useLocation();
+const AccountPopover: FC<LoginProps> = ({ avatar, username = 'no name', data }) => {
   const account = username;
   // const { whiteList } = store.useState('whiteList');
 
@@ -155,7 +157,6 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                   >
                     {t('Balance')}
                   </Text>
-
                 </Flex>
                 <Text
                   fontSize="14px"
@@ -163,7 +164,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                   fontWeight="400"
                   color="#858999"
                 >
-                  {date.Balance}
+                  {data.balance}
                 </Text>
               </Flex>
               <Text
@@ -185,7 +186,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                     width="14px"
                     height="14px"
                     mr="9px"
-                    src={ICONS.quickAreaWallet.default}
+                    src={ICONS.quickAreaOwned.default}
                   />
                   <Text
                     fontSize="14px"
@@ -193,7 +194,7 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                     fontWeight="blod"
                     color="#191A24"
                   >
-                    {t('quickAreaWallet')}
+                    {t('quickAreaOwned')}
                   </Text>
                 </Flex>
                 <Text
@@ -202,11 +203,11 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                   fontWeight="400"
                   color="#858999"
                 >
-                  {date.Owned}
+                  {data.ownedNft}
                 </Text>
               </Flex>
               <Link
-                href="/wallet"
+                href={`/#/browsing?status=${statusArr[0]}`}
                 width="41px"
                 ml="40px"
                 fontSize="16px"
@@ -221,7 +222,54 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                   textDecoration: 'none',
                 }}
               >
-                add
+                buy
+              </Link>
+            </Flex>
+
+            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
+              <Flex width="100%" justifyContent="space-between" mr="31px">
+                <Flex width="100%" justifyContent="flex-start" alignItems="center">
+                  <Image
+                    width="14px"
+                    height="14px"
+                    mr="9px"
+                    src={ICONS.quickAreaCreated.default}
+                  />
+                  <Text
+                    fontSize="14px"
+                    fontFamily="PingFangSC-Regular, PingFang SC"
+                    fontWeight="blod"
+                    color="#191A24"
+                  >
+                    {t('quickAreaCreated')}
+                  </Text>
+                </Flex>
+                <Text
+                  fontSize="14px"
+                  fontFamily="PingFangSC-Regular, PingFang SC"
+                  fontWeight="400"
+                  color="#858999"
+                >
+                  {data.createdNft}
+                </Text>
+              </Flex>
+              <Link
+                href={`/#/account/${data.address}/wallet`}
+                width="41px"
+                ml="40px"
+                fontSize="16px"
+                fontFamily="PingFangSC-Medium, PingFang SC"
+                fontWeight="500"
+                color="#5C74FF"
+                _hover={{
+                  textDecoration: 'none',
+                }}
+                _focus={{
+                  border: 'none',
+                  textDecoration: 'none',
+                }}
+              >
+                Add
               </Link>
             </Flex>
 
@@ -249,58 +297,11 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                   fontWeight="400"
                   color="#858999"
                 >
-                  {date.Created}
+                  {data.createdClass}
                 </Text>
               </Flex>
               <Link
-                href="/create"
-                width="41px"
-                ml="40px"
-                fontSize="16px"
-                fontFamily="PingFangSC-Medium, PingFang SC"
-                fontWeight="500"
-                color="#5C74FF"
-                _hover={{
-                  textDecoration: 'none',
-                }}
-                _focus={{
-                  border: 'none',
-                  textDecoration: 'none',
-                }}
-              >
-                Add
-              </Link>
-            </Flex>
-
-            <Flex width="100%" height="48px" justifyContent="space-between" alignItems="center">
-              <Flex width="100%" justifyContent="space-between" mr="31px">
-                <Flex width="100%" justifyContent="flex-start" alignItems="center">
-                  <Image
-                    width="14px"
-                    height="14px"
-                    mr="9px"
-                    src={ICONS.quickAreaNftCreate.default}
-                  />
-                  <Text
-                    fontSize="14px"
-                    fontFamily="PingFangSC-Regular, PingFang SC"
-                    fontWeight="blod"
-                    color="#191A24"
-                  >
-                    {t('quickAreaNftCreate')}
-                  </Text>
-                </Flex>
-                <Text
-                  fontSize="14px"
-                  fontFamily="PingFangSC-Regular, PingFang SC"
-                  fontWeight="400"
-                  color="#858999"
-                >
-                  {date.Colection}
-                </Text>
-              </Flex>
-              <Link
-                href="/collections"
+                href={`/#/collection/${data.address}`}
                 width="41px"
                 ml="40px"
                 fontSize="16px"
@@ -339,15 +340,27 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
                   </Text>
 
                 </Flex>
-                <Text
+
+                <Link
+                  href={`${EXPLORER_URL}`}
+                  isExternal
+                  width="120px"
+                  ml="40px"
                   fontSize="16px"
-                  fontFamily="PingFangSC-Semibold, PingFang SC"
-                  fontWeight="600"
+                  fontFamily="PingFangSC-Medium, PingFang SC"
+                  fontWeight="500"
                   color="#5C74FF"
-                  onClick={() => oncopyshow(!copyshow)}
+                  _hover={{
+                    textDecoration: 'none',
+                  }}
+                  _focus={{
+                    border: 'none',
+                    textDecoration: 'none',
+                  }}
+                  open
                 >
                   {t('ViewInScan')}
-                </Text>
+                </Link>
               </Flex>
             </Flex>
             {copyshow ? (
@@ -389,4 +402,4 @@ const Login: FC<LoginProps> = ({ avatar, username = 'no name', date }) => {
   );
 };
 
-export default Login;
+export default AccountPopover;

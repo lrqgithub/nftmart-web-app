@@ -23,8 +23,8 @@ import {
   IconDetailsCollection,
 } from '../../assets/images';
 import SortBy from '../../components/SortBy';
-import useNfts from '../../hooks/reactQuery/useNfts';
-import NftCard from '../../components/NftCard';
+import useCollections from '../../hooks/reactQuery/useCollections';
+import CollectionCard from '../../components/CollectionCard';
 
 const ICONS = [
   { icon: HuoDong.default },
@@ -44,7 +44,7 @@ const Collection = ({ match }: RouteComponentProps<{ address: string }>) => {
 
   const { address } = match.params;
 
-  const { data, isLoading } = useNfts({ address });
+  const { data: collectionsData, isLoading } = useCollections({ address });
 
   if (isLoading) {
     return (
@@ -265,7 +265,7 @@ const Collection = ({ match }: RouteComponentProps<{ address: string }>) => {
         columns={5}
         spacing={4}
       >
-        {data?.orders.map((nft) => <NftCard nft={nft} />)}
+        {collectionsData?.data.collections.map((collection) => <CollectionCard collection={collection} />)}
       </SimpleGrid>
     </MainContainer>
   );

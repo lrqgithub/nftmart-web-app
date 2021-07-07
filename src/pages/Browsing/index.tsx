@@ -41,7 +41,7 @@ const Browsing = () => {
 
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
   const [selectedStatusArr, setSelectedStatusArr] = useState<string[]>([]);
-  const [selectedCollectionArr, setSelectedCollectionArr] = useState<string[]>([]);
+  const [selectedCollectionIdArr, setSelectedCollectionIdArr] = useState<string[]>([]);
 
   useEffect(() => {
     if (status) {
@@ -52,9 +52,9 @@ const Browsing = () => {
   }, [status]);
 
   const { data: categoriesData, isLoading: categoriesIsLoading } = useCategories();
-  const { data: collectionsData, isLoading: collectionsIsLoading } = useCollections();
+  const { data: collectionsData, isLoading: collectionsIsLoading } = useCollections({});
   const { data: nftsData, isLoading: nftsIsLoading } = useNfts(
-    { category: selectedCategoryId, collection: selectedCollectionArr, status: selectedStatusArr },
+    { categoryId: selectedCategoryId, collectionId: selectedCollectionIdArr, status: selectedStatusArr },
   );
 
   const handleSelectCategory: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -72,10 +72,10 @@ const Browsing = () => {
 
   const handleSelectCollection: MouseEventHandler<HTMLButtonElement> = (event) => {
     const clickedCollection = event.currentTarget.id;
-    setSelectedCollectionArr(
-      selectedCollectionArr.indexOf(clickedCollection) > -1
-        ? without(selectedCollectionArr, event.currentTarget.id)
-        : union(selectedCollectionArr, [event.currentTarget.id]),
+    setSelectedCollectionIdArr(
+      selectedCollectionIdArr.indexOf(clickedCollection) > -1
+        ? without(selectedCollectionIdArr, event.currentTarget.id)
+        : union(selectedCollectionIdArr, [event.currentTarget.id]),
     );
   };
   if (categoriesIsLoading || collectionsIsLoading || nftsIsLoading) {
@@ -134,12 +134,12 @@ const Browsing = () => {
               placeholder={t('Browing.collectionPlaceholder')}
             />
           </InputGroup>
-          {collectionsData?.list?.length
+          {collectionsData?.data?.collections.length
 
             ? (
               <CollectionSelector
-                collectionArr={collectionsData!.list}
-                selectedArr={selectedCollectionArr}
+                collectionArr={collectionsData?.data?.collections}
+                selectedArr={selectedCollectionIdArr}
                 handleSelect={handleSelectCollection}
               />
             ) : <Image w="100%" h="auto" mr="" src={Emptyimg.default} alt="" />}
@@ -150,7 +150,7 @@ const Browsing = () => {
 
           <Flex h="36px">
             <CategorySelector
-              list={categoriesData.data.categories}
+              list={categoriesData!.data.categories}
               selectId={selectedCategoryId}
               handleSelect={handleSelectCategory}
             />
@@ -179,7 +179,7 @@ const Browsing = () => {
               columns={4}
               spacing={4}
             >
-              {nftsData?.orders?.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
+              {nftsData?.data.orders?.map((nft) => <Flex mb="16px"><NftCard nft={nft} /></Flex>)}
             </SimpleGrid>
           </Flex>
         </Flex>

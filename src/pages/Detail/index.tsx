@@ -17,6 +17,7 @@ import {
 import { union, without } from 'lodash';
 
 import { useTranslation } from 'react-i18next';
+import { RouteComponentProps } from 'react-router-dom';
 import MainContainer from '../../layout/MainContainer';
 import PriceHistoryChart from './PriceHistoryChart';
 
@@ -34,6 +35,7 @@ import {
   TWITTER,
   PriceIcon,
 } from '../../assets/images';
+import useNft from '../../hooks/reactQuery/useNft';
 
 const propertiesArr = [1, 2, 3, 4, 5, 6];
 const ICONS = [
@@ -51,7 +53,10 @@ const ICON_LIST = ICONS.map((item, index) => ({
 const OfferssArr = [1, 2, 3];
 const OfferssUnitArr = [1, 2, 3, 4, 5, 6];
 
-const Detail = () => {
+const Detail = ({ match }: RouteComponentProps<{ nftId: string }>) => {
+  const { nftId } = match.params;
+
+  const { data: nftData, isLoading } = useNft(nftId);
   const { t } = useTranslation();
 
   return (

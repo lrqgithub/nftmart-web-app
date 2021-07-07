@@ -25,8 +25,8 @@ const CollectionSelector: FC<CollectionSelectorProps> = (({ selectedArr, collect
   >
     {collectionArr.map((collection) => (
       <Button
-        key={collection.name}
-        id={collection.name}
+        key={collection.id}
+        id={collection.id}
         onClick={handleSelect}
         display="flex"
         justifyContent="flex-start"
@@ -42,7 +42,7 @@ const CollectionSelector: FC<CollectionSelectorProps> = (({ selectedArr, collect
           textDecoration: 'none',
         }}
       >
-        {selectedArr.indexOf(collection.name) > -1
+        {selectedArr.indexOf(collection.id) > -1
           ? <Image w="30px" h="30px" mr="8px" src={IconXuanzhong.default} alt="" />
           : <Image w="30px" h="30px" mr="8px" src={Polkadot.default} alt="" />}
         <Text

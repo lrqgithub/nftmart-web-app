@@ -24,6 +24,7 @@ import MainContainer from '../../layout/MainContainer';
 
 import {
   IconHome,
+  Emptyimg,
 } from '../../assets/images';
 
 import 'swiper/swiper.min.css';
@@ -49,7 +50,7 @@ const Home = () => {
       </Center>
     );
   }
-
+  console.log(categoriesData);
   const handleSelect: MouseEventHandler<HTMLButtonElement> = (event) => {
     setSelectId(event.currentTarget.id);
   };
@@ -64,7 +65,7 @@ const Home = () => {
         position="relative"
         mb="40px"
       >
-        {/* <Image maxWidth="1360px" width="100%" src={bannerData?.banner} alt="banner" /> */}
+        <Image maxWidth="1360px" width="100%" src={bannerData?.banner} alt="banner" />
         <Flex
           color="white"
           flexDirection="column"
@@ -125,86 +126,99 @@ const Home = () => {
           </Button>
         </Flex>
       </Flex>
-      <CategorySelector list={categoriesData!.list} selectId={selectId} handleSelect={handleSelect} />
+      {categoriesData
+        ? <CategorySelector list={categoriesData.data.categories} selectId={selectId} handleSelect={handleSelect} />
+        : ''}
+
       <Flex width="100%" justifyContent="center">
         <Flex width="1360px" flexDirection="column">
-          <Flex width="100%" flexDirection="column" mt="40px">
-            <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
-              <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
-              <Text>Hottest</Text>
-            </Flex>
-            <Stack direction="row" height="364px">
-              <Swiper
-                scrollbar={{ draggable: true }}
-                slidesPerView={5}
-                breakpoints={{
-                  640: {
-                    slidesPerView: 2,
-                  },
-                  768: {
-                    slidesPerView: 4,
-                  },
-                  1024: {
-                    slidesPerView: 5,
-                  },
-                }}
-                className="mySwiper"
-              >
+          {hotNftsData?.data.orders.length
+            ? (
+              <Flex width="100%" flexDirection="column" mt="40px">
+                <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
+                  <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
+                  <Text>Hottest</Text>
+                </Flex>
+                <Stack direction="row" height="364px">
+                  <Swiper
+                    scrollbar={{ draggable: true }}
+                    slidesPerView={5}
+                    breakpoints={{
+                      640: {
+                        slidesPerView: 2,
+                      },
+                      768: {
+                        slidesPerView: 4,
+                      },
+                      1024: {
+                        slidesPerView: 5,
+                      },
+                    }}
+                    className="mySwiper"
+                  >
 
-                {hotNftsData?.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
-              </Swiper>
-            </Stack>
-          </Flex>
-          <Flex width="100%" flexDirection="column" mt="40px">
-            <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
-              <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
-              <Text>Hottest</Text>
+                    {hotNftsData.data.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
+                  </Swiper>
+                </Stack>
+              </Flex>
+            )
+            : null}
+          {expensiveNftsData.data.orders ? (
+            <Flex width="100%" flexDirection="column" mt="40px">
+              <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
+                <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
+                <Text>Hottest</Text>
+              </Flex>
+              <Stack direction="row" height="364px">
+                <Swiper
+                  scrollbar={{ draggable: true }}
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 2,
+                    },
+                    768: {
+                      slidesPerView: 4,
+                    },
+                    1024: {
+                      slidesPerView: 5,
+                    },
+                  }}
+                  className="mySwiper"
+                >
+                  {expensiveNftsData?.data.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
+                </Swiper>
+              </Stack>
             </Flex>
-            <Stack direction="row" height="364px">
-              <Swiper
-                scrollbar={{ draggable: true }}
-                breakpoints={{
-                  640: {
-                    slidesPerView: 2,
-                  },
-                  768: {
-                    slidesPerView: 4,
-                  },
-                  1024: {
-                    slidesPerView: 5,
-                  },
-                }}
-                className="mySwiper"
-              >
-                {expensiveNftsData?.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
-              </Swiper>
-            </Stack>
-          </Flex>
-          <Flex width="100%" flexDirection="column" mt="40px">
-            <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
-              <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
-              <Text>Hottest</Text>
-            </Flex>
-            <Stack direction="row" height="364px">
-              <Swiper
-                scrollbar={{ draggable: true }}
-                breakpoints={{
-                  640: {
-                    slidesPerView: 2,
-                  },
-                  768: {
-                    slidesPerView: 4,
-                  },
-                  1024: {
-                    slidesPerView: 5,
-                  },
-                }}
-                className="mySwiper"
-              >
-                {cheapNftsData?.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
-              </Swiper>
-            </Stack>
-          </Flex>
+          ) : null}
+          {expensiveNftsData.data.orders
+            ? (
+              <Flex width="100%" flexDirection="column" mt="40px">
+                <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
+                  <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
+                  <Text>Hottest</Text>
+                </Flex>
+                <Stack direction="row" height="364px">
+                  <Swiper
+                    scrollbar={{ draggable: true }}
+                    breakpoints={{
+                      640: {
+                        slidesPerView: 2,
+                      },
+                      768: {
+                        slidesPerView: 4,
+                      },
+                      1024: {
+                        slidesPerView: 5,
+                      },
+                    }}
+                    className="mySwiper"
+                  >
+                    {cheapNftsData?.data.orders.map((nft) => <SwiperSlide><NftCard nft={nft} /></SwiperSlide>)}
+                  </Swiper>
+                </Stack>
+              </Flex>
+            )
+            : null}
 
         </Flex>
       </Flex>

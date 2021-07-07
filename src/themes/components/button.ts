@@ -9,7 +9,6 @@ const Button: ComponentStyleConfig = {
       outline: 'none',
     },
     _focus: {
-      background: 'none',
       textDecoration: 'none',
       boxShadow: 'none',
     },

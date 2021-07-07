@@ -59,6 +59,12 @@
   "navLatestCreate": "Not for sale",
   "navLatestStrike": "Sold Recently",
   "navCreate": "Create",
+  "extension": {
+    "dowload": "请下载 Polkadot 钱包插件",
+    "login": "登录到您的钱包",
+    "account": "请先使用 Polkadot 钱包插件创建或导入账户",
+    "select": "选择账户"
+  },
   "common": {
     "save": "保存"
   },

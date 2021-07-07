@@ -57,6 +57,12 @@
   "navLatestCreate": "Not for sale",
   "navLatestStrike": "Sold Recently",
   "navCreate": "Create",
+  "extension": {
+    "dowload": "Please download Polkadot extension",
+    "login": "Connect wallet",
+    "account": "Please use Polkadot extension create or import your account",
+    "select": "Select Account"
+  },
   "common": {
     "save": "Save"
   },

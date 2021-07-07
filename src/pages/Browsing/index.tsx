@@ -28,6 +28,7 @@ import {
   IconSearch,
   IconAllState,
   IconAllStateone,
+  Emptyimg,
 } from '../../assets/images';
 import useParams from '../../hooks/url/useParams';
 import { statusArr } from '../../constants/Status';
@@ -77,7 +78,6 @@ const Browsing = () => {
         : union(selectedCollectionArr, [event.currentTarget.id]),
     );
   };
-
   if (categoriesIsLoading || collectionsIsLoading || nftsIsLoading) {
     return (
       <Center height="100vh">
@@ -134,19 +134,23 @@ const Browsing = () => {
               placeholder={t('Browing.collectionPlaceholder')}
             />
           </InputGroup>
+          {collectionsData?.list?.length
 
-          <CollectionSelector
-            collectionArr={collectionsData!.list}
-            selectedArr={selectedCollectionArr}
-            handleSelect={handleSelectCollection}
-          />
+            ? (
+              <CollectionSelector
+                collectionArr={collectionsData!.list}
+                selectedArr={selectedCollectionArr}
+                handleSelect={handleSelectCollection}
+              />
+            ) : <Image w="100%" h="auto" mr="" src={Emptyimg.default} alt="" />}
+
         </Flex>
 
         <Flex width="1088px" flexDirection="column" justifyContent="flex-start">
 
           <Flex h="36px">
             <CategorySelector
-              list={categoriesData!.list}
+              list={categoriesData.data.categories}
               selectId={selectedCategoryId}
               handleSelect={handleSelectCategory}
             />

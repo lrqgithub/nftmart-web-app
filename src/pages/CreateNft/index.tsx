@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
@@ -32,12 +32,15 @@ import {
   Emptyimg,
   IconLeft,
 } from '../../assets/images';
+import { mintNft } from '../../polkaSDK/api/mintNft';
 
 const CreateNft: FC = () => {
   const { t } = useTranslation();
   const toast = useToast();
   const history = useHistory();
   const chainState = useAppSelector((state) => state.chain);
+
+  const { account } = chainState;
 
   const schema = Yup.object().shape({
     logoUrl: Yup.string().matches(
@@ -65,14 +68,53 @@ const CreateNft: FC = () => {
       nftMartUrl: '',
       description: '',
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: (formValue, formAction) => {
+      mint(formValue, {
+        success: () => {
+          toast({
+            title: t('create.detailtoast.success'),
+            status: 'success',
+            position: 'top',
+            duration: 3000,
+          });
+          formAction.setSubmitting(false);
+          formAction.resetForm();
+
+          const OneClasses = classes?.find((cls) => +cls.classId === +formValue.classId);
+          if (OneClasses) {
+            const { totalIssuance } = OneClasses;
+            setTimeout(() => {
+              history.push(`/detail/${formValue.classId}/${totalIssuance}`);
+            }, 2000);
+          }
+        },
+        error: (error: string) => {
+          toast({
+            title: 'error',
+            status: 'error',
+            position: 'top',
+            duration: 3000,
+            description: error,
+          });
+          formAction.setSubmitting(false);
+        },
+      });
     },
     validationSchema: schema,
   });
   const params = useParams();
   const collectionId = params.get('collectionId') || '';
 
+  const mint = useCallback(async (formValue: any, cb) => {
+    const { classId, ...others } = formValue;
+    const normalizedFormData = {
+      address: account?.address,
+      metadata: { ...others },
+      classId: Number(collectionId),
+      cb,
+    };
+    mintNft(normalizedFormData);
+  }, []);
   return (
     <MainContainer title={t('Collection.title')}>
       <Flex

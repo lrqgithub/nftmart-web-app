@@ -43,7 +43,7 @@ const CreateCollection: FC = () => {
     name: Yup.string()
       .max(50, t('createVerificationCollectionName'))
       .required(t('createVerificationRequired')),
-    nftMartUrl: Yup.string().max(200).required(t('createVerificationRequired')),
+    nftMartUrl: Yup.string().max(200),
     description: Yup.string()
       .max(200, t('createVerificationDescription')),
   });
@@ -111,7 +111,7 @@ const CreateCollection: FC = () => {
 
         <Upload
           id="logoUrl"
-          mediatype="nocuttiing"
+          mediatype="cutting"
           rectangle=""
           value={formik.values.logoUrl}
           onChange={(v: any) => {
@@ -150,7 +150,7 @@ const CreateCollection: FC = () => {
         ) : null}
         <label htmlFor="nftMartUrl">
           {' '}
-          <EditFormTitle text="*URL" />
+          <EditFormTitle text="URL" />
           <EditFromSubTitle
             text="Customize your URL on NFTMart. Must only contain lowercase letters, numbers, and hyphens, 50 characterscters or less."
           />

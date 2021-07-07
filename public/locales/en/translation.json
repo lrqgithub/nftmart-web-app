@@ -3,9 +3,9 @@
   "langEn": "English",
   "langZn": "中文",
   "Login": "Login",
-  "quickAreaWallet": "Wallet",
-  "quickAreaCollections": "My Collections",
-  "quickAreaNftCreate": "Create NFT",
+  "quickAreaOwned": "Owned",
+  "quickAreaCreated": "Created",
+  "quickAreaCollections": "Collections",
   "quickAreaSwitch": "Switch Account",
   "quickAreaProfileEdit": "Edit Profile",
   "createTitle": "Create Asset",
@@ -57,6 +57,12 @@
   "navLatestCreate": "Not for sale",
   "navLatestStrike": "Sold Recently",
   "navCreate": "Create",
+  "extension": {
+    "dowload": "Please download Polkadot extension",
+    "login": "Connect wallet",
+    "account": "Please use Polkadot extension create or import your account",
+    "select": "Select Account"
+  },
   "common": {
     "save": "Save"
   },

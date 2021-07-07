@@ -285,7 +285,11 @@ const Account = () => {
                   </Flex>
 
                   <Flex width="100%" flexFlow="wrap" justifyContent="space-between">
-                    <StatusSelector statusArr={statusArr} selectedArr={selectedStatusArr} handleSelect={handleSelectStatus} />
+                    <StatusSelector
+                      statusArr={statusArr}
+                      selectedArr={selectedStatusArr}
+                      handleSelect={handleSelectStatus}
+                    />
                   </Flex>
                   <Flex h="21px" width="100%" flexDirection="row" alignItems="center" m="22px 0 12px 0">
                     <Box as="img" src={IconAllStateone.default} alt="" w="22px" h="22px" mr="8px" />

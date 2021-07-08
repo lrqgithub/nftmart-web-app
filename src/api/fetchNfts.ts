@@ -1,15 +1,27 @@
 import axiosClient from '../apiClient/axiosClient';
 
 type NftsList = {
-  orders: NFT[],
+  data: {
+    orders: Order[],
+  }
 } & Pagination
 
-export default async (type?: string, category?: string, collection?: string[], status?: string[]) => {
+export type FetchNftParams = {
+  type?: string,
+  categoryId?: string,
+  collectionId?: string[],
+  status?: string[],
+  address?: string[]
+}
+
+export default async ({
+  type, categoryId, collectionId, status,
+}: FetchNftParams) => {
   const res = await axiosClient.get<NftsList>('/orders', {
     params: {
       type,
-      category,
-      collection,
+      categoryId,
+      collectionId,
       status,
     },
   });

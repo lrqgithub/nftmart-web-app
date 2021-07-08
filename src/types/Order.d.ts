@@ -1,0 +1,21 @@
+/* eslint-disable camelcase */
+type Order = {
+  id: string,
+  name: string,
+  currency_id: number,
+  deadline: number,
+  status: Status,
+  expected_price: string,
+  accepted_price: string,
+  deposit: string,
+  seller_id: string,
+  buyer_id: string,
+  nft_id: string,
+  category_id: string,
+  block_id: string,
+  extrinsic_id: string,
+  nft: Nft,
+  category: Category,
+  class: Collection,
+  metadata: Metadata,
+}

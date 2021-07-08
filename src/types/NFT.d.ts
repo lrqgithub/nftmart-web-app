@@ -1,8 +1,7 @@
-type NFT = {
+/* eslint-disable camelcase */
+type Nft = {
   id: string,
-  name: string,
-  metadata: Metadata,
-  status: Status,
-  category: Category,
-  collection: Collection
+  token_id: string,
+  class_id: string,
+  address: string
 }

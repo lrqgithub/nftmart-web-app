@@ -1,7 +1,9 @@
 import axiosClient from '../apiClient/axiosClient';
 
 type Categories = {
-  list: Category[],
+  data: {
+    categories: Category[],
+  }
 }
 
 export default async () => {

@@ -8,7 +8,6 @@ import {
   Text,
   Button,
   Center,
-  SimpleGrid,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -24,7 +23,6 @@ import MainContainer from '../../layout/MainContainer';
 
 import {
   IconHome,
-  Emptyimg,
 } from '../../assets/images';
 
 import 'swiper/swiper.min.css';
@@ -162,7 +160,7 @@ const Home = () => {
               </Flex>
             )
             : null}
-          {expensiveNftsData.data.orders ? (
+          {expensiveNftsData?.data.orders ? (
             <Flex width="100%" flexDirection="column" mt="40px">
               <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
                 <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
@@ -189,7 +187,7 @@ const Home = () => {
               </Stack>
             </Flex>
           ) : null}
-          {expensiveNftsData.data.orders
+          {expensiveNftsData?.data.orders
             ? (
               <Flex width="100%" flexDirection="column" mt="40px">
                 <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">

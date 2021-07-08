@@ -50,15 +50,26 @@
   "componentCollectionPriceTooltip": "NFT 的价格",
   "componentCollectionPledge": "质押金",
   "componentCollectionPledge.tooltip": "NFT 的质押金额",
-  "navHome": "Home",
-  "navBrowing": "Browing",
-  "navAuction": "Auction",
-  "navActive": "Active",
+  "navHome": "首页",
+  "navBrowing": "浏览",
+  "navAuction": "拍卖",
+  "navActive": "活动",
   "navExploreAll": "All",
   "navListSale": "Listing",
   "navLatestCreate": "Not for sale",
   "navLatestStrike": "Sold Recently",
   "navCreate": "Create",
+  "home":{
+    "Hottest": "热门",
+    "Expensive": "最昂贵",
+    "Cheapest": "最便宜"
+  } ,
+  "banner":{
+    "titleOne": "专业的",
+    "titleTwo": "NFT 交易市场",
+    "content": "首个使用独立主链开发的NFT交易平台",
+    "button": "创建"
+  },
   "extension": {
     "dowload": "请下载 Polkadot 钱包插件",
     "login": "登录到您的钱包",

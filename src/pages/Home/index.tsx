@@ -50,7 +50,6 @@ const Home = () => {
       </Center>
     );
   }
-  console.log(categoriesData);
   const handleSelect: MouseEventHandler<HTMLButtonElement> = (event) => {
     setSelectId(event.currentTarget.id);
   };
@@ -86,7 +85,7 @@ const Home = () => {
             color="#FFFFFF"
             lineHeight="75px"
           >
-            Professional
+            {t('banner.titleOne')}
           </Text>
           <Text
             w="579px"
@@ -97,7 +96,7 @@ const Home = () => {
             letterSpacing="2px"
             fontSize="64px"
           >
-            NFT Market Place
+            {t('banner.titleTwo')}
           </Text>
           <Text
             mt="3px"
@@ -109,7 +108,7 @@ const Home = () => {
             letterSpacing="2px"
             fontSize="24px"
           >
-            The first NFT decentralized trading platform established using an independent public
+            {t('banner.content')}
           </Text>
           <Button
             mt="35px"
@@ -122,7 +121,7 @@ const Home = () => {
             fontWeight="bold"
             color="#000000"
           >
-            CREATE
+            {t('banner.button')}
           </Button>
         </Flex>
       </Flex>
@@ -137,7 +136,7 @@ const Home = () => {
               <Flex width="100%" flexDirection="column" mt="40px">
                 <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
                   <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
-                  <Text>Hottest</Text>
+                  <Text>{t('home.Hottest')}</Text>
                 </Flex>
                 <Stack direction="row" height="364px">
                   <Swiper
@@ -167,7 +166,7 @@ const Home = () => {
             <Flex width="100%" flexDirection="column" mt="40px">
               <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
                 <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
-                <Text>Hottest</Text>
+                <Text>{t('home.Expensive')}</Text>
               </Flex>
               <Stack direction="row" height="364px">
                 <Swiper
@@ -195,7 +194,7 @@ const Home = () => {
               <Flex width="100%" flexDirection="column" mt="40px">
                 <Flex h="21px" width="100%" flexDirection="row" alignItems="center" mb="21px">
                   <Box as="img" src={IconHome.default} alt="" w="18px" h="18px" mr="8px" />
-                  <Text>Hottest</Text>
+                  <Text>{t('home.Cheapest')}</Text>
                 </Flex>
                 <Stack direction="row" height="364px">
                   <Swiper
